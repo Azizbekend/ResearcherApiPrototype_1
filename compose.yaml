@@ -11,7 +11,7 @@ services:
       - ASPNETCORE_URLS=http://0.0.0.0:8087
       - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
       - ASPNETCORE_HTTPS_PORT=443
-      - ASPNETCORE_Kestrel__Endpoints__Http__Url=http://0.0.0.0:8087
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=http://0.0.0.0:8087
     restart: unless-stopped
     networks:
       - app-network
