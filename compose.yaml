@@ -10,8 +10,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://0.0.0.0:8087
       - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
-      - ASPNETCORE_HTTPS_PORT=443
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=http://0.0.0.0:8087
+      - ASPNETCORE_HTTPS_REDIRECT=false
     restart: unless-stopped
     networks:
       - app-network
