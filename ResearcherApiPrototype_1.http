@@ -1,0 +1,6 @@
+@ResearcherApiPrototype_1_HostAddress = http://localhost:5159
+
+GET {{ResearcherApiPrototype_1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
