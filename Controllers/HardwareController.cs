@@ -44,9 +44,9 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(hwtr.Id);
         }
         [HttpPost("Activate")]
-        public async Task<ActionResult> Activating(int id)
+        public async Task<ActionResult> Activating(BaseDTO dto)
         {
-            await _hardwareRepo.HardwareActivating(id);
+            await _hardwareRepo.HardwareActivating(dto.Id);
             return Ok();
         }
     }

@@ -1,4 +1,5 @@
-﻿using ResearcherApiPrototype_1.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using ResearcherApiPrototype_1.DTOs;
 using ResearcherApiPrototype_1.Models;
 
 namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
@@ -48,6 +49,29 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             _context.ServiceRequests.Add(newRequest);   
             await _context.SaveChangesAsync();
             return newRequest;
+        }
+
+        //public Task<ICollection<ServiceRequest>> GetAllObjectServiceRequests(int id)
+        //{
+        //    var blocks = _context.ControlBlocks.Where(x => x.StaticObjectInfoId == id).ToListAsync();
+        //    var list = new List<ServiceRequest>();
+        //    foreach (var block in blocks) 
+        //    {
+
+        //    }
+        //}
+
+        public async Task<ICollection<ServiceRequest>> GetAllRequests()
+        {
+            return await _context.ServiceRequests.ToListAsync();
+        }
+
+        
+        public async Task<ICollection<ServiceRequest>> GetHardwareRequests(int id)
+        {
+            return await _context.ServiceRequests
+                .Where(x => x.HardwareId == id)
+                .ToListAsync();
         }
 
         public async Task StatusChange(int id, string status)

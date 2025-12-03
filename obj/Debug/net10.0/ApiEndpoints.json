@@ -148,9 +148,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -262,9 +262,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

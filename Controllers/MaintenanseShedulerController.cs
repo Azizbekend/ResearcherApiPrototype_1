@@ -30,9 +30,9 @@ namespace ResearcherApiPrototype_1.Controllers
         }
 
         [HttpPut("completeRequest")]
-        public async Task<ActionResult> CompleteCurrentRequest(int id)
+        public async Task<ActionResult> CompleteCurrentRequest(BaseDTO dto)
         {
-            await _maintenanceRepo.CompleteMaintenanceRequest(id);
+            await _maintenanceRepo.CompleteMaintenanceRequest(dto.Id);
             //await _maintenanceRepo.CreateHistoryRercord(id);
             return Ok();
         }
