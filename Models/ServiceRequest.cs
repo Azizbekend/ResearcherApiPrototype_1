@@ -10,11 +10,12 @@ namespace ResearcherApiPrototype_1.Models
         public string Discription { get; set; }
         public string CurrentStatus { get; set; }
         public bool IsFailure { get; set; }
+        public string Creator { get; set; }
+        public string Implementer { get; set; }
+        public DateTime CreatetAt { get; set; } = DateTime.Now.ToLocalTime();
+        public DateTime ClosedAt { get; set; }
         [ForeignKey("HardwareInfo")]
         public int HardwareId { get; set; }
-
-        public DateTime CreatetAt { get; set; }
-        public DateTime ClosedAt { get; set; }
         public HardwareInfo Hardware { get; set; }
     }
 }

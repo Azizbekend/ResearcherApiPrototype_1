@@ -141,6 +141,22 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "Activating",
+    "RelativePath": "api/Hardware/Activate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
     "Method": "GetAll",
     "RelativePath": "api/Hardware/all",
     "HttpMethod": "GET",
@@ -228,6 +244,74 @@
     "ReturnTypes": [
       {
         "Type": "ResearcherApiPrototype_1.Models.HardwareInfo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "CompleteCurrentRequest",
+    "RelativePath": "api/MaintenanseSheduler/completeRequest",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "CreateShedule",
+    "RelativePath": "api/MaintenanseSheduler/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.MaintanceCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.MaintenanceRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "GetNextWeekRequests",
+    "RelativePath": "api/MaintenanseSheduler/next_week",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.MaintenanceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -482,6 +566,110 @@
     "ReturnTypes": [
       {
         "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "GetSchemas",
+    "RelativePath": "api/Schemas/schemas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareSchema, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "GetCoordinates",
+    "RelativePath": "api/Schemas/schemas/coordinates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareSchema, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "CreateCoordinates",
+    "RelativePath": "schema/coordinates/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemaImageCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareSchemaImage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "CreateSchema",
+    "RelativePath": "schema/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemaCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareSchema",
         "MediaTypes": [
           "text/plain",
           "application/json",

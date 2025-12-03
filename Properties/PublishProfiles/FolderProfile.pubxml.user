@@ -2,8 +2,8 @@
 <!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\User\source\repos\ResearcherApiPrototype_1\ResearcherApiPrototype_1\bin\Release\net10.0\publish\</_PublishTargetUrl>
-    <History>True|2025-12-01T13:07:48.7731509Z||;True|2025-12-01T13:31:13.4811943+03:00||;False|2025-12-01T13:30:50.9488362+03:00||;True|2025-12-01T13:27:11.9850061+03:00||;True|2025-12-01T13:12:36.9031887+03:00||;True|2025-11-28T14:01:12.7150648+03:00||;True|2025-11-26T16:47:45.0748022+03:00||;True|2025-11-26T16:39:53.3912530+03:00||;True|2025-11-26T16:27:28.8817890+03:00||;True|2025-11-26T15:32:35.0269915+03:00||;True|2025-11-26T14:21:50.1876798+03:00||;</History>
+    <_PublishTargetUrl>C:\Users\User\source\repos\ResearcherApiPrototype_2\ResearcherApiPrototype_1\bin\Release\net10.0\publish\</_PublishTargetUrl>
+    <History>True|2025-12-03T11:50:22.7739461Z||;True|2025-12-03T14:17:37.4024259+03:00||;True|2025-12-01T16:07:48.7731509+03:00||;True|2025-12-01T13:31:13.4811943+03:00||;False|2025-12-01T13:30:50.9488362+03:00||;True|2025-12-01T13:27:11.9850061+03:00||;True|2025-12-01T13:12:36.9031887+03:00||;True|2025-11-28T14:01:12.7150648+03:00||;True|2025-11-26T16:47:45.0748022+03:00||;True|2025-11-26T16:39:53.3912530+03:00||;True|2025-11-26T16:27:28.8817890+03:00||;True|2025-11-26T15:32:35.0269915+03:00||;True|2025-11-26T14:21:50.1876798+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
