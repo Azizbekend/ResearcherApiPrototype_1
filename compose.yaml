@@ -1,0 +1,20 @@
+services:
+  researcher-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: researcher-api
+    ports:
+      - "127.0.0.1:8087:8087"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:8087
+      - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
+      - ASPNETCORE_HTTPS_REDIRECT=false
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
