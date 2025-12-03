@@ -32,9 +32,39 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPut("completeRequest")]
         public async Task<ActionResult> CompleteCurrentRequest(BaseDTO dto)
         {
-            await _maintenanceRepo.CompleteMaintenanceRequest(dto.Id);
-            //await _maintenanceRepo.CreateHistoryRercord(id);
-            return Ok();
-        }
+            try
+            {
+                // Добавляем валидацию входных данных
+                if (dto == null)
+                {
+                    return BadRequest(new { error = "Request body cannot be null" });
+                }
+                
+                if (dto.Id <= 0)
+                {
+                    return BadRequest(new { error = "Invalid ID provided. ID must be greater than 0" });
+                }
+                
+                await _maintenanceRepo.CompleteMaintenanceRequest(dto.Id);
+                return Ok(new { message = "Maintenance request completed successfully" });
+            }
+            catch (Exception ex) when (ex.Message == "Maintenance request not found!")
+            {
+                // Обрабатываем специфическое исключение из репозитория
+                return NotFound(new { 
+                    error = $"Maintenance request with ID {dto?.Id} not found",
+                    details = "The requested maintenance record does not exist or has already been completed"
+                });
+            }
+            catch (Exception ex)
+            {
+                // Общая обработка ошибок
+                _logger.LogError(ex, "Error completing maintenance request for ID: {Id}", dto?.Id);
+                return StatusCode(500, new { 
+                    error = "An error occurred while processing your request",
+                    requestId = HttpContext.TraceIdentifier 
+                });
+            }
+        }    
     }
 }
