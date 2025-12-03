@@ -43,5 +43,11 @@ namespace ResearcherApiPrototype_1.Controllers
             var hwtr = await _hardwareRepo.CreateHardwareAsync(hw);
             return Ok(hwtr.Id);
         }
+        [HttpPost("Activate")]
+        public async Task<ActionResult> Activating(int id)
+        {
+            await _hardwareRepo.HardwareActivating(id);
+            return Ok();
+        }
     }
 }

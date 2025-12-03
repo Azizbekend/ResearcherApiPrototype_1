@@ -82,12 +82,18 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("ActivatedAt")
+                        .HasColumnType("timestamp");
+
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ControlBlockId")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("DeveloperName")
                         .IsRequired()
@@ -122,6 +128,118 @@ namespace ResearcherApiPrototype_1.Migrations
                     b.HasIndex("ControlBlockId");
 
                     b.ToTable("Hardwares");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareSchema", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("SchemaImage")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("StaticObjectInfoId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StaticObjectInfoId");
+
+                    b.ToTable("Schemas");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareSchemaImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("HardwareSchemaId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Height")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Left")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Top")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Width")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HardwareSchemaId");
+
+                    b.ToTable("SchemaImages");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.MaintenanceHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CompletedMaintenanceDate")
+                        .HasColumnType("timestamp");
+
+                    b.Property<int>("MaintenanceRequestId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("SheduleMaintenanceDate")
+                        .HasColumnType("timestamp");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaintenanceRequestId");
+
+                    b.ToTable("MaintenanceHistory");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.MaintenanceRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Discription")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("HardwareId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("NextMaintenanceDate")
+                        .HasColumnType("timestamp");
+
+                    b.Property<int>("Period")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HardwareId");
+
+                    b.ToTable("MaintenanceRequests");
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.NodeIndicates", b =>
@@ -183,6 +301,49 @@ namespace ResearcherApiPrototype_1.Migrations
                     b.HasIndex("HardwareId");
 
                     b.ToTable("Nodes");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.ServiceRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ClosedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("CreatetAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Creator")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("CurrentStatus")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Discription")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("HardwareId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Implementer")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsFailure")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HardwareId");
+
+                    b.ToTable("ServiceRequests");
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.StaticObjectInfo", b =>
@@ -254,6 +415,50 @@ namespace ResearcherApiPrototype_1.Migrations
                     b.Navigation("ControlBlock");
                 });
 
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareSchema", b =>
+                {
+                    b.HasOne("ResearcherApiPrototype_1.Models.StaticObjectInfo", "StaticObjectInfo")
+                        .WithMany("Schemas")
+                        .HasForeignKey("StaticObjectInfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StaticObjectInfo");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareSchemaImage", b =>
+                {
+                    b.HasOne("ResearcherApiPrototype_1.Models.HardwareSchema", "HardwareSchema")
+                        .WithMany("Images")
+                        .HasForeignKey("HardwareSchemaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HardwareSchema");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.MaintenanceHistory", b =>
+                {
+                    b.HasOne("ResearcherApiPrototype_1.Models.MaintenanceRequest", "MaintenanceRequest")
+                        .WithMany("HistoreRecords")
+                        .HasForeignKey("MaintenanceRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("MaintenanceRequest");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.MaintenanceRequest", b =>
+                {
+                    b.HasOne("ResearcherApiPrototype_1.Models.HardwareInfo", "Hardware")
+                        .WithMany("Requests")
+                        .HasForeignKey("HardwareId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hardware");
+                });
+
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.NodeIndicates", b =>
                 {
                     b.HasOne("ResearcherApiPrototype_1.Models.NodeInfo", "NodeInfo")
@@ -276,6 +481,17 @@ namespace ResearcherApiPrototype_1.Migrations
                     b.Navigation("HardwareInfo");
                 });
 
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.ServiceRequest", b =>
+                {
+                    b.HasOne("ResearcherApiPrototype_1.Models.HardwareInfo", "Hardware")
+                        .WithMany("ServiceRequests")
+                        .HasForeignKey("HardwareId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hardware");
+                });
+
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.ControlBlockInfo", b =>
                 {
                     b.Navigation("HardwareInfo");
@@ -286,6 +502,20 @@ namespace ResearcherApiPrototype_1.Migrations
                     b.Navigation("Characteristics");
 
                     b.Navigation("NodeInfos");
+
+                    b.Navigation("Requests");
+
+                    b.Navigation("ServiceRequests");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareSchema", b =>
+                {
+                    b.Navigation("Images");
+                });
+
+            modelBuilder.Entity("ResearcherApiPrototype_1.Models.MaintenanceRequest", b =>
+                {
+                    b.Navigation("HistoreRecords");
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.NodeInfo", b =>
@@ -296,6 +526,8 @@ namespace ResearcherApiPrototype_1.Migrations
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.StaticObjectInfo", b =>
                 {
                     b.Navigation("ControlBlocks");
+
+                    b.Navigation("Schemas");
                 });
 #pragma warning restore 612, 618
         }

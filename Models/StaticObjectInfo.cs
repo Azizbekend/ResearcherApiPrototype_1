@@ -16,6 +16,8 @@ namespace ResearcherApiPrototype_1.Models
 
         [JsonIgnore]
         public ICollection<ControlBlockInfo> ControlBlocks { get; set; } = new List<ControlBlockInfo>();
+        [JsonIgnore]
+        public ICollection<HardwareSchema> Schemas { get; set; } = new List<HardwareSchema>();
 
     }
 }

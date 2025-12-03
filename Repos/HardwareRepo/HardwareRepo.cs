@@ -53,5 +53,17 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 .Where(h=>h.ControlBlockId == controlBlockId)
                 .ToListAsync();
         }
+
+        public async Task HardwareActivating(int id)
+        {
+            var hw = new HardwareInfo
+            {
+                Id = id,
+                ActivatedAt = DateTime.Now.ToLocalTime()
+            };
+            _appDbContext.Hardwares.Attach(hw);
+            _appDbContext.Entry(hw).Property(act => act.ActivatedAt).IsModified = true;
+            await _appDbContext.SaveChangesAsync();
+        }
     }
 }
