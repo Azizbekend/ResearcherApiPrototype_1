@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ResearcherApiPrototype_1;
 using ResearcherApiPrototype_1.Repos.CharacteristicRepo;
 using ResearcherApiPrototype_1.Repos.ControlBlockRepo;
+using ResearcherApiPrototype_1.Repos.FileStorageRepo;
 using ResearcherApiPrototype_1.Repos.HardwareRepo;
 using ResearcherApiPrototype_1.Repos.MaintenanceRepo;
 using ResearcherApiPrototype_1.Repos.NodeIndicatesRepo;
@@ -16,9 +17,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("ResearcherBd")));
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<INodeRepo, NodeRepo>();
 builder.Services.AddScoped<IHardwareRepo, HardwareRepo>();
 builder.Services.AddScoped<IControlBlockRepo, ControlBlockRepo>();
+builder.Services.AddScoped<IFileStorageRepo, FileStorageRepo>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

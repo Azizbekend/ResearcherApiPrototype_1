@@ -55,7 +55,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         //{
         //    var blocks = _context.ControlBlocks.Where(x => x.StaticObjectInfoId == id).ToListAsync();
         //    var list = new List<ServiceRequest>();
-        //    foreach (var block in blocks) 
+        //    foreach (var block in blocks)
         //    {
 
         //    }

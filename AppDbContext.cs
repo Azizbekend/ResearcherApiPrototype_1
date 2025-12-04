@@ -19,6 +19,7 @@ namespace ResearcherApiPrototype_1
         public DbSet<MaintenanceRequest> MaintenanceRequests{ get; set; }
         public DbSet<MaintenanceHistory> MaintenanceHistory{ get; set; }
         public DbSet<HardwareCharacteristic> Characteristics { get; set; }
+        public DbSet<FileModel> Files { get; set; }
         public DbSet<StaticObjectInfo> StaticObjectInfos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,12 @@ namespace ResearcherApiPrototype_1
                 entity.Property(n => n.CompletedMaintenanceDate).HasColumnType("timestamp");
                 entity.Property(n => n.SheduleMaintenanceDate).HasColumnType("timestamp");
             });
+            modelBuilder.Entity<FileModel>(ent =>
+            {
+                ent.HasIndex(f => f.FileName);
+            });
+            
+            
         }
             //    modelBuilder.Entity<HardwareCharacteristic>(entity =>
             //    {

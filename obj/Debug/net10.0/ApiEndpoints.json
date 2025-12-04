@@ -140,6 +140,74 @@
     ]
   },
   {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "DownloadFile",
+    "RelativePath": "api/FileStorage/download",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "GetFileInfo",
+    "RelativePath": "api/FileStorage/fileInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "UploadFile",
+    "RelativePath": "api/FileStorage/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
     "Method": "Activating",
     "RelativePath": "api/Hardware/Activate",
