@@ -22,7 +22,8 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 SupplierName = dto.SupplierName,
                 Position = dto.Position,
                 PhotoName = dto.PhotoName,
-                ControlBlockId = dto.ControlBlockId
+                ControlBlockId = dto.ControlBlockId,
+                FileId = dto.FileId
             };
             _appDbContext.Hardwares.Add(hardware);
             await _appDbContext.SaveChangesAsync();

@@ -21,7 +21,8 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 Left = coordinates.Left,
                 Height = coordinates.Height,
                 Width = coordinates.Width,
-                HardwareSchemaId = coordinates.HardwareSchemaId
+                HardwareSchemaId = coordinates.HardwareSchemaId,
+                FileId = coordinates.FileId
             };
             _context.SchemaImages.Add(newCoordinates);
             await _context.SaveChangesAsync();
@@ -35,7 +36,8 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
             {
                 Name = schema.Name,
                 SchemaImage = schema.SchemaImage,
-                StaticObjectInfoId = schema.StaticObjectInfoId
+                StaticObjectInfoId = schema.StaticObjectInfoId,
+                FileId = schema.FileId
             };
             _context.Schemas.Add(newschema);    
             await _context.SaveChangesAsync();

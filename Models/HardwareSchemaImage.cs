@@ -14,5 +14,8 @@ namespace ResearcherApiPrototype_1.Models
         [ForeignKey("HardwareSchema")]
         public int HardwareSchemaId { get; set; }
         public HardwareSchema HardwareSchema { get; set; }
+        [ForeignKey("FileModel")]
+        public int? FileId { get; set; }
+        public FileModel? File { get; set; }
     }
 }

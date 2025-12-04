@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zRBZHmxhbBk=",
+  "dgSpecHash": "LgN8hfebaCA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\source\\repos\\ResearcherApiPrototype_2\\ResearcherApiPrototype_1\\ResearcherApiPrototype_1.csproj",
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\ResearcherApiPrototype_1\\ResearcherApiPrototype_1\\ResearcherApiPrototype_1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.0\\microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",

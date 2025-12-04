@@ -10,6 +10,9 @@ namespace ResearcherApiPrototype_1.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string SchemaImage { get; set; }
+        [ForeignKey("FileModel")]
+        public int? FileId { get; set; }
+        public FileModel? File { get; set; }
         [ForeignKey("StaticObjectInfo")]
         public int StaticObjectInfoId { get; set; }
         public StaticObjectInfo StaticObjectInfo { get; set; }

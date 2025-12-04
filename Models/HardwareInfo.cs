@@ -18,6 +18,9 @@ namespace ResearcherApiPrototype_1.Models
         public string OpcDescription { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime ActivatedAt { get; set; }
+        [ForeignKey("FileModel")]
+        public int? FileId { get; set; }
+        public FileMode? FileModel { get; set; }
         [ForeignKey("ControlBlockInfo")]
         public int ControlBlockId { get; set; }
         [JsonIgnore]
