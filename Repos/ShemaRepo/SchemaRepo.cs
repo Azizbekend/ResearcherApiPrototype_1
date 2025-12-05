@@ -49,7 +49,7 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
         {
             return await _context.SchemaImages
                 //.Include(x => x.HardwareSchemaId)
-                .Where(x => x.Id == id)
+                .Where(x => x.HardwareSchemaId == id)
                 .ToListAsync();
         }
 
