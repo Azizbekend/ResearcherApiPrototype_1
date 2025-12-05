@@ -9,6 +9,7 @@ namespace ResearcherApiPrototype_1.Repos.CharacteristicRepo
         Task CreateMass(CharMassCreateDTO dto);
         Task<ICollection<HardwareCharacteristic>> FindByHardwareId(int id);
         Task<HardwareCharacteristic> UpdateInfo(CharUpdateDTO characteristic);
+        Task Delete(int id) ;
         
 
     }

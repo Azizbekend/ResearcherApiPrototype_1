@@ -42,6 +42,12 @@ namespace ResearcherApiPrototype_1.Controllers
             var ci = await _charRepo.UpdateInfo(characterUpdateDTO);
             return Ok(ci);
         }
+        [HttpDelete("characteristic/delete")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _charRepo.Delete(id);
+            return Ok();
+        }
 
     }
 }

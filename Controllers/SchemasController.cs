@@ -42,5 +42,18 @@ namespace ResearcherApiPrototype_1.Controllers
             var schema = await _schemaRepo.GetCoordinatesBySchemaId(id);
             return Ok(schema);
         }
+
+        [HttpPut("shemas/coordinates/update")]
+        public async Task<ActionResult<HardwareSchemaImage>> UpdateImageCoordinates(SchemeImageUpdateDTO dto)
+        {
+            var newCoordinates = await _schemaRepo.UpdateCoordinates(dto);
+            return Ok(newCoordinates);
+        }
+        [HttpDelete("/scheme/coordinates")]
+        public async Task<IActionResult> DeleteCoordinates(int id)
+        {
+            await _schemaRepo.DeleteCoordinates(id);
+            return Ok();
+        }
     }
 }

@@ -49,5 +49,18 @@ namespace ResearcherApiPrototype_1.Controllers
             await _hardwareRepo.HardwareActivating(dto.Id);
             return Ok();
         }
+        [HttpPut("info/update")]
+        public async Task<ActionResult<HardwareInfo>> Updateinfo(HardwareInfoUpdateDTO dto)
+        {
+            var hi = await _hardwareRepo.HardwareInfoUpdate(dto);
+            return Ok(hi);
+        }
+        [HttpDelete("info/delete")]
+        public async Task<IActionResult> InfoDelete(int id)
+        {
+            await _hardwareRepo.HardwareDelete(id);
+            return Ok();
+        }
+
     }
 }

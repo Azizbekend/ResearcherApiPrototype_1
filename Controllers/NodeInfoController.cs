@@ -68,5 +68,12 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(ni);
         }
 
+        [HttpDelete("info/delete")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _nodeRepo.DeleteInfo(id);
+            return Ok();
+        }
+
     }
 }

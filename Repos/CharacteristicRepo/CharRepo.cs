@@ -42,6 +42,13 @@ namespace ResearcherApiPrototype_1.Repos.CharacteristicRepo
             await _context.SaveChangesAsync();
         }
 
+        public async Task Delete(int id)
+        {
+            var ch = _context.Characteristics.FirstOrDefault(c => c.Id == id);
+            _context.Characteristics.Remove(ch);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<ICollection<HardwareCharacteristic>> FindByHardwareId(int id)
         {
             return await _context.Characteristics

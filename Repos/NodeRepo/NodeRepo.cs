@@ -125,5 +125,12 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
             else
                 throw new Exception("Not found!");
         }
+
+        public async Task DeleteInfo(int id)
+        {
+            var ni = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.Id == id);
+            _appDbContext.Nodes.Remove(ni);
+            await _appDbContext.SaveChangesAsync();
+        }
     }
 }

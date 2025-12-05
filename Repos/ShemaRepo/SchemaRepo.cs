@@ -45,6 +45,16 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
             return newschema;
         }
 
+        public async Task DeleteCoordinates(int id)
+        {
+            var toDel = await _context.SchemaImages.FirstOrDefaultAsync(x=>x.Id == id);
+            if (toDel != null)
+            {
+                _context.SchemaImages.Remove(toDel);
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public async Task<ICollection<HardwareSchemaImage>> GetCoordinatesBySchemaId(int id)
         {
             return await _context.SchemaImages
@@ -59,6 +69,24 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 //.Include(x => x.StaticObjectInfoId)
                 .Where (x => x.StaticObjectInfoId == id)
                 .ToListAsync();
+        }
+
+        public async Task<HardwareSchemaImage> UpdateCoordinates(SchemeImageUpdateDTO dto)
+        {
+            var si = await _context.SchemaImages.FirstOrDefaultAsync(x => x.Id == dto.Id);
+            if (si != null)
+            {
+                si.Top = dto.Top;
+                si.Left = dto.Left;
+                si.Height = dto.Height;
+                si.Width = dto.Width;
+                si.FileId = dto.FileId;
+                _context.SchemaImages.Attach(si);
+                await _context.SaveChangesAsync();
+                return si;
+            }
+            else
+                throw new InvalidOperationException("Not found!");
         }
     }
 }

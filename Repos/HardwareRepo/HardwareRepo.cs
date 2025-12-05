@@ -66,5 +66,36 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
             _appDbContext.Entry(hw).Property(act => act.ActivatedAt).IsModified = true;
             await _appDbContext.SaveChangesAsync();
         }
+
+        public async Task HardwareDelete(int id)
+        {
+            var hi = await _appDbContext.Hardwares.FirstOrDefaultAsync(h => h.Id == id);
+            _appDbContext.Hardwares.Remove(hi);
+            await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<HardwareInfo> HardwareInfoUpdate(HardwareInfoUpdateDTO dto)
+        {
+
+            var hi = await _appDbContext.Hardwares.FirstOrDefaultAsync(x=>x.Id == dto.Id);
+            if (hi != null)
+            {
+                hi.Name = dto.Name;
+                hi.Model = dto.Model;
+                hi.Category = dto.Category;
+                hi.DeveloperName = dto.DeveloperName;
+                hi.SupplierName = dto.SupplierName;
+                hi.Position = dto.Position;
+                hi.OpcDescription = dto.OpcDescription;
+                hi.FileId = dto.FileId;
+                _appDbContext.Hardwares.Attach(hi);
+                await _appDbContext.SaveChangesAsync();
+                return hi;
+            }
+            else
+                throw new Exception("Not Found");
+
+        
+        }
     }
 }

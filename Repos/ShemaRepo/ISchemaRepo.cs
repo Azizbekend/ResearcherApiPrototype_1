@@ -9,6 +9,8 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
         Task<ICollection<HardwareSchema>> GetSchemaById(int id);
         Task<HardwareSchemaImage> CreateCoordinates(SchemaImageCreateDTO coordinates);
         Task<ICollection<HardwareSchemaImage>> GetCoordinatesBySchemaId(int id);
+        Task<HardwareSchemaImage> UpdateCoordinates(SchemeImageUpdateDTO dto);
+        Task DeleteCoordinates(int id);
 
     }
 }
