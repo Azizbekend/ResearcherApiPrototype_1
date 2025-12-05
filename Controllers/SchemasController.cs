@@ -16,13 +16,13 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             _schemaRepo = schemaRepo;
         }
-        [HttpPost("/schema/create")]
+        [HttpPost("schema/create")]
         public async  Task<ActionResult<HardwareSchema>> CreateSchema(SchemaCreateDTO dto)
         {
             var schema = await _schemaRepo.CreateSchema(dto);
             return Ok(schema);
         }
-        [HttpPost("/schema/coordinates/create")]
+        [HttpPost("schema/coordinates/create")]
         public async Task<ActionResult<HardwareSchemaImage>> CreateCoordinates(SchemaImageCreateDTO dto)
         {
             var coordinates = await _schemaRepo.CreateCoordinates(dto);
