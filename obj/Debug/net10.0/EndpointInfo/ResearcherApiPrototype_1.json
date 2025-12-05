@@ -1249,7 +1249,7 @@
         }
       }
     },
-    "/schema/create": {
+    "/api/Schemas/schema/create": {
       "post": {
         "tags": [
           "Schemas"
@@ -1297,7 +1297,7 @@
         }
       }
     },
-    "/schema/coordinates/create": {
+    "/api/Schemas/schema/coordinates/create": {
       "post": {
         "tags": [
           "Schemas"

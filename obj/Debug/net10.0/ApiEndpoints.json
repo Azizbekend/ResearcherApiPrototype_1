@@ -677,6 +677,58 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "CreateCoordinates",
+    "RelativePath": "api/Schemas/schema/coordinates/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemaImageCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareSchemaImage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "CreateSchema",
+    "RelativePath": "api/Schemas/schema/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemaCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareSchema",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
     "Method": "GetSchemas",
     "RelativePath": "api/Schemas/schemas",
     "HttpMethod": "GET",
@@ -816,58 +868,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ServiceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
-    "Method": "CreateCoordinates",
-    "RelativePath": "schema/coordinates/create",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.SchemaImageCreateDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "ResearcherApiPrototype_1.Models.HardwareSchemaImage",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
-    "Method": "CreateSchema",
-    "RelativePath": "schema/create",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.SchemaCreateDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "ResearcherApiPrototype_1.Models.HardwareSchema",
         "MediaTypes": [
           "text/plain",
           "application/json",
