@@ -108,5 +108,22 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
             }
             await _appDbContext.SaveChangesAsync();
         }
+
+        public async Task<NodeInfo> UpdateNode(NodeUpdateDTO dto)
+        {
+            var node = await _appDbContext.Nodes.FirstOrDefaultAsync(x=>x.Id == dto.Id);
+            if (node != null)
+            {
+                node.Name = dto.Name;
+                node.IsValue = dto.IsValue;
+                node.Mesurement = dto.Mesurement;
+                node.PlcNodeId = dto.PlcNodeId;
+                _appDbContext.Nodes.Attach(node);
+                await _appDbContext.SaveChangesAsync();
+                return node;
+            }
+            else
+                throw new Exception("Not found!");
+        }
     }
 }

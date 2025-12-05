@@ -68,6 +68,22 @@
     ]
   },
   {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.CharacteristicsController",
+    "Method": "Update",
+    "RelativePath": "api/Characteristics/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "characterUpdateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.ControlBlockController",
     "Method": "GetAll",
     "RelativePath": "api/ControlBlock/all",
@@ -573,6 +589,22 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "UpdareNodeInfo",
+    "RelativePath": "api/NodeInfo/info/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodeUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
     "Method": "GetInfos",
     "RelativePath": "api/NodeInfo/infos",
     "HttpMethod": "GET",
@@ -686,6 +718,104 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareSchema, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "GetAll",
+    "RelativePath": "api/ServiceRequests/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ServiceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "CreateRequest",
+    "RelativePath": "api/ServiceRequests/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceRequestCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.ServiceRequestCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.ServiceRequestCreateDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "GetHardwareRequestsAll",
+    "RelativePath": "api/ServiceRequests/hardware/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ServiceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "GetAllByObjectId",
+    "RelativePath": "api/ServiceRequests/object/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ServiceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -51,15 +51,20 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             return newRequest;
         }
 
-        //public Task<ICollection<ServiceRequest>> GetAllObjectServiceRequests(int id)
-        //{
-        //    var blocks = _context.ControlBlocks.Where(x => x.StaticObjectInfoId == id).ToListAsync();
-        //    var list = new List<ServiceRequest>();
-        //    foreach (var block in blocks)
-        //    {
-
-        //    }
-        //}
+        public async Task<ICollection<ServiceRequest>> GetAllObjectServiceRequests(int id)
+        {
+            var blocks = await _context.ControlBlocks.Where(x => x.StaticObjectInfoId == id).ToListAsync();
+            var list = new List<ServiceRequest>();
+            foreach (var block in blocks)
+            {
+                var hardwares = await _context.Hardwares.Where(x=> x.ControlBlockId == block.Id).ToListAsync();
+                foreach (var item in hardwares)
+                {
+                    list.AddRange(await _context.ServiceRequests.Where(x => x.HardwareId == item.Id).ToListAsync());
+                }
+            }
+            return list;
+        }
 
         public async Task<ICollection<ServiceRequest>> GetAllRequests()
         {

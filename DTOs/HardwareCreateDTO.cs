@@ -12,5 +12,6 @@
         public string OpcDescription { get; set; } = string.Empty;
         public int ControlBlockId { get; set; }
         public int FileId { get; set; }
+
     }
 }

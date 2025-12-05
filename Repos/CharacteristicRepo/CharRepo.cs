@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ResearcherApiPrototype_1.DTOs;
 using ResearcherApiPrototype_1.Models;
+using System.Reflection.PortableExecutable;
 
 namespace ResearcherApiPrototype_1.Repos.CharacteristicRepo
 {
@@ -47,6 +48,20 @@ namespace ResearcherApiPrototype_1.Repos.CharacteristicRepo
                 .Include(h => h.Hardware)
                 .Where(x => x.HardwareId == id)
                 .ToListAsync();
+        }
+
+        public async Task<HardwareCharacteristic> UpdateInfo(CharUpdateDTO characteristic)
+        {
+            var charact = await _context.Characteristics.FirstOrDefaultAsync(x=> x.Id == characteristic.Id);
+            if (charact != null)
+            {
+                charact.Value = characteristic.Value;
+                charact.Name = characteristic.Name;
+                _context.Characteristics.Attach(charact);
+                await _context.SaveChangesAsync();
+                return charact;
+            }
+            throw new NotImplementedException("Not Found");
         }
     }
 }

@@ -15,5 +15,6 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
         Task<ICollection<NodeInfo>> GetAllNodesAsync();
         Task<ICollection<NodeInfo>> GetAllInfoNodesByHardwareId(int hardwareId);
         Task<ICollection<NodeInfo>> GetAllCommandNodesByHardwareId(int hardwareId);
+        Task<NodeInfo> UpdateNode(NodeUpdateDTO dto);
     }
 }

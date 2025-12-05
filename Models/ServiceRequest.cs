@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ResearcherApiPrototype_1.Models
 {
@@ -12,10 +13,11 @@ namespace ResearcherApiPrototype_1.Models
         public bool IsFailure { get; set; }
         public string Creator { get; set; }
         public string Implementer { get; set; }
-        public DateTime CreatetAt { get; set; } = DateTime.Now.ToLocalTime();
+        public DateTime CreatetAt { get; set; } = DateTime.Now.ToUniversalTime();
         public DateTime ClosedAt { get; set; }
         [ForeignKey("HardwareInfo")]
         public int HardwareId { get; set; }
+        [JsonIgnore]
         public HardwareInfo Hardware { get; set; }
     }
 }

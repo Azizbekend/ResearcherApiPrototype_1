@@ -22,7 +22,8 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 Height = coordinates.Height,
                 Width = coordinates.Width,
                 HardwareSchemaId = coordinates.HardwareSchemaId,
-                FileId = coordinates.FileId
+                FileId = coordinates.FileId,
+                HardwareId = coordinates.HardwareId,
             };
             _context.SchemaImages.Add(newCoordinates);
             await _context.SaveChangesAsync();

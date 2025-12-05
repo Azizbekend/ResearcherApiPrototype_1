@@ -9,6 +9,7 @@ using ResearcherApiPrototype_1.Repos.MaintenanceRepo;
 using ResearcherApiPrototype_1.Repos.NodeIndicatesRepo;
 using ResearcherApiPrototype_1.Repos.NodeRepo;
 using ResearcherApiPrototype_1.Repos.ObjectPassportRepo;
+using ResearcherApiPrototype_1.Repos.ServiceRequestRepo;
 using ResearcherApiPrototype_1.Repos.ShemaRepo;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,7 @@ builder.Services.AddScoped<ICharRepo,  CharRepo>();
 builder.Services.AddScoped<IObjectPassportRepo, ObjectPassportRepo>();
 builder.Services.AddScoped<IMaintenanceRepo, MaintenanceRepo>();
 builder.Services.AddScoped<ISchemaRepo, SchemaRepo>();
+builder.Services.AddScoped<IServiceRepo,  ServiceRepo>  ();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();

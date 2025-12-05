@@ -61,5 +61,12 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok();
         }
 
+        [HttpPut("info/update")]
+        public async Task<ActionResult> UpdareNodeInfo(NodeUpdateDTO dto)
+        {
+            var ni=await _nodeRepo.UpdateNode(dto);
+            return Ok(ni);
+        }
+
     }
 }

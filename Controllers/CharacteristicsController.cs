@@ -36,6 +36,12 @@ namespace ResearcherApiPrototype_1.Controllers
             await _charRepo.CreateMass(characterMassCreateDTO);
             return Ok();
         }
+        [HttpPut("update")]
+        public async Task<ActionResult> Update(CharUpdateDTO characterUpdateDTO)
+        {
+            var ci = await _charRepo.UpdateInfo(characterUpdateDTO);
+            return Ok(ci);
+        }
 
     }
 }

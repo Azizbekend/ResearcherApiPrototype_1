@@ -17,5 +17,7 @@ namespace ResearcherApiPrototype_1.Models
         [ForeignKey("FileModel")]
         public int? FileId { get; set; }
         public FileModel? File { get; set; }
+        public int HardwareId { get; set; }
+
     }
 }

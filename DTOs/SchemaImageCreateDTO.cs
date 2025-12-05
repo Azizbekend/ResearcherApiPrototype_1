@@ -10,5 +10,6 @@ namespace ResearcherApiPrototype_1.DTOs
         public string Width { get; set; }
         public int HardwareSchemaId { get; set; }
         public int FileId { get; set; }
+        public int HardwareId { get; set; }
     }
 }

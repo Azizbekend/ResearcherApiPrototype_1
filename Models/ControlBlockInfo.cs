@@ -13,7 +13,6 @@ namespace ResearcherApiPrototype_1.Models
         [ForeignKey("StaticObjectInfos")]
         public int StaticObjectInfoId { get; set; }
         public StaticObjectInfo StaticObjectInfo { get; set; }
-
         [JsonIgnore]
         public ICollection<HardwareInfo> HardwareInfo { get; set; } = new List<HardwareInfo>();
 
