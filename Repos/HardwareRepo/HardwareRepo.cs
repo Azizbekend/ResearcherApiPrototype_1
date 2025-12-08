@@ -18,10 +18,12 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
             {
                 Name = dto.Name,
                 Model = dto.Model,
+                Category = dto.Category,
                 DeveloperName = dto.DeveloperName,
                 SupplierName = dto.SupplierName,
                 Position = dto.Position,
                 PhotoName = dto.PhotoName,
+                OpcDescription = dto.OpcDescription,
                 ControlBlockId = dto.ControlBlockId,
                 FileId = dto.FileId
             };

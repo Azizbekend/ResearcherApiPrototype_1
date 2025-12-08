@@ -43,13 +43,13 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(schema);
         }
 
-        [HttpPut("shemas/coordinates/update")]
+        [HttpPut("schemas/coordinates/update")]
         public async Task<ActionResult<HardwareSchemaImage>> UpdateImageCoordinates(SchemeImageUpdateDTO dto)
         {
             var newCoordinates = await _schemaRepo.UpdateCoordinates(dto);
             return Ok(newCoordinates);
         }
-        [HttpDelete("/scheme/coordinates")]
+        [HttpDelete("schema/coordinates")]
         public async Task<IActionResult> DeleteCoordinates(int id)
         {
             await _schemaRepo.DeleteCoordinates(id);

@@ -12,7 +12,7 @@ namespace ResearcherApiPrototype_1.Controllers
     {
         private ICharRepo _charRepo;
 
-        public CharacteristicsController(ICharRepo chaRepo)
+        public CharacteristicsController(ICharRepo chaRepo) //drjrhgdskyfjhgsdjfg'ldfsg
         {
             _charRepo = chaRepo;
         }
