@@ -173,24 +173,44 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
-    "Method": "DownloadFile",
-    "RelativePath": "api/FileStorage/download",
-    "HttpMethod": "GET",
+    "Method": "UploadDocument",
+    "RelativePath": "api/FileStorage/documents/upload",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "HardwareId",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.DocumentResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
     "Method": "GetFileInfo",
-    "RelativePath": "api/FileStorage/fileInfo",
+    "RelativePath": "api/FileStorage/image/fileInfo",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -215,8 +235,24 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "DownloadFile",
+    "RelativePath": "api/FileStorage/images/download",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
     "Method": "UploadFile",
-    "RelativePath": "api/FileStorage/upload",
+    "RelativePath": "api/FileStorage/images/upload",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -428,6 +464,32 @@
     "ReturnTypes": [
       {
         "Type": "ResearcherApiPrototype_1.Models.MaintenanceRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "GetHistoreRecords",
+    "RelativePath": "api/MaintenanseSheduler/history/records",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.MaintenanceHistory, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -751,6 +813,22 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "DeleteCoordinates",
+    "RelativePath": "api/Schemas/schema/coordinates",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
     "Method": "CreateCoordinates",
     "RelativePath": "api/Schemas/schema/coordinates/create",
     "HttpMethod": "POST",
@@ -856,7 +934,7 @@
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
     "Method": "UpdateImageCoordinates",
-    "RelativePath": "api/Schemas/shemas/coordinates/update",
+    "RelativePath": "api/Schemas/schemas/coordinates/update",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -976,21 +1054,5 @@
         "StatusCode": 200
       }
     ]
-  },
-  {
-    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
-    "Method": "DeleteCoordinates",
-    "RelativePath": "scheme/coordinates",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
   }
 ]

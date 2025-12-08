@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ResearcherApiPrototype_1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5340e43852ca3cd1e197d77c5296d3da94dca8b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ResearcherApiPrototype_1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ResearcherApiPrototype_1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

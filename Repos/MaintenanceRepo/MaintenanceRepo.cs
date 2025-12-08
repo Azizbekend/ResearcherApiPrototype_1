@@ -55,6 +55,10 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
                 .ToListAsync();
         }
 
+        public async Task<ICollection<MaintenanceHistory>> GetHistoryCompleteRecords(int requestId)
+        {
+            return await _appDbContext.MaintenanceHistory.Where(x => x.Id == requestId).ToListAsync();
+        }
 
         public async Task<ICollection<MaintenanceRequest>> GetNextWeekRequests(int requestId)
         {

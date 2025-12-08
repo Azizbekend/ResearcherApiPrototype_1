@@ -36,5 +36,12 @@ namespace ResearcherApiPrototype_1.Controllers
             //await _maintenanceRepo.CreateHistoryRercord(id);
             return Ok();
         }
+
+        [HttpGet("history/records")]
+        public async Task<ActionResult<ICollection<MaintenanceHistory>>> GetHistoreRecords(int id)
+        {
+            var records = _maintenanceRepo.GetHistoryCompleteRecords(id);
+            return Ok(records);
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace ResearcherApiPrototype_1
         public DbSet<MaintenanceHistory> MaintenanceHistory{ get; set; }
         public DbSet<HardwareCharacteristic> Characteristics { get; set; }
         public DbSet<FileModel> Files { get; set; }
+        public DbSet<DocumentModel> Documents { get; set; }
         public DbSet<StaticObjectInfo> StaticObjectInfos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

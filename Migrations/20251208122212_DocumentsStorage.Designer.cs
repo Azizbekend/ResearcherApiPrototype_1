@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ResearcherApiPrototype_1;
@@ -11,9 +12,11 @@ using ResearcherApiPrototype_1;
 namespace ResearcherApiPrototype_1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251208122212_DocumentsStorage")]
+    partial class DocumentsStorage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -448,26 +451,15 @@ namespace ResearcherApiPrototype_1.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("FileId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("GeneralContractorName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Latitude")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Longitude")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("OperatingOrganization")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhotoName")
                         .IsRequired()
                         .HasColumnType("text");
 

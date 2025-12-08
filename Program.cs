@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ResearcherApiPrototype_1;
 using ResearcherApiPrototype_1.Repos.CharacteristicRepo;
 using ResearcherApiPrototype_1.Repos.ControlBlockRepo;
+using ResearcherApiPrototype_1.Repos.DocumentRepo;
 using ResearcherApiPrototype_1.Repos.FileStorageRepo;
 using ResearcherApiPrototype_1.Repos.HardwareRepo;
 using ResearcherApiPrototype_1.Repos.MaintenanceRepo;
@@ -23,6 +24,7 @@ builder.Services.AddScoped<INodeRepo, NodeRepo>();
 builder.Services.AddScoped<IHardwareRepo, HardwareRepo>();
 builder.Services.AddScoped<IControlBlockRepo, ControlBlockRepo>();
 builder.Services.AddScoped<IFileStorageRepo, FileStorageRepo>();
+builder.Services.AddScoped<IDocumentRepo, DocumentRepo>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

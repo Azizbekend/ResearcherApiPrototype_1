@@ -17,15 +17,18 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
         {
             var passport = new StaticObjectInfo()
             {
+                Name = dto.Name,
+                Latitude = dto.Latitude,
+                Longitude = dto.Longitude,
                 Adress = dto.Adress,
                 OperatingOrganization = dto.OperatingOrganization,
                 CustomerName = dto.CustomerName,
                 GeneralContractorName = dto.GeneralContractorName,
                 ProjectEfficiency = dto.ProjectEfficiency,
-                PhotoName = dto.PhotoName
+                FileId = dto.FileId
             };
-            _appDbContext.StaticObjectInfos.Attach(passport);
-            _appDbContext.StaticObjectInfos.Add(dto);     
+            //_appDbContext.StaticObjectInfos.Attach(passport);
+            _appDbContext.StaticObjectInfos.Add(passport);     
             await _appDbContext.SaveChangesAsync();
             return passport;
 
@@ -33,7 +36,7 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
 
         public async Task<ICollection<StaticObjectInfo>> GetAll()
         {
-            return await _appDbContext.StaticObjectInfos.OrderBy(p=>p.GeneralContractorName) .ToListAsync();
+            return await _appDbContext.StaticObjectInfos.OrderBy(x => x.Name). ToListAsync();
         }
     }
 }

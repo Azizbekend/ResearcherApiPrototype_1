@@ -322,7 +322,7 @@
         }
       }
     },
-    "/api/FileStorage/upload": {
+    "/api/FileStorage/images/upload": {
       "post": {
         "tags": [
           "FileStorage"
@@ -371,7 +371,69 @@
         }
       }
     },
-    "/api/FileStorage/download": {
+    "/api/FileStorage/documents/upload": {
+      "post": {
+        "tags": [
+          "FileStorage"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Title": {
+                    "type": "string"
+                  },
+                  "HardwareId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Title": {
+                  "style": "form"
+                },
+                "HardwareId": {
+                  "style": "form"
+                },
+                "File": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentResponseDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentResponseDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentResponseDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FileStorage/images/download": {
       "get": {
         "tags": [
           "FileStorage"
@@ -393,7 +455,7 @@
         }
       }
     },
-    "/api/FileStorage/fileInfo": {
+    "/api/FileStorage/image/fileInfo": {
       "get": {
         "tags": [
           "FileStorage"
@@ -832,6 +894,54 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MaintenanseSheduler/history/records": {
+      "get": {
+        "tags": [
+          "MaintenanseSheduler"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaintenanceHistory"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaintenanceHistory"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaintenanceHistory"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -1555,7 +1665,7 @@
         }
       }
     },
-    "/api/Schemas/shemas/coordinates/update": {
+    "/api/Schemas/schemas/coordinates/update": {
       "put": {
         "tags": [
           "Schemas"
@@ -1603,7 +1713,7 @@
         }
       }
     },
-    "/scheme/coordinates": {
+    "/api/Schemas/schema/coordinates": {
       "delete": {
         "tags": [
           "Schemas"
@@ -1912,6 +2022,36 @@
           },
           "staticObjectInfo": {
             "$ref": "#/components/schemas/StaticObjectInfo"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DocumentResponseDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileSize": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "downloadUrl": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2598,6 +2738,18 @@
             "type": "integer",
             "format": "int32"
           },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "string",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "string",
+            "nullable": true
+          },
           "adress": {
             "type": "string",
             "nullable": true
@@ -2618,9 +2770,9 @@
             "type": "number",
             "format": "double"
           },
-          "photoName": {
-            "type": "string",
-            "nullable": true
+          "fileId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
