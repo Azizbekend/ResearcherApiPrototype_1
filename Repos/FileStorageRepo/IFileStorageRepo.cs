@@ -6,6 +6,7 @@ namespace ResearcherApiPrototype_1.Repos.FileStorageRepo
     public interface IFileStorageRepo
     {
         Task<FileResponseDTO> UploadFileAsync(FileUploadDTO file);
+        Task<FileResponseDTO> UpdateFileAsync(FileUpdateDTO file);
         Task<FileModel> DownloadFileAsync(int id);
         Task <FileResponseDTO> GetFileInfoAsync(int id);
     }

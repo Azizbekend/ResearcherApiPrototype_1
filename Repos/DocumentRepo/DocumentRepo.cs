@@ -1,4 +1,5 @@
-﻿using ResearcherApiPrototype_1.DTOs;
+﻿using Microsoft.EntityFrameworkCore;
+using ResearcherApiPrototype_1.DTOs;
 using ResearcherApiPrototype_1.Models;
 
 namespace ResearcherApiPrototype_1.Repos.DocumentRepo
@@ -13,6 +14,27 @@ namespace ResearcherApiPrototype_1.Repos.DocumentRepo
             _context = context;
             _contextAccessor = contextAccessor;
         }
+
+        public async Task<DocumentModel> DownloadDoc(DocumentDownloadDTO documentDownloadDTO)
+        {
+            var doc = await _context.Documents.FirstOrDefaultAsync(x => x.Id == documentDownloadDTO.Id);
+            if (doc == null)
+                throw new Exception("Document not found!");
+            else
+                return doc;
+        }
+
+        public async Task<ICollection<DocumentResponseDTO>> GetHardwareDocs(int id)
+        {
+            var docs = await _context.Documents.Where(x => x.HardwareId  == id).ToListAsync();
+            var DTOs = new List<DocumentResponseDTO>();
+            foreach (var doc in docs) 
+            {
+                DTOs.Add(CreateFileResponse(doc));
+            }
+            return DTOs;
+        }
+
         public async Task<DocumentResponseDTO> UploadDoc(DocumentUploadDTO documentUploadDTO)
         {
             using var memoryStream = new MemoryStream();
@@ -40,6 +62,7 @@ namespace ResearcherApiPrototype_1.Repos.DocumentRepo
             return new DocumentResponseDTO
             {
                 Id = fileMdel.Id,
+                Title = fileMdel.Title,
                 FileName = fileMdel.FileName,
                 ContentType = fileMdel.ContentType,
                 FileSize = fileMdel.FileSize,

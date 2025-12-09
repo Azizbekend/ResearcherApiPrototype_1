@@ -22,6 +22,12 @@ namespace ResearcherApiPrototype_1.Controllers
             var mrs = await _maintenanceRepo.GetNextWeekRequests(id);
             return Ok(mrs);
         }
+        [HttpGet("today")]
+        public async Task<ActionResult<ICollection<MaintenanceRequest>>> GetTodayRequests(int id)
+        {
+            var mrs = await _maintenanceRepo.GetNextWeekRequests(id);
+            return Ok(mrs);
+        }
         [HttpPost("create")]
         public async Task<ActionResult<MaintenanceRequest>> CreateShedule(MaintanceCreateDTO dto)
         {
@@ -38,7 +44,7 @@ namespace ResearcherApiPrototype_1.Controllers
         }
 
         [HttpGet("history/records")]
-        public async Task<ActionResult<ICollection<MaintenanceHistory>>> GetHistoreRecords(int id)
+        public async Task<ActionResult<ICollection<MaintenanceHistory>>> GetHistoryRecords(int id)
         {
             var records = _maintenanceRepo.GetHistoryCompleteRecords(id);
             return Ok(records);

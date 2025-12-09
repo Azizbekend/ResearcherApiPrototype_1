@@ -37,6 +37,7 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
             var hw = _appDbContext.Hardwares.First(x => x.Id == request.HardwareId);
             var mRequest = new MaintenanceRequest
             {
+                Title = request.Title,
                 Discription = request.Discription,
                 NextMaintenanceDate = hw.ActivatedAt.AddHours(request.Period).ToLocalTime(),
                 Period = request.Period,
@@ -60,10 +61,16 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
             return await _appDbContext.MaintenanceHistory.Where(x => x.Id == requestId).ToListAsync();
         }
 
+        public async Task<ICollection<MaintenanceRequest>> GetTodayRequests(int requestId)
+        {
+            return await _appDbContext.MaintenanceRequests
+                .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate == DateTime.Now)
+                .ToListAsync();
+        }
         public async Task<ICollection<MaintenanceRequest>> GetNextWeekRequests(int requestId)
         {
             return await _appDbContext.MaintenanceRequests
-                .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate >= DateTime.Now && x.NextMaintenanceDate <= DateTime.Now.AddDays(7))
+                .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate > DateTime.Now && x.NextMaintenanceDate <= DateTime.Now.AddDays(7))
                 .ToListAsync();
         }
     }

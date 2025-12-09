@@ -33,6 +33,25 @@ namespace ResearcherApiPrototype_1.Repos.FileStorageRepo
 
         }
 
+        public async Task<FileResponseDTO> UpdateFileAsync(FileUpdateDTO file)
+        {
+            using var memoryStream = new MemoryStream();
+            await file.File.CopyToAsync(memoryStream);
+
+            var fileModel = new FileModel
+            {
+                Id = file.Id,
+                FileName = file.File.FileName,
+                ContentType = file.File.ContentType,
+                FileSize = file.File.Length,
+                FileData = memoryStream.ToArray()
+            };
+            _context.Files.Attach(fileModel);
+            _context.Entry(fileModel).Property(x => x.FileData).IsModified = true;
+            await _context.SaveChangesAsync();
+            return CreateFileResponse(fileModel);
+        }
+
         public async Task<FileResponseDTO> UploadFileAsync(FileUploadDTO dto)
         {
             using var memoryStream = new MemoryStream();

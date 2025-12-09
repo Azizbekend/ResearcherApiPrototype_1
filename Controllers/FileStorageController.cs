@@ -25,12 +25,25 @@ namespace ResearcherApiPrototype_1.Controllers
             var res = await _fileStorageRepo.UploadFileAsync(dto);
             return Ok(res);
         }
-
+        [HttpPut("images/update")]
+        public async Task<ActionResult<FileResponseDTO>> UploadFile([FromForm] FileUpdateDTO dto)
+        {
+            var res = await _fileStorageRepo.UpdateFileAsync(dto);
+            return Ok(res);
+        }
         [HttpPost("documents/upload")]
         public async Task<ActionResult<DocumentResponseDTO>> UploadDocument([FromForm] DocumentUploadDTO dto)
         {
             var res = await _documentsRepo.UploadDoc(dto);
             return Ok(res);
+        }
+
+        [HttpGet("document/download")]
+        public async Task<IActionResult> DownloadDocument(int id)
+        {
+            var dto = new DocumentDownloadDTO { Id = id };
+            var doc = await _documentsRepo.DownloadDoc(dto);
+            return File(doc.FileData, doc.ContentType, doc.FileName);
         }
 
         [HttpGet("images/download")]
@@ -45,6 +58,13 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             var fileInfo = await _fileStorageRepo.GetFileInfoAsync(id);
             return Ok(fileInfo);
+        }
+
+        [HttpGet("documents/hardware")]
+        public async Task<ActionResult<ICollection<DocumentResponseDTO>>> GetHardwaresDocs(int id)
+        {
+            var docs = await _documentsRepo.GetHardwareDocs(id);
+            return Ok(docs);
         }
              
     }
