@@ -36,7 +36,7 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
         public async Task<ICollection<HardwareInfo>> GetAllHardwaresAsync()
         {
             return await _appDbContext.Hardwares
-            .Include(h => h.ControlBlock)
+            .Include(h => h.ControlBlock).OrderBy(x => x.Id)
             .ToListAsync();
         }
 
@@ -48,12 +48,14 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 .Where(h => h.Id == hardwareId)
                 .FirstAsync();
         }
+        
         public async Task<ICollection<HardwareInfo>> GetHardwaresByControlBlockIdAsync(int controlBlockId)
         {
             
             return await _appDbContext.Hardwares
                 .Include (h => h.ControlBlock)
                 .Where(h=>h.ControlBlockId == controlBlockId)
+                .OrderBy(x => x.Id)
                 .ToListAsync();
         }
 
