@@ -58,19 +58,19 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
 
         public async Task<ICollection<MaintenanceHistory>> GetHistoryCompleteRecords(int requestId)
         {
-            return await _appDbContext.MaintenanceHistory.Where(x => x.Id == requestId).ToListAsync();
+            return await _appDbContext.MaintenanceHistory.Where(x => x.MaintenanceRequestId == requestId).ToListAsync();
         }
 
         public async Task<ICollection<MaintenanceRequest>> GetTodayRequests(int requestId)
         {
             return await _appDbContext.MaintenanceRequests
-                .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate == DateTime.Now)
+                .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate.Date <= DateTime.Now.Date)
                 .ToListAsync();
         }
         public async Task<ICollection<MaintenanceRequest>> GetNextWeekRequests(int requestId)
         {
             return await _appDbContext.MaintenanceRequests
-                .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate > DateTime.Now && x.NextMaintenanceDate <= DateTime.Now.AddDays(7))
+                .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate.Date > DateTime.Now.Date && x.NextMaintenanceDate <= DateTime.Now.AddDays(7))
                 .ToListAsync();
         }
     }

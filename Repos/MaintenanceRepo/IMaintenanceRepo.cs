@@ -10,6 +10,7 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
         Task CompleteMaintenanceRequest(int id);
         Task<ICollection<MaintenanceRequest>> GetNextWeekRequests(int requestId);
         Task<ICollection<MaintenanceHistory>> GetHistoryCompleteRecords(int requestId);
+        Task<ICollection<MaintenanceRequest>> GetTodayRequests(int requestId);
 
     }
 }

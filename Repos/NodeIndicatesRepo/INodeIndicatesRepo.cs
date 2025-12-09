@@ -8,7 +8,9 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
         Task CreateRangeIndecatesAsync(ICollection<NodeIndicates> coll);
         Task <ICollection<NodeIndicates>> GetIndicatesByNodeIdAsync(int nodeId);
         Task<NodeIndicates> GetLastIndecatesByNodeIdAsync(int nodeId);
-        Task <ICollection<NodeIndicates>> GetIndicatesByPlcNodeIdAsync(string plcNodeId);
+        Task <NodeIndicates> GetIndicatesByPlcNodeIdAsync(string plcNodeId);
         
+
+
     }
 }

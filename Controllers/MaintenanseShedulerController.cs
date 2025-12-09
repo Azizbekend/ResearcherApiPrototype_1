@@ -25,7 +25,7 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpGet("today")]
         public async Task<ActionResult<ICollection<MaintenanceRequest>>> GetTodayRequests(int id)
         {
-            var mrs = await _maintenanceRepo.GetNextWeekRequests(id);
+            var mrs = await _maintenanceRepo.GetTodayRequests(id);
             return Ok(mrs);
         }
         [HttpPost("create")]
@@ -46,7 +46,7 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpGet("history/records")]
         public async Task<ActionResult<ICollection<MaintenanceHistory>>> GetHistoryRecords(int id)
         {
-            var records = _maintenanceRepo.GetHistoryCompleteRecords(id);
+            var records = await _maintenanceRepo.GetHistoryCompleteRecords(id);
             return Ok(records);
         }
     }

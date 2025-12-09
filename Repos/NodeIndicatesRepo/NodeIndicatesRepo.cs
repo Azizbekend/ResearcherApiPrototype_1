@@ -15,10 +15,11 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         public async Task<NodeIndicates> CreateIndecatesAsync(string indicates, int nodeInfo)
         {
-            var nodeIndecates = new NodeIndicates(indicates, nodeInfo);
-            _appDbContext.NodesIndicates.Add(nodeIndecates);
-            await _appDbContext.SaveChangesAsync();
-            return nodeIndecates;
+            //var nodeIndecates = new NodeIndicates(indicates, nodeInfo);
+            //_appDbContext.NodesIndicates.Add(nodeIndecates);
+            //await _appDbContext.SaveChangesAsync();
+            //return nodeIndecates;
+            throw new NotImplementedException();
         }
 
         public async Task CreateRangeIndecatesAsync(ICollection<NodeIndicates> coll)
@@ -29,32 +30,30 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         public async Task<ICollection<NodeIndicates>> GetIndicatesByNodeIdAsync(int nodeId)
         {
-            return await _appDbContext.NodesIndicates
-                .Include(ni => ni.NodeInfo)
-                .ThenInclude(h => h.HardwareInfo)
-                .ThenInclude(cb => cb.ControlBlock)
-                .Where(ni => ni.NodeInfoId == nodeId)
-                .ToListAsync();
+            //return await _appDbContext.NodesIndicates
+            //    .Include(ni => ni.NodeInfo)
+            //    .ThenInclude(h => h.HardwareInfo)
+            //    .ThenInclude(cb => cb.ControlBlock)
+            //    .Where(ni => ni.NodeInfoId == nodeId)
+            //    .ToListAsync();
+            throw new NotFiniteNumberException();
         }
 
-        public async Task<ICollection<NodeIndicates>> GetIndicatesByPlcNodeIdAsync(string plcNodeId)
+        public async Task<NodeIndicates> GetIndicatesByPlcNodeIdAsync(string plcNodeId)
         {
             return await _appDbContext.NodesIndicates
-                .Include(ni => ni.NodeInfo)
-                .ThenInclude(h => h.HardwareInfo)
-                .ThenInclude(cb => cb.ControlBlock)
-                .Where(ni => ni.NodeInfo.PlcNodeId == plcNodeId)
-                .ToListAsync();
+                .Where(ni => ni.PlcNodeId == plcNodeId).OrderByDescending(x => x.Id).FirstAsync();
+                
         }
 
         public async Task<NodeIndicates> GetLastIndecatesByNodeIdAsync(int nodeId)
         {
-            return await _appDbContext.NodesIndicates
-                //.Include(ni => ni.NodeInfo)
-                //.ThenInclude(h => h.HardwareInfo)
-                //.ThenInclude(cb => cb.ControlBlock)
-                .Where(ni => ni.NodeInfoId == nodeId).OrderByDescending(x => x.NodeInfoId).FirstAsync();
-
+            //return await _appDbContext.NodesIndicates
+            //    .Include(ni => ni.NodeInfo)
+            //    .ThenInclude(h => h.HardwareInfo)
+            //    .ThenInclude(cb => cb.ControlBlock)
+            //    .Where(ni => ni.NodeInfoId == nodeId).OrderByDescending(x => x.NodeInfoId).FirstAsync();
+            throw new NotFiniteNumberException() ;
         }
     }
 }

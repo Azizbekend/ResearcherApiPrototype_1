@@ -45,7 +45,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("StaticObjectInfoId");
 
-                    b.ToTable("ControlBlocks");
+                    b.ToTable("ControlBlocks", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.DocumentModel", b =>
@@ -82,7 +82,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("HardwareId");
 
-                    b.ToTable("Documents");
+                    b.ToTable("Documents", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.FileModel", b =>
@@ -112,7 +112,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("FileName");
 
-                    b.ToTable("Files");
+                    b.ToTable("Files", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareCharacteristic", b =>
@@ -138,7 +138,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("HardwareId");
 
-                    b.ToTable("Characteristics");
+                    b.ToTable("Characteristics", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareInfo", b =>
@@ -200,7 +200,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("ControlBlockId");
 
-                    b.ToTable("Hardwares");
+                    b.ToTable("Hardwares", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareSchema", b =>
@@ -231,7 +231,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("StaticObjectInfoId");
 
-                    b.ToTable("Schemas");
+                    b.ToTable("Schemas", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.HardwareSchemaImage", b =>
@@ -273,7 +273,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("HardwareSchemaId");
 
-                    b.ToTable("SchemaImages");
+                    b.ToTable("SchemaImages", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.MaintenanceHistory", b =>
@@ -297,7 +297,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("MaintenanceRequestId");
 
-                    b.ToTable("MaintenanceHistory");
+                    b.ToTable("MaintenanceHistory", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.MaintenanceRequest", b =>
@@ -329,7 +329,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("HardwareId");
 
-                    b.ToTable("MaintenanceRequests");
+                    b.ToTable("MaintenanceRequests", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.NodeIndicates", b =>
@@ -354,7 +354,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("NodeInfoId");
 
-                    b.ToTable("NodesIndicates");
+                    b.ToTable("NodesIndicates", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.NodeInfo", b =>
@@ -390,7 +390,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("HardwareId");
 
-                    b.ToTable("Nodes");
+                    b.ToTable("Nodes", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.ServiceRequest", b =>
@@ -433,7 +433,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasIndex("HardwareId");
 
-                    b.ToTable("ServiceRequests");
+                    b.ToTable("ServiceRequests", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.StaticObjectInfo", b =>
@@ -479,7 +479,7 @@ namespace ResearcherApiPrototype_1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StaticObjectInfos");
+                    b.ToTable("StaticObjectInfos", (string)null);
                 });
 
             modelBuilder.Entity("ResearcherApiPrototype_1.Models.ControlBlockInfo", b =>

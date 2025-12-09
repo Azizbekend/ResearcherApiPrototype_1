@@ -30,5 +30,11 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(indicates);
         }
 
+        [HttpGet("actual/plcNodeOd")]
+        public async Task<ActionResult<NodeIndicates>> GetLastByNodeId(string id)
+        {
+            var indicates = await _nodeIndicatesRepo.GetIndicatesByPlcNodeIdAsync(id);
+            return Ok(indicates);
+        }
     }
 }

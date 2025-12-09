@@ -1207,6 +1207,44 @@
         }
       }
     },
+    "/api/NodeIndicates/actual/plcNodeOd": {
+      "get": {
+        "tags": [
+          "NodeIndicates"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeIndicates"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeIndicates"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeIndicates"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/NodeInfo/infos": {
       "get": {
         "tags": [
@@ -2686,12 +2724,9 @@
             "type": "string",
             "nullable": true
           },
-          "nodeInfoId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nodeInfo": {
-            "$ref": "#/components/schemas/NodeInfo"
+          "plcNodeId": {
+            "type": "string",
+            "nullable": true
           },
           "timeStamp": {
             "type": "string",

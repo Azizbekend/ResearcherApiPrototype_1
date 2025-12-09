@@ -17,7 +17,5 @@ namespace ResearcherApiPrototype_1.Models
         public int HardwareId { get; set; }
         [JsonIgnore]
         public HardwareInfo HardwareInfo { get; set; } = null!;
-        [JsonIgnore]
-        public ICollection<NodeIndicates> NodeIndicates { get; set; } = new List<NodeIndicates>();
     }
 }
