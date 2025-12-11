@@ -1,8 +1,8 @@
 services:
   researcher-api:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./ResearcherApiPrototype_1
+      dockerfile: ./ResearcherApiPrototype_1/Dockerfile
     container_name: researcher-api
     ports:
       - "127.0.0.1:8087:8087"
@@ -12,14 +12,12 @@ services:
       - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
       - ASPNETCORE_HTTPS_REDIRECT=false
     restart: unless-stopped
-    networks:
-      - app-network
 
 
   opcsubscription-api:
     build:
       context: ./OpcSubscriptionService
-      dockerfile: Dockerfile
+      dockerfile: ./OpcSubscriptionService/Dockerfile
     container_name: opcsubscription-api
     ports:
       - "127.0.0.1:8088:8088"
@@ -29,9 +27,3 @@ services:
       - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
       - ASPNETCORE_HTTPS_REDIRECT=false
     restart: unless-stopped
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
