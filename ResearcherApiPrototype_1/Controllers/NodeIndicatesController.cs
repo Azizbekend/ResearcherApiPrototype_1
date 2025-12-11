@@ -39,7 +39,7 @@ namespace ResearcherApiPrototype_1.Controllers
                 var indicates = await _nodeIndicatesRepo.GetIndicatesByPlcNodeIdAsync(id);
                 return Ok(indicates);
             }
-            else throw new Exception("Incorrect Id");
+            return NotFound();
         }
         
         [HttpPost("actual/group")]
