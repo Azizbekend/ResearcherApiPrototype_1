@@ -1,7 +1,4 @@
-﻿
-using Opc.Ua;
-using Opc.Ua.Client;
-using OpcSubscriptionService;
+﻿using OpcSubscriptionService;
 using OpcSubscriptionService.Models;
 internal class Program
 {
@@ -23,7 +20,7 @@ internal class Program
         Console.WriteLine("=== OPC UA Group Nodes Monitor ===");
 
         List<string> nodeIds = new List<string>();
-        var list = appDbContext.Nodes.Where(x => x.PlcNodeId.Length > 1 && x.IsCommand == false).ToList();
+        var list = appDbContext.Nodes.Where(x => x.PlcNodeId.StartsWith("ns=4") && x.IsCommand == false).ToList();
         foreach (var node in list)
         {
             nodeIds.Add(node.PlcNodeId);
@@ -89,42 +86,42 @@ internal class Program
             //monitor2.StartMonitoringAsync(1000);
 
 
-            Console.WriteLine("Press:");
-            Console.WriteLine("  'a' - add random node");
-            Console.WriteLine("  'r' - remove last node");
-            Console.WriteLine("  's' - show statistics");
-            Console.WriteLine("  'q' - quit");
+            //Console.WriteLine("Press:");
+            //Console.WriteLine("  'a' - add random node");
+            //Console.WriteLine("  'r' - remove last node");
+            //Console.WriteLine("  's' - show statistics");
+            //Console.WriteLine("  'q' - quit");
 
             while (true)
             {
-                var key = Console.ReadKey(true);
+                //var key = Console.ReadKey(true);
 
-                switch (key.Key)
-                {
-                    case ConsoleKey.A:
-                        var newNode = $"ns=2;s=HelloWorld/Dynamic/Scalar/Int32_{Guid.NewGuid().ToString("N").Substring(0, 4)}";
-                        await monitor.AddNodeAsync(newNode);
-                        break;
+                //switch (key.Key)
+                //{
+                //    case ConsoleKey.A:
+                //        var newNode = $"ns=2;s=HelloWorld/Dynamic/Scalar/Int32_{Guid.NewGuid().ToString("N").Substring(0, 4)}";
+                //        await monitor.AddNodeAsync(newNode);
+                //        break;
 
-                    case ConsoleKey.R:
-                        var nodes = monitor.GetMonitoredNodes();
-                        if (nodes.Count > 0)
-                        {
-                            await monitor.RemoveNodeAsync(nodes.Last());
-                        }
-                        break;
+                //    case ConsoleKey.R:
+                //        var nodes = monitor.GetMonitoredNodes();
+                //        if (nodes.Count > 0)
+                //        {
+                //            await monitor.RemoveNodeAsync(nodes.Last());
+                //        }
+                //        break;
 
-                    case ConsoleKey.S:
-                        if (monitor is EnhancedGroupOpcUaMonitor enhancedMonitor)
-                        {
-                            enhancedMonitor.PrintStatistics();
-                        }
-                        break;
+                //    case ConsoleKey.S:
+                //        if (monitor is EnhancedGroupOpcUaMonitor enhancedMonitor)
+                //        {
+                //            enhancedMonitor.PrintStatistics();
+                //        }
+                //        break;
 
-                    case ConsoleKey.Q:
-                        monitor.Dispose();
-                        return;
-                }
+                //    case ConsoleKey.Q:
+                //        monitor.Dispose();
+                //        return;
+                //}
 
                 await Task.Delay(100);
             }
