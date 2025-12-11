@@ -31,18 +31,18 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         public async Task<NodeIndecatesGroupResponseDTO> GetIndicatesByList(List<int> nodeInfos)
         {
-            NodeIndecatesGroupResponseDTO dto = new NodeIndecatesGroupResponseDTO();
-            //List<string> plcNodes = new List<string>();
-            foreach (var node in nodeInfos)
-            {          
-                var a = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.Id == node);
-                if (a != null)
-                {
-                    var b = await GetIndicatesByPlcNodeIdAsync(a.PlcNodeId);
-                    dto.indecatesGroup.Add(node, b.Indicates);
-                    
-                }
+            var dto = new NodeIndecatesGroupResponseDTO();
+
+            var nodes = await _appDbContext.Nodes
+                .Where(n => nodeInfos.Contains(n.Id))
+                .ToListAsync();
+
+            foreach (var node in nodes)
+            {
+                var b = await GetIndicatesByPlcNodeIdAsync(node.PlcNodeId);
+                dto.indecatesGroup.Add(node.Id, b.Indicates);
             }
+
             return dto;
         }
 
