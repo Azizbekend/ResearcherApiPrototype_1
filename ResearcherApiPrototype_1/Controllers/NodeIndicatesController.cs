@@ -34,20 +34,18 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpGet("actual/plcNodeOd")]
         public async Task<ActionResult<NodeIndicates>> GetLastByNodeId(string id)
         {
-            var indicates = await _nodeIndicatesRepo.GetIndicatesByPlcNodeIdAsync(id);
-            return Ok(indicates);
+            if (id.StartsWith("ns=4"))
+            {
+                var indicates = await _nodeIndicatesRepo.GetIndicatesByPlcNodeIdAsync(id);
+                return Ok(indicates);
+            }
+            else throw new Exception("Incorrect Id");
         }
-
+        
         [HttpPost("actual/group")]
         public async Task<ActionResult<ICollection<NodeIndecatesGroupResponseDTO>>> GetGroup(IndicatesGroupRequestDTO dto)
         {
-
-            Console.WriteLine($"GetGroup: получено {dto.listId?.Count ?? 0} ID");
-            
             var group = await _nodeIndicatesRepo.GetIndicatesByList(dto.listId);
-            
-            Console.WriteLine($"Вернулось {group?.Count ?? 0} записей");
-
             return Ok(group);
         }
     }
