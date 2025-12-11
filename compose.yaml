@@ -2,7 +2,7 @@ services:
   researcher-api:
     build:
       context: ./ResearcherApiPrototype_1
-      dockerfile: ./ResearcherApiPrototype_1/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: researcher-api
     ports:
       - "127.0.0.1:8087:8087"
@@ -17,7 +17,7 @@ services:
   opcsubscription-api:
     build:
       context: ./OpcSubscriptionService
-      dockerfile: ./OpcSubscriptionService/Dockerfile
+      dockerfile: ./Dockerfile
     container_name: opcsubscription-api
     ports:
       - "127.0.0.1:8088:8088"
