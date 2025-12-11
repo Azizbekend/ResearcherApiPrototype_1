@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ResearcherApiPrototype_1.Models
 {
     public class DocumentModel
     {
-        public int Id { get; set; }
+        [Key]
+        public int Id { get; set; } 
         public string Title { get; set; }
         public string FileName { get; set; }
         public string ContentType { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ResearcherApiPrototype_1.DTOs;
 using ResearcherApiPrototype_1.Models;
 using ResearcherApiPrototype_1.Repos.NodeIndicatesRepo;
 
@@ -35,6 +36,13 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             var indicates = await _nodeIndicatesRepo.GetIndicatesByPlcNodeIdAsync(id);
             return Ok(indicates);
+        }
+
+        [HttpPost("actual/group")]
+        public async Task<ActionResult<ICollection<NodeIndecatesGroupResponseDTO>>> GetGroup(List<int> list)
+        {
+            var group = await _nodeIndicatesRepo.GetIndicatesByList(list);
+            return Ok(group);
         }
     }
 }

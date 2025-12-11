@@ -35,6 +35,7 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
         public async Task<MaintenanceRequest> Create(MaintanceCreateDTO request)
         {
             var hw = _appDbContext.Hardwares.First(x => x.Id == request.HardwareId);
+
             var mRequest = new MaintenanceRequest
             {
                 Title = request.Title,

@@ -1,6 +1,7 @@
 ﻿using ResearcherApiPrototype_1.Models;
 using Microsoft.EntityFrameworkCore;
 using static NpgsqlTypes.NpgsqlTsQuery;
+using ResearcherApiPrototype_1.DTOs;
 
 namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 {
@@ -28,6 +29,23 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             await _appDbContext.SaveChangesAsync();
         }
 
+        public async Task<NodeIndecatesGroupResponseDTO> GetIndicatesByList(List<int> nodeInfos)
+        {
+            NodeIndecatesGroupResponseDTO dto = new NodeIndecatesGroupResponseDTO();
+            //List<string> plcNodes = new List<string>();
+            foreach (var node in nodeInfos)
+            {          
+                var a = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.Id == node);
+                if (a != null)
+                {
+                    var b = await GetIndicatesByPlcNodeIdAsync(a.PlcNodeId);
+                    dto.indecatesGroup.Add(node, b.Indicates);
+                    
+                }
+            }
+            return dto;
+        }
+
         public async Task<ICollection<NodeIndicates>> GetIndicatesByNodeIdAsync(int nodeId)
         {
             //return await _appDbContext.NodesIndicates
@@ -48,6 +66,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         public async Task<NodeIndicates> GetLastIndecatesByNodeIdAsync(int nodeId)
         {
+            
             //return await _appDbContext.NodesIndicates
             //    .Include(ni => ni.NodeInfo)
             //    .ThenInclude(h => h.HardwareInfo)
@@ -55,5 +74,9 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             //    .Where(ni => ni.NodeInfoId == nodeId).OrderByDescending(x => x.NodeInfoId).FirstAsync();
             throw new NotFiniteNumberException() ;
         }
+
+        
+
+
     }
 }

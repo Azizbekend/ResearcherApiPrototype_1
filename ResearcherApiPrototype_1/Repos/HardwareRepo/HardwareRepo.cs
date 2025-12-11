@@ -48,7 +48,6 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 .Where(h => h.Id == hardwareId)
                 .FirstAsync();
         }
-        
         public async Task<ICollection<HardwareInfo>> GetHardwaresByControlBlockIdAsync(int controlBlockId)
         {
             

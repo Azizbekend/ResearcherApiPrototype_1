@@ -652,6 +652,32 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeIndicatesController",
+    "Method": "GetGroup",
+    "RelativePath": "api/NodeIndicates/actual/group",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.NodeIndecatesGroupResponseDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeIndicatesController",
     "Method": "GetLastByNodeId",
     "RelativePath": "api/NodeIndicates/actual/plcNodeOd",
     "HttpMethod": "GET",

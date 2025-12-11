@@ -1,4 +1,5 @@
-﻿using ResearcherApiPrototype_1.Models;
+﻿using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.Models;
 
 namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 {
@@ -9,6 +10,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
         Task <ICollection<NodeIndicates>> GetIndicatesByNodeIdAsync(int nodeId);
         Task<NodeIndicates> GetLastIndecatesByNodeIdAsync(int nodeId);
         Task <NodeIndicates> GetIndicatesByPlcNodeIdAsync(string plcNodeId);
+        Task<NodeIndecatesGroupResponseDTO> GetIndicatesByList(List<int> nodeids);
         
 
 
