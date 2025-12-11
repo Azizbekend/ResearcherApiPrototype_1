@@ -39,9 +39,10 @@ namespace ResearcherApiPrototype_1.Controllers
                 var indicates = await _nodeIndicatesRepo.GetIndicatesByPlcNodeIdAsync(id);
                 return Ok(indicates);
             }
-            return NotFound();
+            else
+                return NotFound();
         }
-        
+
         [HttpPost("actual/group")]
         public async Task<ActionResult<ICollection<NodeIndecatesGroupResponseDTO>>> GetGroup(IndicatesGroupRequestDTO dto)
         {
