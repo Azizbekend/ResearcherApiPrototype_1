@@ -1,0 +1,1183 @@
+[
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.CharacteristicsController",
+    "Method": "Delete",
+    "RelativePath": "api/Characteristics/characteristic/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.CharacteristicsController",
+    "Method": "GetByHardwareId",
+    "RelativePath": "api/Characteristics/characteristics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareCharacteristic, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.CharacteristicsController",
+    "Method": "CreateMany",
+    "RelativePath": "api/Characteristics/createMany",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "characterMassCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharMassCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.CharacteristicsController",
+    "Method": "CreateOne",
+    "RelativePath": "api/Characteristics/createOne",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "characterCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.CharCreateDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.CharacteristicsController",
+    "Method": "Update",
+    "RelativePath": "api/Characteristics/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "characterUpdateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ControlBlockController",
+    "Method": "GetAll",
+    "RelativePath": "api/ControlBlock/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ControlBlockInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ControlBlockController",
+    "Method": "GetAllByPassport",
+    "RelativePath": "api/ControlBlock/all/passport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ControlBlockInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ControlBlockController",
+    "Method": "Create",
+    "RelativePath": "api/ControlBlock/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.ControlBlockCreaterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "DownloadDocument",
+    "RelativePath": "api/FileStorage/document/download",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "GetHardwaresDocs",
+    "RelativePath": "api/FileStorage/documents/hardware",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.DocumentResponseDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "UploadDocument",
+    "RelativePath": "api/FileStorage/documents/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "HardwareId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.DocumentResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "GetFileInfo",
+    "RelativePath": "api/FileStorage/image/fileInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "DownloadFile",
+    "RelativePath": "api/FileStorage/images/download",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "UploadFile",
+    "RelativePath": "api/FileStorage/images/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.FileStorageController",
+    "Method": "UploadFile",
+    "RelativePath": "api/FileStorage/images/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "Activating",
+    "RelativePath": "api/Hardware/Activate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "GetAll",
+    "RelativePath": "api/Hardware/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "CreateOne",
+    "RelativePath": "api/Hardware/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hw",
+        "Type": "ResearcherApiPrototype_1.DTOs.HardwareCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "InfoDelete",
+    "RelativePath": "api/Hardware/info/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "Updateinfo",
+    "RelativePath": "api/Hardware/info/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.HardwareInfoUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareInfo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "Get",
+    "RelativePath": "api/Hardware/infoAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "GetById",
+    "RelativePath": "api/Hardware/infoSingle",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareInfo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "CompleteCurrentRequest",
+    "RelativePath": "api/MaintenanseSheduler/completeRequest",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "CreateShedule",
+    "RelativePath": "api/MaintenanseSheduler/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.MaintanceCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.MaintenanceRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "GetHistoryRecords",
+    "RelativePath": "api/MaintenanseSheduler/history/records",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.MaintenanceHistory, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "GetNextWeekRequests",
+    "RelativePath": "api/MaintenanseSheduler/next_week",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.MaintenanceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "GetTodayRequests",
+    "RelativePath": "api/MaintenanseSheduler/today",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.MaintenanceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeIndicatesController",
+    "Method": "GetLast",
+    "RelativePath": "api/NodeIndicates/actual",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.NodeIndicates",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeIndicatesController",
+    "Method": "GetLastByNodeId",
+    "RelativePath": "api/NodeIndicates/actual/plcNodeOd",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.NodeIndicates",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeIndicatesController",
+    "Method": "Get",
+    "RelativePath": "api/NodeIndicates/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeIndicates, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "GetAll",
+    "RelativePath": "api/NodeInfo/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "GetCommands",
+    "RelativePath": "api/NodeInfo/commands",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "CreateCommandNode",
+    "RelativePath": "api/NodeInfo/createCommand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodeCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "CreateInfoNode",
+    "RelativePath": "api/NodeInfo/createInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodeCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "CreateMassCommandNode",
+    "RelativePath": "api/NodeInfo/createMassCommand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.MassNodeCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "CreateMassInfoNode",
+    "RelativePath": "api/NodeInfo/createMassInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.MassNodeCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "Delete",
+    "RelativePath": "api/NodeInfo/info/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "UpdareNodeInfo",
+    "RelativePath": "api/NodeInfo/info/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodeUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "GetInfos",
+    "RelativePath": "api/NodeInfo/infos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.PassportController",
+    "Method": "GetAll",
+    "RelativePath": "api/Passport/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.StaticObjectInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.PassportController",
+    "Method": "Create",
+    "RelativePath": "api/Passport/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.Models.StaticObjectInfo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "DeleteCoordinates",
+    "RelativePath": "api/Schemas/schema/coordinates",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "CreateCoordinates",
+    "RelativePath": "api/Schemas/schema/coordinates/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemaImageCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareSchemaImage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "CreateSchema",
+    "RelativePath": "api/Schemas/schema/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemaCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareSchema",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "GetSchemas",
+    "RelativePath": "api/Schemas/schemas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareSchema, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "GetCoordinates",
+    "RelativePath": "api/Schemas/schemas/coordinates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.HardwareSchema, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "UpdateImageCoordinates",
+    "RelativePath": "api/Schemas/schemas/coordinates/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemeImageUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.HardwareSchemaImage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "GetAll",
+    "RelativePath": "api/ServiceRequests/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ServiceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "CreateRequest",
+    "RelativePath": "api/ServiceRequests/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "serviceRequestCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.ServiceRequestCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.DTOs.ServiceRequestCreateDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "GetHardwareRequestsAll",
+    "RelativePath": "api/ServiceRequests/hardware/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ServiceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ServiceRequestsController",
+    "Method": "GetAllByObjectId",
+    "RelativePath": "api/ServiceRequests/object/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.ServiceRequest, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
