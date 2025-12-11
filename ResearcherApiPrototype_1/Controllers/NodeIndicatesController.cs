@@ -39,9 +39,9 @@ namespace ResearcherApiPrototype_1.Controllers
         }
 
         [HttpPost("actual/group")]
-        public async Task<ActionResult<ICollection<NodeIndecatesGroupResponseDTO>>> GetGroup(List<int> list)
+        public async Task<ActionResult<ICollection<NodeIndecatesGroupResponseDTO>>> GetGroup(IndicatesGroupRequestDTO dto)
         {
-            var group = await _nodeIndicatesRepo.GetIndicatesByList(list);
+            var group = await _nodeIndicatesRepo.GetIndicatesByList(dto.listId);
             return Ok(group);
         }
     }

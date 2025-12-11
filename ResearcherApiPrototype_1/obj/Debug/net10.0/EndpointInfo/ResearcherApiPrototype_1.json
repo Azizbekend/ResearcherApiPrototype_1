@@ -1254,29 +1254,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                }
+                "$ref": "#/components/schemas/IndicatesGroupRequestDTO"
               }
             },
             "text/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                }
+                "$ref": "#/components/schemas/IndicatesGroupRequestDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                }
+                "$ref": "#/components/schemas/IndicatesGroupRequestDTO"
               }
             }
           }
@@ -2652,6 +2640,20 @@
           "hardwareId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IndicatesGroupRequestDTO": {
+        "type": "object",
+        "properties": {
+          "listId": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
