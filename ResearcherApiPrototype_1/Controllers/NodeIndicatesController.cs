@@ -42,9 +42,12 @@ namespace ResearcherApiPrototype_1.Controllers
         public async Task<ActionResult<ICollection<NodeIndecatesGroupResponseDTO>>> GetGroup(IndicatesGroupRequestDTO dto)
         {
 
-            Console.WriteLine($"GetGroup вызван. ListId: {dto.listId}");
-
+            Console.WriteLine($"GetGroup: получено {dto.listId?.Count ?? 0} ID");
+            
             var group = await _nodeIndicatesRepo.GetIndicatesByList(dto.listId);
+            
+            Console.WriteLine($"Вернулось {group?.Count ?? 0} записей");
+
             return Ok(group);
         }
     }
