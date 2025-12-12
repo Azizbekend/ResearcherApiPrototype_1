@@ -59,7 +59,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
             return await _appDbContext.Nodes
                 .Include(n => n.HardwareInfo)
                 .ThenInclude(h => h.ControlBlock)
-                .Where(n => n.HardwareId == hardwareId && n.IsCommand == false)
+                .Where(n => n.HardwareId == hardwareId && n.IsCommand == false )
                 .OrderBy(n => n.Name)
                 .ToListAsync();
         }

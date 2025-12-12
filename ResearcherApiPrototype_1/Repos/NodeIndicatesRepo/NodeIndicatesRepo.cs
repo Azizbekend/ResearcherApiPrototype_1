@@ -31,18 +31,18 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         public async Task<NodeIndecatesGroupResponseDTO> GetIndicatesByList(List<int> nodeInfos)
         {
-            var dto = new NodeIndecatesGroupResponseDTO();
-
-            var nodes = await _appDbContext.Nodes
-                .Where(n => nodeInfos.Contains(n.Id))
-                .ToListAsync();
-
-            foreach (var node in nodes)
-            {
-                var b = await GetIndicatesByPlcNodeIdAsync(node.PlcNodeId);
-                dto.indecatesGroup.Add(node.Id, b.Indicates);
+            NodeIndecatesGroupResponseDTO dto = new NodeIndecatesGroupResponseDTO();
+            //List<string> plcNodes = new List<string>();
+            foreach (var node in nodeInfos)
+            {          
+                var a = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.Id == node);
+                if (a != null && a.PlcNodeId != " ")
+                {
+                    var b = await GetIndicatesByPlcNodeIdAsync(a.PlcNodeId);
+                    dto.indecatesGroup.Add(node, b.Indicates);
+                    
+                }
             }
-
             return dto;
         }
 
@@ -59,8 +59,22 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         public async Task<NodeIndicates> GetIndicatesByPlcNodeIdAsync(string plcNodeId)
         {
-            return await _appDbContext.NodesIndicates
-                .Where(ni => ni.PlcNodeId == plcNodeId).OrderByDescending(x => x.Id).FirstAsync();
+            NodeIndicates dto = new NodeIndicates();
+            if (plcNodeId != null && plcNodeId != string.Empty && plcNodeId != " ")
+                dto =  await _appDbContext.NodesIndicates
+                    .Where(ni => ni.PlcNodeId == plcNodeId).OrderByDescending(x => x.Id).FirstAsync();
+            if (dto != null)
+            {
+
+                return dto;
+            }
+            else
+            {
+                dto.Indicates = "No connection!";
+                dto.TimeStamp = DateTime.Now;
+                dto.PlcNodeId = plcNodeId;
+                return dto;
+            }
                 
         }
 
