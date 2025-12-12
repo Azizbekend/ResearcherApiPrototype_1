@@ -62,7 +62,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             NodeIndicates dto = new NodeIndicates();
             if (plcNodeId != null && plcNodeId != string.Empty && plcNodeId != " ")
                 dto =  await _appDbContext.NodesIndicates
-                    .Where(ni => ni.PlcNodeId == plcNodeId).OrderByDescending(x => x.Id).FirstAsync();
+                    .Where(ni => ni.PlcNodeId == plcNodeId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
             if (dto != null)
             {
 
@@ -70,6 +70,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             }
             else
             {
+                dto = new NodeIndicates();
                 dto.Indicates = "No connection!";
                 dto.TimeStamp = DateTime.Now;
                 dto.PlcNodeId = plcNodeId;
