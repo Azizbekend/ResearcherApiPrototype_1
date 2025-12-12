@@ -14,16 +14,16 @@ services:
     restart: unless-stopped
 
 
-  # opcsubscription-api:
-  #   build:
-  #     context: ./OpcSubscriptionService
-  #     dockerfile: ./Dockerfile
-  #   container_name: opcsubscription-api
-  #   ports:
-  #     - "127.0.0.1:8088:8088"
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Production
-  #     - ASPNETCORE_URLS=http://0.0.0.0:8088
-  #     - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
-  #     - ASPNETCORE_HTTPS_REDIRECT=false
-  #   restart: unless-stopped
+  opcsubscription-api:
+    build:
+      context: ./OpcSubscriptionService
+      dockerfile: ./Dockerfile
+    container_name: opcsubscription-api
+    ports:
+      - "127.0.0.1:8088:8088"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:8088
+      - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
+      - ASPNETCORE_HTTPS_REDIRECT=false
+    restart: unless-stopped
