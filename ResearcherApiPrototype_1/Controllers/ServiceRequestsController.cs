@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.BaseCreateDTOs;
 using ResearcherApiPrototype_1.Models;
 using ResearcherApiPrototype_1.Repos.ServiceRequestRepo;
 

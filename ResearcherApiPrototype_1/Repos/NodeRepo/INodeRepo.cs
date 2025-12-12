@@ -1,4 +1,4 @@
-﻿using ResearcherApiPrototype_1.DTOs;
+﻿using ResearcherApiPrototype_1.DTOs.NodesDTOs;
 using ResearcherApiPrototype_1.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,8 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
         Task<ICollection<NodeInfo>> GetAllNodesAsync();
         Task<ICollection<NodeInfo>> GetAllInfoNodesByHardwareId(int hardwareId);
         Task<ICollection<NodeInfo>> GetAllCommandNodesByHardwareId(int hardwareId);
+        Task<ICollection<NodeInfo>> GetHardwareIncidentsNodes(int hardwareId);
+        Task<ICollection<NodeInfo>> GetHardwaresAllIncidentsNodes(int  hardId);
         Task<NodeInfo> UpdateNode(NodeUpdateDTO dto);
         Task DeleteInfo(int id);
     }

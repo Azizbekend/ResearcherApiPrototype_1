@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.CharacteristicsDTOs;
 using ResearcherApiPrototype_1.Models;
 using System.Reflection.PortableExecutable;
 

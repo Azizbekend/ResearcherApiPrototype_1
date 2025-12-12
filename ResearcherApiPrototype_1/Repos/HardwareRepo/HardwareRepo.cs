@@ -1,6 +1,6 @@
 ﻿using ResearcherApiPrototype_1.Models;
 using Microsoft.EntityFrameworkCore;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
 
 namespace ResearcherApiPrototype_1.Repos.HardwareRepo
 {

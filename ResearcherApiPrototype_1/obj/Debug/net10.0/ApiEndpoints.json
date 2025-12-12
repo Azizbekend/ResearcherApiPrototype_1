@@ -51,7 +51,7 @@
     "Parameters": [
       {
         "Name": "characterMassCreateDTO",
-        "Type": "ResearcherApiPrototype_1.DTOs.CharMassCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharacteristicsDTOs.CharMassCreateDTO",
         "IsRequired": true
       }
     ],
@@ -67,13 +67,13 @@
     "Parameters": [
       {
         "Name": "characterCreateDTO",
-        "Type": "ResearcherApiPrototype_1.DTOs.CharCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharacteristicsDTOs.CharCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "ResearcherApiPrototype_1.DTOs.CharCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharacteristicsDTOs.CharCreateDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -93,7 +93,7 @@
     "Parameters": [
       {
         "Name": "characterUpdateDTO",
-        "Type": "ResearcherApiPrototype_1.DTOs.CharUpdateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.CharacteristicsDTOs.CharUpdateDTO",
         "IsRequired": true
       }
     ],
@@ -155,7 +155,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.ControlBlockCreaterDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.ControlBlockCreaterDTO",
         "IsRequired": true
       }
     ],
@@ -203,7 +203,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.DocumentResponseDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.FilesAndDocsDTOs.DocumentResponseDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -239,7 +239,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ResearcherApiPrototype_1.DTOs.DocumentResponseDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.FilesAndDocsDTOs.DocumentResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -265,7 +265,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.FilesAndDocsDTOs.FileResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -312,7 +312,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.FilesAndDocsDTOs.FileResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -338,7 +338,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "ResearcherApiPrototype_1.DTOs.FileResponseDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.FilesAndDocsDTOs.FileResponseDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -358,7 +358,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.BaseDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.BaseDTO",
         "IsRequired": true
       }
     ],
@@ -394,7 +394,7 @@
     "Parameters": [
       {
         "Name": "hw",
-        "Type": "ResearcherApiPrototype_1.DTOs.HardwareCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.HardwaresDTOs.HardwareCreateDTO",
         "IsRequired": true
       }
     ],
@@ -436,7 +436,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.HardwareInfoUpdateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.HardwaresDTOs.HardwareInfoUpdateDTO",
         "IsRequired": true
       }
     ],
@@ -514,7 +514,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.BaseDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.BaseDTO",
         "IsRequired": true
       }
     ],
@@ -530,7 +530,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.MaintanceCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.MaintanceCreateDTO",
         "IsRequired": true
       }
     ],
@@ -660,13 +660,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.IndicatesGroupRequestDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodesDTOs.IndicatesGroupRequestDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.NodeIndecatesGroupResponseDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.NodesDTOs.NodeIndecatesGroupResponseDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -784,7 +784,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.NodeCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodesDTOs.NodeCreateDTO",
         "IsRequired": true
       }
     ],
@@ -810,7 +810,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.NodeCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodesDTOs.NodeCreateDTO",
         "IsRequired": true
       }
     ],
@@ -836,7 +836,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.MassNodeCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodesDTOs.MassNodeCreateDTO",
         "IsRequired": true
       }
     ],
@@ -852,7 +852,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.MassNodeCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodesDTOs.MassNodeCreateDTO",
         "IsRequired": true
       }
     ],
@@ -884,7 +884,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.NodeUpdateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.NodesDTOs.NodeUpdateDTO",
         "IsRequired": true
       }
     ],
@@ -894,6 +894,58 @@
     "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
     "Method": "GetInfos",
     "RelativePath": "api/NodeInfo/infos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "GetAllIncidentNode",
+    "RelativePath": "api/NodeInfo/nodes/incident/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "GetTotalOncidentNode",
+    "RelativePath": "api/NodeInfo/nodes/incident/total",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -988,7 +1040,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.SchemaImageCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemesDTOs.SchemaImageCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1014,7 +1066,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.SchemaCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemesDTOs.SchemaCreateDTO",
         "IsRequired": true
       }
     ],
@@ -1092,7 +1144,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.SchemeImageUpdateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemesDTOs.SchemeImageUpdateDTO",
         "IsRequired": true
       }
     ],
@@ -1138,13 +1190,13 @@
     "Parameters": [
       {
         "Name": "serviceRequestCreateDTO",
-        "Type": "ResearcherApiPrototype_1.DTOs.ServiceRequestCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.ServiceRequestCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "ResearcherApiPrototype_1.DTOs.ServiceRequestCreateDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.ServiceRequestCreateDTO",
         "MediaTypes": [
           "text/plain",
           "application/json",

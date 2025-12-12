@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.NodesDTOs;
 using ResearcherApiPrototype_1.Models;
 using ResearcherApiPrototype_1.Repos.NodeRepo;
 
@@ -35,6 +35,19 @@ namespace ResearcherApiPrototype_1.Controllers
             var nodes = await _nodeRepo.GetAllNodesAsync();
             return Ok(nodes);
         }
+        [HttpGet("nodes/incident/total")]
+        public async Task<ActionResult<ICollection<NodeInfo>>> GetTotalOncidentNode(int id)
+        {
+            var node = await _nodeRepo.GetHardwareIncidentsNodes(id);
+            return Ok(node);
+        }
+        [HttpGet("nodes/incident/all")]
+        public async Task<ActionResult<ICollection<NodeInfo>>> GetAllIncidentNode(int id)
+        {
+            var node = await _nodeRepo.GetHardwaresAllIncidentsNodes(id);
+            return Ok(node);
+        }
+
 
         [HttpPost("createInfo")]
         public async Task<ActionResult<int>> CreateInfoNode(NodeCreateDTO dto)
@@ -74,6 +87,8 @@ namespace ResearcherApiPrototype_1.Controllers
             await _nodeRepo.DeleteInfo(id);
             return Ok();
         }
+
+
 
     }
 }

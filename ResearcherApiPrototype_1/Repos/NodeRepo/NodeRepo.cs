@@ -1,7 +1,7 @@
 ﻿using ResearcherApiPrototype_1.Models;
 using ResearcherApiPrototype_1.Repos.NodeRepo;
 using Microsoft.EntityFrameworkCore;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.NodesDTOs;
 
 
 namespace ResearcherApiPrototype_1.Repos.NodeRepo
@@ -131,6 +131,27 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
             var ni = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.Id == id);
             _appDbContext.Nodes.Remove(ni);
             await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<ICollection<NodeInfo>> GetHardwareIncidentsNodes(int hardwareId)
+        {
+            return await _appDbContext.Nodes
+                .Where(x => x.HardwareId == hardwareId && x.PlcNodeId.EndsWith("hAlmCom"))
+                .ToListAsync();
+        }
+
+        public async Task<ICollection<NodeInfo>> GetHardwaresAllIncidentsNodes(int hardId)
+        {
+
+            return await _appDbContext.Nodes
+               .Include(n => n.HardwareInfo)
+               .ThenInclude(h => h.ControlBlock)
+               .Where(n => n.HardwareId == hardId && n.PlcNodeId.EndsWith("hAlmAi") || n.PlcNodeId.EndsWith("hAlmQF") || n.PlcNodeId.EndsWith("hAlmStator") ||
+               n.PlcNodeId.EndsWith("hAlmVentQF") || n.PlcNodeId.EndsWith("hAlmVentCmd") || n.PlcNodeId.EndsWith("hAlmDisconnect") ||
+               n.PlcNodeId.EndsWith("hAlmFC") || n.PlcNodeId.EndsWith("hAlmKonc") || n.PlcNodeId.EndsWith("hAlmCmd")
+               || n.PlcNodeId.EndsWith("hAlmMoment") || n.PlcNodeId.EndsWith("hAlmExt"))
+               .OrderBy(n => n.Name)
+               .ToListAsync();
         }
     }
 }

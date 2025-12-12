@@ -1,7 +1,7 @@
 ﻿using ResearcherApiPrototype_1.Models;
 using Microsoft.EntityFrameworkCore;
 using static NpgsqlTypes.NpgsqlTsQuery;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.NodesDTOs;
 
 namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 {

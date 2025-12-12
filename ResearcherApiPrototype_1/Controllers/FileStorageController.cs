@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.FilesAndDocsDTOs;
 using ResearcherApiPrototype_1.Repos.DocumentRepo;
 using ResearcherApiPrototype_1.Repos.FileStorageRepo;
 

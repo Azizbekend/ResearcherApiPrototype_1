@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ResearcherApiPrototype_1.DTOs;
+using ResearcherApiPrototype_1.DTOs.BaseCreateDTOs;
 using ResearcherApiPrototype_1.Models;
 
 namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo

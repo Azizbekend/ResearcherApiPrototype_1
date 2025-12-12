@@ -1,4 +1,4 @@
-﻿using ResearcherApiPrototype_1.DTOs;
+﻿using ResearcherApiPrototype_1.DTOs.FilesAndDocsDTOs;
 using ResearcherApiPrototype_1.Models;
 
 namespace ResearcherApiPrototype_1.Repos.DocumentRepo
