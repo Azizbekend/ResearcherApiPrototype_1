@@ -58,6 +58,30 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 .ToListAsync();
         }
 
+        public async Task<HardwareStatusDTO> GetHardwaresStatusByIdAsync(HardwareStatusCheckDTO dto)
+        {
+            HardwareStatusDTO dictionary = new HardwareStatusDTO();
+            var listNodes = new List<NodeInfo>();
+            foreach(var item in dto.Ids)
+            {
+                dictionary.HardwareId = item;
+                var node = await _appDbContext.Nodes.Where(x => x.HardwareId == item && x.PlcNodeId.EndsWith("hStatus")).FirstOrDefaultAsync();
+                if (node != null)
+                {
+                    listNodes.Add(node);
+                }
+            }
+            foreach (var node in listNodes)
+            {
+                var indicates = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == node.PlcNodeId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+                if(indicates  != null)
+                {
+                    dictionary.StatusDictionary.Add(node.Name, indicates.Indicates);
+                }
+            }
+            return dictionary;
+        }
+
         public async Task HardwareActivating(int id)
         {
             var hw = new HardwareInfo

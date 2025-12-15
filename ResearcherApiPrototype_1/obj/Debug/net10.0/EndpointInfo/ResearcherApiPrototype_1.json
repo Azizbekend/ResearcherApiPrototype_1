@@ -1120,6 +1120,54 @@
         }
       }
     },
+    "/api/MaintenanseSheduler/history/records/all": {
+      "get": {
+        "tags": [
+          "MaintenanseSheduler"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaitenanceHistoryGetManyDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaitenanceHistoryGetManyDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MaitenanceHistoryGetManyDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/NodeIndicates/all": {
       "get": {
         "tags": [
@@ -1436,7 +1484,7 @@
         }
       }
     },
-    "/api/NodeInfo/nodes/incident/total": {
+    "/api/NodeInfo/nodes/incident/common": {
       "get": {
         "tags": [
           "NodeInfo"
@@ -1525,6 +1573,84 @@
                   "items": {
                     "$ref": "#/components/schemas/NodeInfo"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NodeInfo/nodes/incident/common_check": {
+      "get": {
+        "tags": [
+          "NodeInfo"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NodeInfo/nodes/incident/all_check": {
+      "get": {
+        "tags": [
+          "NodeInfo"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
                 }
               }
             }
@@ -2794,9 +2920,6 @@
           "maintenanceRequestId": {
             "type": "integer",
             "format": "int32"
-          },
-          "maintenanceRequest": {
-            "$ref": "#/components/schemas/MaintenanceRequest"
           }
         },
         "additionalProperties": false
@@ -2827,8 +2950,18 @@
           "hardwareId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MaitenanceHistoryGetManyDTO": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
           },
-          "historeRecords": {
+          "recordsList": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MaintenanceHistory"

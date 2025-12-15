@@ -17,6 +17,8 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
         Task<ICollection<NodeInfo>> GetAllCommandNodesByHardwareId(int hardwareId);
         Task<ICollection<NodeInfo>> GetHardwareIncidentsNodes(int hardwareId);
         Task<ICollection<NodeInfo>> GetHardwaresAllIncidentsNodes(int  hardId);
+        Task <string> IsCommonIncident(int hardwareId);
+        Task<ICollection<NodeInfoIncidentDTO>> CheckIncidents(int hardwareId);
         Task<NodeInfo> UpdateNode(NodeUpdateDTO dto);
         Task DeleteInfo(int id);
     }

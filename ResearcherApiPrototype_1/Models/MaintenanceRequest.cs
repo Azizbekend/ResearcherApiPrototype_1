@@ -17,6 +17,7 @@ namespace ResearcherApiPrototype_1.Models
         public int HardwareId { get; set; }
         [JsonIgnore]
         public HardwareInfo? Hardware { get; set; }
+        [JsonIgnore]
         public ICollection<MaintenanceHistory> HistoreRecords { get; set; } = new List<MaintenanceHistory>();
 
     }

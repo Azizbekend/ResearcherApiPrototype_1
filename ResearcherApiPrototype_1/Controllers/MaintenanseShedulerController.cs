@@ -49,5 +49,11 @@ namespace ResearcherApiPrototype_1.Controllers
             var records = await _maintenanceRepo.GetHistoryCompleteRecords(id);
             return Ok(records);
         }
+        [HttpGet("history/records/all")]
+        public async Task<ActionResult<ICollection<MaitenanceHistoryGetManyDTO>>> GetAllHistoryRecords(int id)
+        {
+            var records = await _maintenanceRepo.GetHardwareAllHistory(id);
+            return Ok(records);
+        }
     }
 }

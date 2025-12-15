@@ -12,6 +12,7 @@ namespace ResearcherApiPrototype_1.Models
         public DateTime SheduleMaintenanceDate { get; set; }
         [ForeignKey("MaintenanceRequest")]
         public int MaintenanceRequestId { get; set; }
+        [JsonIgnore]
         public MaintenanceRequest MaintenanceRequest { get; set; }
     }
 }

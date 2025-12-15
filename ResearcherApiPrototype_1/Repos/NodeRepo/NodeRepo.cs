@@ -153,5 +153,50 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                .OrderBy(n => n.Name)
                .ToListAsync();
         }
+
+        public async Task<string> IsCommonIncident(int hardwareId)
+        {
+            var node = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.HardwareId == hardwareId && x.PlcNodeId.EndsWith("hAlmCom"));
+            if (node != null && node.PlcNodeId.Length > 5)
+            {
+                var status = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == node.PlcNodeId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+                if (status != null)
+                    return status.Indicates;
+                else
+                    return "Not found!";
+            }
+            else
+                return "Not found!";
+        }
+
+        public async Task<ICollection<NodeInfoIncidentDTO>> CheckIncidents(int hardwareId)
+        {
+            List<NodeInfoIncidentDTO> list = new List<NodeInfoIncidentDTO>();
+            var nodes = await _appDbContext.Nodes
+               .Include(n => n.HardwareInfo)
+               .ThenInclude(h => h.ControlBlock)
+               .Where(n => n.HardwareId == hardwareId && (n.PlcNodeId.EndsWith("hAlmAi") || n.PlcNodeId.EndsWith("hAlmQF") || n.PlcNodeId.EndsWith("hAlmStator") ||
+               n.PlcNodeId.EndsWith("hAlmVentQF") || n.PlcNodeId.EndsWith("hAlmVentCmd") || n.PlcNodeId.EndsWith("hAlmDisconnect") ||
+               n.PlcNodeId.EndsWith("hAlmFC") || n.PlcNodeId.EndsWith("hAlmKonc") || n.PlcNodeId.EndsWith("hAlmCmd")
+               || n.PlcNodeId.EndsWith("hAlmMoment") || n.PlcNodeId.EndsWith("hAlmExt")))
+               .OrderBy(n => n.Name)
+               .ToListAsync();
+
+            foreach ( var node in nodes)
+            {
+                var indicates = await _appDbContext.NodesIndicates.Where(x=> x.PlcNodeId == node.PlcNodeId).OrderByDescending(x=> x.Id).FirstOrDefaultAsync();
+                if(indicates != null && indicates.Indicates == "True")
+                {
+                    var dto = new NodeInfoIncidentDTO
+                    {
+                        NodeId = indicates.Id,
+                        NodeName = node.Name
+                    };
+                    list.Add(dto);
+                }
+
+            }
+            return list;
+        }
     }
 }

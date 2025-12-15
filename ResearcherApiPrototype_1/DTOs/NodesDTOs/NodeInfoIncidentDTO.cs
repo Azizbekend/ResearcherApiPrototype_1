@@ -2,7 +2,7 @@
 {
     public class NodeInfoIncidentDTO
     {
-        public int Id { get; set; }
-        public int MyProperty { get; set; }
+        public int NodeId { get; set; }
+        public string NodeName { get; set; }
     }
 }

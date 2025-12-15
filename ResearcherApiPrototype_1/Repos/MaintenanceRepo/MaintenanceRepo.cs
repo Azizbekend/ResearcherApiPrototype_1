@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ResearcherApiPrototype_1.DTOs.BaseCreateDTOs;
 using ResearcherApiPrototype_1.Models;
+using System.Collections.Immutable;
 
 namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
 {
@@ -73,6 +74,23 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
             return await _appDbContext.MaintenanceRequests
                 .Where(x => x.HardwareId == requestId && x.NextMaintenanceDate.Date > DateTime.Now.Date && x.NextMaintenanceDate <= DateTime.Now.AddDays(7))
                 .ToListAsync();
+        }
+
+        public async Task<ICollection<MaitenanceHistoryGetManyDTO>> GetHardwareAllHistory(int id)
+        {
+            List<MaitenanceHistoryGetManyDTO> list = new List<MaitenanceHistoryGetManyDTO>(); 
+            var requestIds = await _appDbContext.MaintenanceRequests.Where(x=> x.HardwareId == id).ToListAsync();
+            foreach ( var requestId in requestIds )
+            {
+                var title = requestId.Title;
+                var records = await _appDbContext.MaintenanceHistory.Where(x => x.MaintenanceRequestId== requestId.Id).ToListAsync();
+                list.Add(new MaitenanceHistoryGetManyDTO
+                {
+                    Title = title,
+                    RecordsList = records
+                });
+            }
+            return list;
         }
     }
 }

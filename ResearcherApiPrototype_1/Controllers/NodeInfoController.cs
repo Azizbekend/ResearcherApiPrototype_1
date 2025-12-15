@@ -35,7 +35,7 @@ namespace ResearcherApiPrototype_1.Controllers
             var nodes = await _nodeRepo.GetAllNodesAsync();
             return Ok(nodes);
         }
-        [HttpGet("nodes/incident/total")]
+        [HttpGet("nodes/incident/common")]
         public async Task<ActionResult<ICollection<NodeInfo>>> GetTotalOncidentNode(int id)
         {
             var node = await _nodeRepo.GetHardwareIncidentsNodes(id);
@@ -48,6 +48,20 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(node);
         }
 
+        [HttpGet("nodes/incident/common_check")]
+        public async Task<ActionResult<string>> CheckCommonIncident(int id)
+        {
+            var ni = await _nodeRepo.IsCommonIncident(id);
+            return Ok(ni);
+        }
+
+
+        [HttpGet("nodes/incident/all_check")]
+        public async Task<ActionResult<string>> CheckAllIncident(int id)
+        {
+            var ni = await _nodeRepo.CheckIncidents(id);
+            return Ok(ni);
+        }
 
         [HttpPost("createInfo")]
         public async Task<ActionResult<int>> CreateInfoNode(NodeCreateDTO dto)

@@ -574,6 +574,32 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
+    "Method": "GetAllHistoryRecords",
+    "RelativePath": "api/MaintenanseSheduler/history/records/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.MaitenanceHistoryGetManyDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
     "Method": "GetNextWeekRequests",
     "RelativePath": "api/MaintenanseSheduler/next_week",
     "HttpMethod": "GET",
@@ -944,8 +970,34 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "CheckAllIncident",
+    "RelativePath": "api/NodeInfo/nodes/incident/all_check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
     "Method": "GetTotalOncidentNode",
-    "RelativePath": "api/NodeInfo/nodes/incident/total",
+    "RelativePath": "api/NodeInfo/nodes/incident/common",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -959,6 +1011,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "CheckCommonIncident",
+    "RelativePath": "api/NodeInfo/nodes/incident/common_check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
         "MediaTypes": [
           "text/plain",
           "application/json",
