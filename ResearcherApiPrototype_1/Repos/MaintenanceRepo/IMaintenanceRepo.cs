@@ -12,6 +12,7 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
         Task<ICollection<MaintenanceHistory>> GetHistoryCompleteRecords(int requestId);
         Task<ICollection<MaintenanceRequest>> GetTodayRequests(int requestId);
         Task<ICollection<MaitenanceHistoryGetManyDTO>> GetHardwareAllHistory(int id);
+        Task<ICollection<MaintenanceHistoryFilteredDTO>> GetHardwareAllHistoryFilteref(int id);
 
     }
 }

@@ -92,5 +92,29 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
             }
             return list;
         }
+
+        public async  Task<ICollection<MaintenanceHistoryFilteredDTO>> GetHardwareAllHistoryFilteref(int id)
+        {
+            List<MaintenanceHistoryFilteredDTO> list = new List<MaintenanceHistoryFilteredDTO>();
+            var requestIds = await _appDbContext.MaintenanceRequests.Where(x => x.HardwareId == id).ToListAsync();
+            foreach (var requestId in requestIds)
+            {
+                var title = requestId.Title;
+                var records = await _appDbContext.MaintenanceHistory.Where(x => x.MaintenanceRequestId == requestId.Id).ToListAsync();
+                foreach(var rec in records)
+                {
+                    list.Add(new MaintenanceHistoryFilteredDTO
+                    {
+                        Title = title,
+                        CompletedMaintenanceDate = rec.CompletedMaintenanceDate,
+                        SheduleMaintenanceDate = rec.SheduleMaintenanceDate
+                    });
+
+                }
+                list = list.OrderByDescending(x => x.CompletedMaintenanceDate).ToList();
+            }
+            return list;
+            
+        }
     }
 }

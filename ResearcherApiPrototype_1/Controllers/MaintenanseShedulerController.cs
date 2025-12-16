@@ -55,5 +55,11 @@ namespace ResearcherApiPrototype_1.Controllers
             var records = await _maintenanceRepo.GetHardwareAllHistory(id);
             return Ok(records);
         }
+        [HttpGet("history/records/all/ordered")]
+        public async Task<ActionResult<ICollection<MaitenanceHistoryGetManyDTO>>> GetOrderedHistory(int id)
+        {
+            var records = await _maintenanceRepo.GetHardwareAllHistoryFilteref(id);
+            return Ok(records);
+        }
     }
 }
