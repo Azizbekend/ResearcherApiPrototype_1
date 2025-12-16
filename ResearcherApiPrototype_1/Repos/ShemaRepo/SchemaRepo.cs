@@ -24,6 +24,9 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 HardwareSchemaId = coordinates.HardwareSchemaId,
                 FileId = coordinates.FileId,
                 HardwareId = coordinates.HardwareId,
+                RedFileId = coordinates.RedFileId,
+                GreenFileId = coordinates.GreenFileId
+
             };
             _context.SchemaImages.Add(newCoordinates);
             await _context.SaveChangesAsync();
@@ -81,6 +84,8 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 si.Height = dto.Height;
                 si.Width = dto.Width;
                 si.FileId = dto.FileId;
+                si.GreenFileId = dto.GreenFileId;
+                si.RedFileId = dto.RedFileId;
                 _context.SchemaImages.Attach(si);
                 await _context.SaveChangesAsync();
                 return si;

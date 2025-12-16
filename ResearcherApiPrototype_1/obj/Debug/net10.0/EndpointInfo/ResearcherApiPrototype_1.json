@@ -2958,6 +2958,14 @@
           "hardwareId": {
             "type": "integer",
             "format": "int32"
+          },
+          "redFileId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "greenFileId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -3284,6 +3292,14 @@
           "hardwareId": {
             "type": "integer",
             "format": "int32"
+          },
+          "redFileId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "greenFileId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -3312,6 +3328,14 @@
             "nullable": true
           },
           "fileId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "redFileId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "greenFileId": {
             "type": "integer",
             "format": "int32"
           }

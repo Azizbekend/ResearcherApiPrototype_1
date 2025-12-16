@@ -11,5 +11,7 @@ namespace ResearcherApiPrototype_1.DTOs.SchemesDTOs
         public int HardwareSchemaId { get; set; }
         public int FileId { get; set; }
         public int HardwareId { get; set; }
+        public int RedFileId { get; set; }
+        public int GreenFileId { get; set; }
     }
 }
