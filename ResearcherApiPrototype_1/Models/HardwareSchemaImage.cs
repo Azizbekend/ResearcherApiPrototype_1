@@ -19,5 +19,8 @@ namespace ResearcherApiPrototype_1.Models
         public int? FileId { get; set; }
         public FileModel? File { get; set; }
         public int HardwareId { get; set; }
+        public int RedFileId { get; set; }
+        public int GreenFileId { get; set; }
+
     }
 }
