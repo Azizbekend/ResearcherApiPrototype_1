@@ -79,7 +79,7 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
         public async Task<ICollection<MaitenanceHistoryGetManyDTO>> GetHardwareAllHistory(int id)
         {
             List<MaitenanceHistoryGetManyDTO> list = new List<MaitenanceHistoryGetManyDTO>(); 
-            var requestIds = await _appDbContext.MaintenanceRequests.Where(x=> x.HardwareId == id).ToListAsync();
+            var requestIds = await _appDbContext.MaintenanceRequests.Where(x=> x.HardwareId == id).OrderBy(x => x.Id).ToListAsync();
             foreach ( var requestId in requestIds )
             {
                 var title = requestId.Title;
