@@ -60,7 +60,7 @@ namespace ResearcherApiPrototype_1.Repos.MaintenanceRepo
 
         public async Task<ICollection<MaintenanceHistory>> GetHistoryCompleteRecords(int requestId)
         {
-            return await _appDbContext.MaintenanceHistory.Where(x => x.MaintenanceRequestId == requestId).ToListAsync();
+            return await _appDbContext.MaintenanceHistory.Where(x => x.MaintenanceRequestId == requestId).OrderBy(x => x.Id).ToListAsync();
         }
 
         public async Task<ICollection<MaintenanceRequest>> GetTodayRequests(int requestId)
