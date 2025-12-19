@@ -42,13 +42,13 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPost("statusCheck/hardware")]
         public async Task<ActionResult<HardwareStatusDTO>> GetStatuses(HardwareStatusCheckDTO dto)
         {
-            var statuses = _hardwareRepo.GetHardwaresStatusByIdAsync(dto);
+            var statuses = await _hardwareRepo.GetHardwaresStatusByIdAsync(dto);
             return Ok(statuses);
         }
         [HttpPost("statusCheck/group")]
         public async Task<ActionResult<ICollection<HardwareIncidentGroupDTO>>> CheckHardwares(HardwareStatusCheckDTO dto)
         {
-            var a = _hardwareRepo.HadrdwareStatusCheck(dto);
+            var a = await _hardwareRepo.HadrdwareStatusCheck(dto);
             return Ok(a);
         }
 
