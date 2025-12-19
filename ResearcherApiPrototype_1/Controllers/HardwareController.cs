@@ -45,6 +45,12 @@ namespace ResearcherApiPrototype_1.Controllers
             var statuses = _hardwareRepo.GetHardwaresStatusByIdAsync(dto);
             return Ok(statuses);
         }
+        [HttpPost("statusCheck/group")]
+        public async Task<ActionResult<ICollection<HardwareIncidentGroupDTO>>> CheckHardwares(HardwareStatusCheckDTO dto)
+        {
+            var a = _hardwareRepo.HadrdwareStatusCheck(dto);
+            return Ok(a);
+        }
 
         [HttpPost("create")]
         public async Task<ActionResult<int>> CreateOne([FromBody]HardwareCreateDTO hw)

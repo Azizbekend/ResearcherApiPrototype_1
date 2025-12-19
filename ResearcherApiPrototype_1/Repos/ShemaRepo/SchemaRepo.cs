@@ -26,6 +26,7 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 HardwareId = coordinates.HardwareId,
                 RedFileId = coordinates.RedFileId,
                 GreenFileId = coordinates.GreenFileId
+
             };
             _context.SchemaImages.Add(newCoordinates);
             await _context.SaveChangesAsync();

@@ -531,6 +531,52 @@
     ]
   },
   {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.IncidentsController",
+    "Method": "GetAllIncidents",
+    "RelativePath": "api/Incidents/incidents/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.Incident, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.IncidentsController",
+    "Method": "GetByObjectId",
+    "RelativePath": "api/Incidents/incidents/object",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.Incident, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.MaintenanseShedulerController",
     "Method": "CompleteCurrentRequest",
     "RelativePath": "api/MaintenanseSheduler/completeRequest",

@@ -10,6 +10,7 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
         Task<ICollection<HardwareInfo>> GetHardwaresByControlBlockIdAsync(int controlBlockId);
         Task<HardwareInfo> GetHardwareByIdAsync(int id);
         Task<HardwareStatusDTO> GetHardwaresStatusByIdAsync(HardwareStatusCheckDTO dto);
+        Task<ICollection<HardwareIncidentGroupDTO>> HadrdwareStatusCheck(HardwareStatusCheckDTO dto);
         Task HardwareActivating(int id);
         Task<HardwareInfo> HardwareInfoUpdate(HardwareInfoUpdateDTO dto);
         Task HardwareDelete(int id);

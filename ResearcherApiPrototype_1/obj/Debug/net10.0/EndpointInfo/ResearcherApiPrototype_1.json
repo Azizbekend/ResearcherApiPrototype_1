@@ -945,6 +945,92 @@
         }
       }
     },
+    "/api/Incidents/incidents/all": {
+      "get": {
+        "tags": [
+          "Incidents"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Incident"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Incident"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Incident"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Incidents/incidents/object": {
+      "get": {
+        "tags": [
+          "Incidents"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Incident"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Incident"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Incident"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/MaintenanseSheduler/next_week": {
       "get": {
         "tags": [
@@ -2944,16 +3030,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "hardwareSchema": {
-            "$ref": "#/components/schemas/HardwareSchema"
-          },
           "fileId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "file": {
-            "$ref": "#/components/schemas/FileModel"
           },
           "hardwareId": {
             "type": "integer",
@@ -2961,11 +3041,13 @@
           },
           "redFileId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "greenFileId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2997,6 +3079,55 @@
               "type": "string"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Incident": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nodeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "discription": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "isClosed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "closedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "hardwareId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "controlBlockId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "objectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "serviceUserId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -3472,6 +3603,9 @@
     },
     {
       "name": "Hardware"
+    },
+    {
+      "name": "Incidents"
     },
     {
       "name": "MaintenanseSheduler"

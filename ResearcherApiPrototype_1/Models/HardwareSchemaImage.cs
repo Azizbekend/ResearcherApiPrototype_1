@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ResearcherApiPrototype_1.Models
 {
@@ -14,12 +14,15 @@ namespace ResearcherApiPrototype_1.Models
         public string Width { get; set; }
         [ForeignKey("HardwareSchema")]
         public int HardwareSchemaId { get; set; }
+        [JsonIgnore]
         public HardwareSchema HardwareSchema { get; set; }
         [ForeignKey("FileModel")]
         public int? FileId { get; set; }
+        [JsonIgnore]
         public FileModel? File { get; set; }
         public int HardwareId { get; set; }
         public int? RedFileId { get; set; }
         public int? GreenFileId { get; set; }
+
     }
 }

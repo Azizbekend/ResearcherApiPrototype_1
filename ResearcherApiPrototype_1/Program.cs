@@ -6,6 +6,7 @@ using ResearcherApiPrototype_1.Repos.ControlBlockRepo;
 using ResearcherApiPrototype_1.Repos.DocumentRepo;
 using ResearcherApiPrototype_1.Repos.FileStorageRepo;
 using ResearcherApiPrototype_1.Repos.HardwareRepo;
+using ResearcherApiPrototype_1.Repos.IncidentRepo;
 using ResearcherApiPrototype_1.Repos.MaintenanceRepo;
 using ResearcherApiPrototype_1.Repos.NodeIndicatesRepo;
 using ResearcherApiPrototype_1.Repos.NodeRepo;
@@ -37,6 +38,7 @@ builder.Services.AddCors(options =>
 });
 //services.AddScoped<IEnsureseedData, EnsureSeedData>();
 builder.Services.AddScoped<INodeIndicatesRepo, NodeIndicatesRepo>();
+builder.Services.AddScoped<IIncidentRepo, IncidentRepo>();
 builder.Services.AddScoped<ICharRepo,  CharRepo>();
 builder.Services.AddScoped<IObjectPassportRepo, ObjectPassportRepo>();
 builder.Services.AddScoped<IMaintenanceRepo, MaintenanceRepo>();

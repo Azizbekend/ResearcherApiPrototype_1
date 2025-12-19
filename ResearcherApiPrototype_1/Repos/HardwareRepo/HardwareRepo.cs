@@ -82,6 +82,35 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
             return dictionary;
         }
 
+        public async Task<ICollection<HardwareIncidentGroupDTO>> HadrdwareStatusCheck(HardwareStatusCheckDTO dto)
+        {
+            var checkedList = new List<HardwareIncidentGroupDTO>();
+            foreach(var item in dto.Ids)
+            {
+                var returnDTO = new HardwareIncidentGroupDTO();
+                var hardwareNodes = await _appDbContext.Nodes.Where(n => n.HardwareId == item && (n.PlcNodeId.Trim().EndsWith("hAlmAi") || n.PlcNodeId.Trim().EndsWith("hAlmQF") || n.PlcNodeId.Trim().EndsWith("hAlmStator") ||
+               n.PlcNodeId.Trim().EndsWith("hAlmVentQF") || n.PlcNodeId.Trim().EndsWith("hAlmVentCmd") || n.PlcNodeId.Trim().EndsWith("hAlmDisconnect") ||
+               n.PlcNodeId.EndsWith("hAlmFC") || n.PlcNodeId.EndsWith("hAlmKonc") || n.PlcNodeId.EndsWith("hAlmCmd")
+               || n.PlcNodeId.Trim().EndsWith("hAlmMoment") || n.PlcNodeId.Trim().EndsWith("hAlmExt") || n.PlcNodeId.Trim().EndsWith("hStatus"))).ToListAsync();
+                foreach(var hardwareNode in hardwareNodes)
+                {
+                    var alarm = await _appDbContext.NodesIndicates.FirstOrDefaultAsync(x => x.PlcNodeId == hardwareNode.PlcNodeId);
+                    if (alarm != null && alarm.Indicates == "True")
+                    {
+                        returnDTO.HardwareId = item;
+                        returnDTO.Incidents = "True";
+                    }
+                    else if (hardwareNode.PlcNodeId.Trim().EndsWith("hStatus"))
+                    {
+                        var buff = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId.Trim()).OrderByDescending(x=>x.Id).FirstAsync();
+                        returnDTO.HardwareStatus = buff.Indicates;
+                    }
+                }
+                checkedList.Add(returnDTO);
+            }
+            return checkedList;
+        }
+       
         public async Task HardwareActivating(int id)
         {
             var hw = new HardwareInfo
