@@ -8,5 +8,8 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
         Task<ICollection<Incident>> GetAllIncidents();
         Task<ICollection<Incident>> GetIncidentsByObjectId(int  objectId);
         Task<ICollection<CommonIncidentTableGetDTO>> GetIncidentsByObjectIdForTable(int objectId);
+        Task<ICollection<CommonIncidentTableGetDTO>> GetIncidentsForTable();
+        Task<ICollection<HardwareIncidentGetDTO>> GetHardwareIncidents(int hardwareId);
+
     }
 }

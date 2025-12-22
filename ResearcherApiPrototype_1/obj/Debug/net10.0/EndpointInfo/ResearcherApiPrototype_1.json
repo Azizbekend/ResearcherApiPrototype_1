@@ -754,17 +754,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/HardwareStatusCheckDTO"
+                "$ref": "#/components/schemas/BaseSendListDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/HardwareStatusCheckDTO"
+                "$ref": "#/components/schemas/BaseSendListDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/HardwareStatusCheckDTO"
+                "$ref": "#/components/schemas/BaseSendListDTO"
               }
             }
           }
@@ -786,6 +786,111 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HardwareStatusDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Hardware/statusCheck/group": {
+      "post": {
+        "tags": [
+          "Hardware"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaseSendListDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaseSendListDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaseSendListDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HardwareIncidentGroupDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HardwareIncidentGroupDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HardwareIncidentGroupDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Hardware/incidentCheck/hardware": {
+      "get": {
+        "tags": [
+          "Hardware"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfo"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfo"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfo"
+                  }
                 }
               }
             }
@@ -1023,6 +1128,140 @@
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Incident"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Incidents/object/forTable": {
+      "get": {
+        "tags": [
+          "Incidents"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommonIncidentTableGetDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommonIncidentTableGetDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommonIncidentTableGetDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Incidents/all/forTable": {
+      "get": {
+        "tags": [
+          "Incidents"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommonIncidentTableGetDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommonIncidentTableGetDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CommonIncidentTableGetDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Incidents/hardware/all": {
+      "get": {
+        "tags": [
+          "Incidents"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HardwareIncidentGetDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HardwareIncidentGetDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HardwareIncidentGetDTO"
                   }
                 }
               }
@@ -2408,6 +2647,189 @@
         }
       }
     },
+    "/api/Schemas/card/create": {
+      "post": {
+        "tags": [
+          "Schemas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemeCard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemeCard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemeCard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Schemas/scheme/cards": {
+      "get": {
+        "tags": [
+          "Schemas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SchemaCardsInfoGetDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SchemaCardsInfoGetDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SchemaCardsInfoGetDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Schemas/card/update": {
+      "put": {
+        "tags": [
+          "Schemas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemeCardUpdateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemeCardUpdateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SchemeCardUpdateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Schemas/card/delete": {
+      "delete": {
+        "tags": [
+          "Schemas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SchemeCard"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/ServiceRequests/Create": {
       "post": {
         "tags": [
@@ -2603,6 +3025,20 @@
         },
         "additionalProperties": false
       },
+      "BaseSendListDTO": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CharCreateDTO": {
         "type": "object",
         "properties": {
@@ -2650,6 +3086,48 @@
             "nullable": true
           },
           "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommonIncidentTableGetDTO": {
+        "type": "object",
+        "properties": {
+          "objectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "objectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "hardwareId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hardwareName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "closedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "serviceManName": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceCompanyName": {
             "type": "string",
             "nullable": true
           }
@@ -2862,6 +3340,50 @@
         },
         "additionalProperties": false
       },
+      "HardwareIncidentGetDTO": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "closedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "serviceManName": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceCompanyName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HardwareIncidentGroupDTO": {
+        "type": "object",
+        "properties": {
+          "hardwareId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hardwareStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "incidents": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "HardwareInfo": {
         "type": "object",
         "properties": {
@@ -3047,20 +3569,6 @@
           "greenFileId": {
             "type": "integer",
             "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "HardwareStatusCheckDTO": {
-        "type": "object",
-        "properties": {
-          "ids": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            },
             "nullable": true
           }
         },
@@ -3371,6 +3879,36 @@
         },
         "additionalProperties": false
       },
+      "SchemaCardsInfoGetDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "top": {
+            "type": "string",
+            "nullable": true
+          },
+          "left": {
+            "type": "string",
+            "nullable": true
+          },
+          "nodeInfoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nodeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "measurementName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "SchemaCreateDTO": {
         "type": "object",
         "properties": {
@@ -3431,6 +3969,50 @@
           "greenFileId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SchemeCard": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "top": {
+            "type": "string",
+            "nullable": true
+          },
+          "left": {
+            "type": "string",
+            "nullable": true
+          },
+          "nodeInfoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "schemeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SchemeCardUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "top": {
+            "type": "string",
+            "nullable": true
+          },
+          "left": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

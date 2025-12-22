@@ -18,6 +18,23 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
             return await _context.Incidents.ToListAsync();
         }
 
+        public async Task<ICollection<HardwareIncidentGetDTO>> GetHardwareIncidents(int hardwareId)
+        {
+           var list = new List<HardwareIncidentGetDTO>();
+            var incidents = await _context.Incidents.Where(x => x.HardwareId == hardwareId).ToListAsync();
+            foreach (var incident in incidents)
+            {
+                var dto = new HardwareIncidentGetDTO()
+                {
+                    CreatedAt = incident.CreatedAt,
+                    ClosedAt = incident.ClosedAt,
+                    Status = incident.Status
+                };
+                list.Add(dto);
+            }
+            return list;
+        }
+
         public async Task<ICollection<Incident>> GetIncidentsByObjectId(int objectId)
         {
             return await _context.Incidents.Where(x=> x.ObjectId == objectId).ToListAsync();
@@ -36,6 +53,7 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
                 {
                     ObjectId = staticObject.Id,
                     ObjectName = staticObject.Name,
+                    Status = inc.Status,
                     HardwareId = hardware.Id,
                     HardwareName = hardware.Name,
                     CreatedAt = inc.CreatedAt,
@@ -44,6 +62,30 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
                 list.Add(dto);
             }
             return list;
+        }
+
+        public async Task<ICollection<CommonIncidentTableGetDTO>> GetIncidentsForTable()
+        {
+            var list = new List<CommonIncidentTableGetDTO>();
+            var incidents = await _context.Incidents.ToListAsync();
+            foreach (var inc in incidents)
+            {
+                var staticObj = await _context.StaticObjectInfos.FirstOrDefaultAsync(x => x.Id == inc.ObjectId);
+                var hardware = await _context.Hardwares.FirstOrDefaultAsync(x => x.Id == inc.HardwareId);
+                var dto = new CommonIncidentTableGetDTO()
+                {
+                    ObjectId = staticObj.Id,
+                    ObjectName = staticObj.Name,
+                    Status = inc.Status,
+                    HardwareId = hardware.Id,
+                    HardwareName = hardware.Name,
+                    CreatedAt = inc.CreatedAt,
+                    ClosedAt = inc.ClosedAt,
+                };
+                list.Add(dto);
+            }
+            return list;
+
         }
     }
 }

@@ -40,16 +40,26 @@ namespace ResearcherApiPrototype_1.Controllers
         }
 
         [HttpPost("statusCheck/hardware")]
-        public async Task<ActionResult<HardwareStatusDTO>> GetStatuses(HardwareStatusCheckDTO dto)
+        public async Task<ActionResult<HardwareStatusDTO>> GetStatuses(BaseSendListDTO dto)
         {
             var statuses = await _hardwareRepo.GetHardwaresStatusByIdAsync(dto);
             return Ok(statuses);
         }
         [HttpPost("statusCheck/group")]
-        public async Task<ActionResult<ICollection<HardwareIncidentGroupDTO>>> CheckHardwares(HardwareStatusCheckDTO dto)
+        public async Task<ActionResult<ICollection<HardwareIncidentGroupDTO>>> CheckHardwares(BaseSendListDTO dto)
         {
             var a = await _hardwareRepo.HadrdwareStatusCheck(dto);
             return Ok(a);
+        }
+
+        [HttpGet("incidentCheck/hardware")]
+        public async Task<ActionResult<ICollection<NodeInfo>>> GetHardwareIncidents(int id) 
+        {
+            var incs = await _hardwareRepo.HardwareIncidentsCheck(id);
+            if(incs == null)
+                return NotFound();
+            else
+                return Ok(incs);
         }
 
         [HttpPost("create")]

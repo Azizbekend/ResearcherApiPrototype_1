@@ -1,11 +1,7 @@
 ﻿namespace ResearcherApiPrototype_1.DTOs.IncidentDTOs
 {
-    public class CommonIncidentTableGetDTO
-    {
-        public int ObjectId { get; set; }
-        public string ObjectName { get; set; }
-        public int HardwareId { get; set; }
-        public string HardwareName { get; set; }
+    public class HardwareIncidentGetDTO
+   {
         public string Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ClosedAt { get; set; }

@@ -13,6 +13,7 @@ namespace ResearcherApiPrototype_1
         public DbSet<HardwareInfo> Hardwares { get; set; }
         public DbSet<HardwareSchema> Schemas { get; set; }
         public DbSet<HardwareSchemaImage> SchemaImages { get; set; }
+        public DbSet<SchemeCard> SchemeCards { get; set; }
         public DbSet<NodeInfo> Nodes { get; set; }
         public DbSet<NodeIndicates> NodesIndicates { get; set; }
         public DbSet<ServiceRequest> ServiceRequests { get; set; }

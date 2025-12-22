@@ -55,5 +55,33 @@ namespace ResearcherApiPrototype_1.Controllers
             await _schemaRepo.DeleteCoordinates(id);
             return Ok();
         }
+
+        [HttpPost("card/create")]
+        public async Task<ActionResult<SchemeCard>> SchemeCardCreate(SchemeCard card)
+        {
+            var schemeCard = await _schemaRepo.CreateSchemeCard(card);
+            return Ok(schemeCard);
+        }
+
+        [HttpGet("scheme/cards")]
+        public async Task<ActionResult<ICollection<SchemaCardsInfoGetDTO>>> GetAllCardsById(int id)
+        {
+            var cards = await _schemaRepo.GetCardsBySchemeId(id); 
+            return Ok(cards);
+        }
+
+        [HttpPut("card/update")]
+        public async Task<ActionResult<SchemeCard>> Update(SchemeCardUpdateDTO schemeCard)
+        {
+            var updatedCard = await _schemaRepo.UpdateSchemeCard(schemeCard);
+            return Ok(updatedCard);
+        }
+
+        [HttpDelete("card/delete")]
+        public async Task<ActionResult<SchemeCard>> Delete(int id)
+        {
+            var deleted = _schemaRepo.DeleteCard(id);
+            return Ok(deleted);
+        }
     }
 }

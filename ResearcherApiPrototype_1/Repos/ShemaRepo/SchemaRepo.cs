@@ -48,6 +48,21 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
             return newschema;
         }
 
+        public async Task<SchemeCard> CreateSchemeCard(SchemeCard newCard)
+        {
+            _context.SchemeCards.Add(newCard);
+            await _context.SaveChangesAsync();
+            return newCard;
+        }
+
+        public async Task<SchemeCard> DeleteCard(int id)
+        {
+            var card = await _context.SchemeCards.FirstOrDefaultAsync(x => x.Id == id);
+            _context.SchemeCards.Remove(card);
+            await _context.SaveChangesAsync();
+            return card;
+        }
+
         public async Task DeleteCoordinates(int id)
         {
             var toDel = await _context.SchemaImages.FirstOrDefaultAsync(x=>x.Id == id);
@@ -56,6 +71,26 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 _context.SchemaImages.Remove(toDel);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<ICollection<SchemaCardsInfoGetDTO>> GetCardsBySchemeId(int schemeId)
+        {
+            List<SchemaCardsInfoGetDTO> infos = new List<SchemaCardsInfoGetDTO>();
+           var list = await _context.SchemeCards.Where(x=> x.SchemeId == schemeId).ToListAsync();
+            foreach (var item in list)
+            {
+                var nodeInfo = await _context.Nodes.FirstOrDefaultAsync(x => x.Id == item.NodeInfoId);
+                var schemaCard = new SchemaCardsInfoGetDTO
+                {
+                    Id = item.Id,
+                    Left = item.Left,
+                    Top = item.Top,
+                    NodeName = nodeInfo.Name,
+                    MeasurementName = nodeInfo.Mesurement
+                };
+                infos.Add(schemaCard);
+            }
+            return infos;
         }
 
         public async Task<ICollection<HardwareSchemaImage>> GetCoordinatesBySchemaId(int id)
@@ -72,6 +107,11 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                 //.Include(x => x.StaticObjectInfoId)
                 .Where (x => x.StaticObjectInfoId == id)
                 .ToListAsync();
+        }
+
+        public Task<SchemeCard> GetSingleSchemeCard(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<HardwareSchemaImage> UpdateCoordinates(SchemeImageUpdateDTO dto)
@@ -92,6 +132,16 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
             }
             else
                 throw new InvalidOperationException("Not found!");
+        }
+
+        public async Task<SchemeCard> UpdateSchemeCard(SchemeCardUpdateDTO card)
+        {
+            var schemecard = await _context.SchemeCards.FirstOrDefaultAsync(x => x.Id == card.Id);
+            schemecard.Left = card.Left;
+            schemecard.Top = card.Top;
+            _context.SchemeCards.Attach(schemecard);
+            await _context.SaveChangesAsync();
+            return schemecard;
         }
     }
 }

@@ -412,6 +412,32 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "GetHardwareIncidents",
+    "RelativePath": "api/Hardware/incidentCheck/hardware",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
     "Method": "InfoDelete",
     "RelativePath": "api/Hardware/info/delete",
     "HttpMethod": "DELETE",
@@ -506,6 +532,32 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
+    "Method": "CheckHardwares",
+    "RelativePath": "api/Hardware/statusCheck/group",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.BaseSendListDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.HardwaresDTOs.HardwareIncidentGroupDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.HardwareController",
     "Method": "GetStatuses",
     "RelativePath": "api/Hardware/statusCheck/hardware",
     "HttpMethod": "POST",
@@ -514,13 +566,59 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ResearcherApiPrototype_1.DTOs.HardwaresDTOs.HardwareStatusCheckDTO",
+        "Type": "ResearcherApiPrototype_1.DTOs.BaseCreateDTOs.BaseSendListDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
         "Type": "ResearcherApiPrototype_1.DTOs.HardwaresDTOs.HardwareStatusDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.IncidentsController",
+    "Method": "GetTableIncidentsAll",
+    "RelativePath": "api/Incidents/all/forTable",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.IncidentDTOs.CommonIncidentTableGetDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.IncidentsController",
+    "Method": "GetHardwareiIncident",
+    "RelativePath": "api/Incidents/hardware/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.IncidentDTOs.HardwareIncidentGetDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -567,6 +665,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.Incident, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.IncidentsController",
+    "Method": "GetTableIncidentsObject",
+    "RelativePath": "api/Incidents/object/forTable",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.IncidentDTOs.CommonIncidentTableGetDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1192,6 +1316,84 @@
   },
   {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "SchemeCardCreate",
+    "RelativePath": "api/Schemas/card/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "card",
+        "Type": "ResearcherApiPrototype_1.Models.SchemeCard",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.SchemeCard",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "Delete",
+    "RelativePath": "api/Schemas/card/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.SchemeCard",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "Update",
+    "RelativePath": "api/Schemas/card/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "schemeCard",
+        "Type": "ResearcherApiPrototype_1.DTOs.SchemesDTOs.SchemeCardUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.SchemeCard",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
     "Method": "DeleteCoordinates",
     "RelativePath": "api/Schemas/schema/coordinates",
     "HttpMethod": "DELETE",
@@ -1327,6 +1529,32 @@
     "ReturnTypes": [
       {
         "Type": "ResearcherApiPrototype_1.Models.HardwareSchemaImage",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.SchemasController",
+    "Method": "GetAllCardsById",
+    "RelativePath": "api/Schemas/scheme/cards",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.DTOs.SchemesDTOs.SchemaCardsInfoGetDTO, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

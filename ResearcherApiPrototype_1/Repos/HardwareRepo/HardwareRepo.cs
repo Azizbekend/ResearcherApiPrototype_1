@@ -1,6 +1,7 @@
 ﻿using ResearcherApiPrototype_1.Models;
 using Microsoft.EntityFrameworkCore;
 using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
+using ResearcherApiPrototype_1.DTOs.BaseCreateDTOs;
 
 namespace ResearcherApiPrototype_1.Repos.HardwareRepo
 {
@@ -58,7 +59,7 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 .ToListAsync();
         }
 
-        public async Task<HardwareStatusDTO> GetHardwaresStatusByIdAsync(HardwareStatusCheckDTO dto)
+        public async Task<HardwareStatusDTO> GetHardwaresStatusByIdAsync(BaseSendListDTO dto)
         {
             HardwareStatusDTO dictionary = new HardwareStatusDTO();
             var listNodes = new List<NodeInfo>();
@@ -82,7 +83,7 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
             return dictionary;
         }
 
-        public async Task<ICollection<HardwareIncidentGroupDTO>> HadrdwareStatusCheck(HardwareStatusCheckDTO dto)
+        public async Task<ICollection<HardwareIncidentGroupDTO>> HadrdwareStatusCheck(BaseSendListDTO dto)
         {
             var checkedList = new List<HardwareIncidentGroupDTO>();
             foreach(var item in dto.Ids)
@@ -95,18 +96,43 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 foreach(var hardwareNode in hardwareNodes)
                 {
                     var alarm = await _appDbContext.NodesIndicates.FirstOrDefaultAsync(x => x.PlcNodeId == hardwareNode.PlcNodeId);
-                    if (alarm != null && alarm.Indicates == "True")
+                    var buff = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId.Trim()).OrderByDescending(x => x.Id).FirstAsync();
+                    if (hardwareNode.PlcNodeId.Trim().EndsWith("hStatus"))
                     {
-                        returnDTO.HardwareId = item;
-                        returnDTO.Incidents = "True";
-                    }
-                    else if (hardwareNode.PlcNodeId.Trim().EndsWith("hStatus"))
-                    {
-                        var buff = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId.Trim()).OrderByDescending(x=>x.Id).FirstAsync();
+                        
                         returnDTO.HardwareStatus = buff.Indicates;
+                        if (alarm != null && alarm.Indicates == "True")
+                        {
+                            returnDTO.HardwareStatus = buff.Indicates;
+                            returnDTO.HardwareId = hardwareNode.HardwareId;
+                            returnDTO.Incidents = "True";
+                            checkedList.Add(returnDTO);
+                        }
+                        else
+                        {
+                            returnDTO.HardwareStatus = buff.Indicates;
+                            returnDTO.HardwareId = hardwareNode.HardwareId;
+                            returnDTO.Incidents = "False";
+                            checkedList.Add(returnDTO);
+                        }
+                    }        
+                    else
+                        if (alarm != null && alarm.Indicates == "True")
+                    {
+                        returnDTO.HardwareStatus = buff.Indicates;
+                        returnDTO.HardwareId = hardwareNode.HardwareId;
+                        returnDTO.Incidents = "True";
+                        checkedList.Add(returnDTO);
+                    }
+                    else
+                    {
+                        returnDTO.HardwareStatus = buff.Indicates;
+                        returnDTO.HardwareId = hardwareNode.HardwareId;
+                        returnDTO.Incidents = "False";
+                        checkedList.Add(returnDTO);
                     }
                 }
-                checkedList.Add(returnDTO);
+                
             }
             return checkedList;
         }
@@ -128,6 +154,24 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
             var hi = await _appDbContext.Hardwares.FirstOrDefaultAsync(h => h.Id == id);
             _appDbContext.Hardwares.Remove(hi);
             await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task<ICollection<NodeInfo>> HardwareIncidentsCheck(int id)
+        {
+           var list = new List<NodeInfo>();
+           var nodes = await _appDbContext.Nodes.Where(x => x.HardwareId == id && (x.PlcNodeId.Trim().EndsWith("hAlmAi") || x.PlcNodeId.Trim().EndsWith("hAlmQF") || x.PlcNodeId.Trim().EndsWith("hAlmStator") ||
+               x.PlcNodeId.Trim().EndsWith("hAlmVentQF") || x.PlcNodeId.Trim().EndsWith("hAlmVentCmd") || x.PlcNodeId.Trim().EndsWith("hAlmDisconnect") ||
+               x.PlcNodeId.EndsWith("hAlmFC") || x.PlcNodeId.EndsWith("hAlmKonc") || x.PlcNodeId.EndsWith("hAlmCmd")
+               || x.PlcNodeId.Trim().EndsWith("hAlmMoment") || x.PlcNodeId.Trim().EndsWith("hAlmExt"))).ToListAsync();
+            foreach (var node in nodes)
+            {
+                var incident = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == node.PlcNodeId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+                if(incident != null && incident.Indicates == "True")
+                {
+                    list.Add(node);
+                }
+            }
+            return list;
         }
 
         public async Task<HardwareInfo> HardwareInfoUpdate(HardwareInfoUpdateDTO dto)

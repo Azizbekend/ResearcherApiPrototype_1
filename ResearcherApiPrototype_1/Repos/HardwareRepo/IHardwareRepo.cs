@@ -1,4 +1,5 @@
-﻿using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
+﻿using ResearcherApiPrototype_1.DTOs.BaseCreateDTOs;
+using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
 using ResearcherApiPrototype_1.Models;
 
 namespace ResearcherApiPrototype_1.Repos.HardwareRepo
@@ -9,8 +10,9 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
         Task<ICollection<HardwareInfo>> GetAllHardwaresAsync();
         Task<ICollection<HardwareInfo>> GetHardwaresByControlBlockIdAsync(int controlBlockId);
         Task<HardwareInfo> GetHardwareByIdAsync(int id);
-        Task<HardwareStatusDTO> GetHardwaresStatusByIdAsync(HardwareStatusCheckDTO dto);
-        Task<ICollection<HardwareIncidentGroupDTO>> HadrdwareStatusCheck(HardwareStatusCheckDTO dto);
+        Task<HardwareStatusDTO> GetHardwaresStatusByIdAsync(BaseSendListDTO dto);
+        Task<ICollection<HardwareIncidentGroupDTO>> HadrdwareStatusCheck(BaseSendListDTO dto);
+        Task<ICollection<NodeInfo>> HardwareIncidentsCheck(int id);
         Task HardwareActivating(int id);
         Task<HardwareInfo> HardwareInfoUpdate(HardwareInfoUpdateDTO dto);
         Task HardwareDelete(int id);
