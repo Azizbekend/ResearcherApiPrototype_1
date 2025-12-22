@@ -80,7 +80,7 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpDelete("card/delete")]
         public async Task<ActionResult<SchemeCard>> Delete(int id)
         {
-            var deleted = _schemaRepo.DeleteCard(id);
+            var deleted = await _schemaRepo.DeleteCard(id);
             return Ok(deleted);
         }
     }

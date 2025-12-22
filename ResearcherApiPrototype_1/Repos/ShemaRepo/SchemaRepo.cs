@@ -85,6 +85,7 @@ namespace ResearcherApiPrototype_1.Repos.ShemaRepo
                     Id = item.Id,
                     Left = item.Left,
                     Top = item.Top,
+                    NodeInfoId = nodeInfo.Id,
                     NodeName = nodeInfo.Name,
                     MeasurementName = nodeInfo.Mesurement
                 };
