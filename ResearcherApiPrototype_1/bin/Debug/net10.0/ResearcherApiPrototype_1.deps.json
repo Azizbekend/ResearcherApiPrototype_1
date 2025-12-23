@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v10.0": {
       "ResearcherApiPrototype_1/1.0.0": {
         "dependencies": {
-          "ComandSenderManager": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "10.0.0",
           "Microsoft.EntityFrameworkCore.Design": "10.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.0",
@@ -17,14 +16,6 @@
         },
         "runtime": {
           "ResearcherApiPrototype_1.dll": {}
-        }
-      },
-      "BitFaster.Caching/2.5.4": {
-        "runtime": {
-          "lib/net6.0/BitFaster.Caching.dll": {
-            "assemblyVersion": "2.5.4.0",
-            "fileVersion": "2.5.4.0"
-          }
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -320,7 +311,7 @@
           "Microsoft.Build.Tasks.Core": "17.14.28",
           "Microsoft.Build.Utilities.Core": "17.14.28",
           "Microsoft.CodeAnalysis.Workspaces.Common": "4.14.0",
-          "Newtonsoft.Json": "13.0.4",
+          "Newtonsoft.Json": "13.0.3",
           "System.CodeDom": "9.0.0",
           "System.Composition": "9.0.0",
           "System.Configuration.ConfigurationManager": "9.0.0",
@@ -412,7 +403,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "10.0.0",
           "Microsoft.Extensions.DependencyModel": "10.0.0",
           "Mono.TextTemplating": "3.0.0",
-          "Newtonsoft.Json": "13.0.4"
+          "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net10.0/Microsoft.EntityFrameworkCore.Design.dll": {
@@ -467,11 +458,11 @@
           }
         }
       },
-      "Newtonsoft.Json/13.0.4": {
+      "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "13.0.0.0",
-            "fileVersion": "13.0.4.30916"
+            "fileVersion": "13.0.3.27908"
           }
         }
       },
@@ -493,111 +484,6 @@
           "lib/net10.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.0.0"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua/1.5.378.65": {
-        "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua.Client": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Configuration": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Core": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Gds.Client.Common": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Gds.Server.Common": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Security.Certificates": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Server": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Types": "1.5.378.65"
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Client/1.5.378.65": {
-        "dependencies": {
-          "BitFaster.Caching": "2.5.4",
-          "OPCFoundation.NetStandard.Opc.Ua.Configuration": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Core": "1.5.378.65"
-        },
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Client.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Configuration/1.5.378.65": {
-        "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua.Core": "1.5.378.65"
-        },
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Configuration.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Core/1.5.378.65": {
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.4",
-          "OPCFoundation.NetStandard.Opc.Ua.Security.Certificates": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Types": "1.5.378.65"
-        },
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Core.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Gds.Client.Common/1.5.378.65": {
-        "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua.Client": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Core": "1.5.378.65"
-        },
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Gds.Client.Common.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Gds.Server.Common/1.5.378.65": {
-        "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua.Core": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Security.Certificates": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Server": "1.5.378.65"
-        },
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Gds.Server.Common.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Security.Certificates/1.5.378.65": {
-        "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua.Types": "1.5.378.65"
-        },
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Security.Certificates.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Server/1.5.378.65": {
-        "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua.Configuration": "1.5.378.65",
-          "OPCFoundation.NetStandard.Opc.Ua.Core": "1.5.378.65"
-        },
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Server.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
-          }
-        }
-      },
-      "OPCFoundation.NetStandard.Opc.Ua.Types/1.5.378.65": {
-        "runtime": {
-          "lib/net10.0/Opc.Ua.Types.dll": {
-            "assemblyVersion": "1.5.378.0",
-            "fileVersion": "1.5.378.65"
           }
         }
       },
@@ -771,17 +657,6 @@
             "fileVersion": "9.0.24.52809"
           }
         }
-      },
-      "ComandSenderManager/1.0.0": {
-        "dependencies": {
-          "OPCFoundation.NetStandard.Opc.Ua": "1.5.378.65"
-        },
-        "runtime": {
-          "ComandSenderManager.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
@@ -790,13 +665,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "BitFaster.Caching/2.5.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-1QroTY1PVCZOSG9FnkkCrmCKk/+bZCgI/YXq376HnYwUDJ4Ho0EaV4YaA/5v5WYLnwIwIO7RZkdWbg9pxIpueQ==",
-      "path": "bitfaster.caching/2.5.4",
-      "hashPath": "bitfaster.caching.2.5.4.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -931,12 +799,12 @@
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
     },
-    "Newtonsoft.Json/13.0.4": {
+    "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A==",
-      "path": "newtonsoft.json/13.0.4",
-      "hashPath": "newtonsoft.json.13.0.4.nupkg.sha512"
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
     "Npgsql/10.0.0": {
       "type": "package",
@@ -951,69 +819,6 @@
       "sha512": "sha512-E2+uSWxSB8LdsUVwPaqRWOcGOP92biry2JEwc0KJMdLJF+aZdczeIdEXVwEyv4nSVMQJH0o8tLhyAMiR6VF0lw==",
       "path": "npgsql.entityframeworkcore.postgresql/10.0.0",
       "hashPath": "npgsql.entityframeworkcore.postgresql.10.0.0.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-qJ2yf5MeHtHaUnajsD1cj4u1h5vsrFuAwAALhhyWSbqoCMUhnHRUI361hk3YoqDQL1w5GFLKUTIrAdZApiEcIg==",
-      "path": "opcfoundation.netstandard.opc.ua/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Client/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ME0p4y2mWdA//Rf8bAHjk7ivkPGRWOZLRNBcl1TMe9dFZM3mh3aETaapLfHtnzkPch8zNC/0Tm7mB+vbVQyA4A==",
-      "path": "opcfoundation.netstandard.opc.ua.client/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.client.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Configuration/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-C0hRMQHHwTo6WYSQeXF3FSX3e6LdaBUwcDHaRqUv9GmrzzX2h4lUwc9qo380nz++6MJolSc2Xiewvg7+uaZBYw==",
-      "path": "opcfoundation.netstandard.opc.ua.configuration/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.configuration.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Core/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-MoRetHTcRp2YiE36yHgaju9q9CmoydiqdRSo1MeXt/MgiWUHK+yYUl6iA3NpTbnw67eUcmn0pB57xQuZvvSUqg==",
-      "path": "opcfoundation.netstandard.opc.ua.core/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.core.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Gds.Client.Common/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-meMS1Ra9T3t5NDigx8KvZh6efTw/O4Fx2Ah2Cr75efH4QqLFS2CZ6ud7chtUkv1KsBciMWM/L6jE+xwD1R2VzQ==",
-      "path": "opcfoundation.netstandard.opc.ua.gds.client.common/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.gds.client.common.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Gds.Server.Common/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Fx0vPdyPTt8xXGN0Jx/DDFpKz8okXkFWtJaI+e0XGOgr9CNVh52fAJb01dNE/yP42EVl0pAW3SVb8M20MMyIkQ==",
-      "path": "opcfoundation.netstandard.opc.ua.gds.server.common/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.gds.server.common.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Security.Certificates/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-aVvCvkVwkgRZ0WFYrVto5vkkbnxs0B59Bqna1L9xkOLVkMQQ4fhdGv4O9IVqvy10SvZXbRossRXCD1nYAxHOfQ==",
-      "path": "opcfoundation.netstandard.opc.ua.security.certificates/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.security.certificates.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Server/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-psEGallaZwZDEgB0hcDlf7LMJPVqUsnwu235DorRoMHwETq6fM329RD8F2EksABerz0yTtLJe2PEIp3w8s7M2A==",
-      "path": "opcfoundation.netstandard.opc.ua.server/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.server.1.5.378.65.nupkg.sha512"
-    },
-    "OPCFoundation.NetStandard.Opc.Ua.Types/1.5.378.65": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-avT7wISXtwr+fX+ZbTSO/sFBGhx0B4NNU2GBqEnt7vPnQP1fa302u1bAMm65ZX6kTrCFIHMCKu+J82MOQLFGMg==",
-      "path": "opcfoundation.netstandard.opc.ua.types/1.5.378.65",
-      "hashPath": "opcfoundation.netstandard.opc.ua.types.1.5.378.65.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/10.0.1": {
       "type": "package",
@@ -1133,11 +938,6 @@
       "sha512": "sha512-U9msthvnH2Fsw7xwAvIhNHOdnIjOQTwOc8Vd0oGOsiRcGMGoBFlUD6qtYawRUoQdKH9ysxesZ9juFElt1Jw/7A==",
       "path": "system.windows.extensions/9.0.0",
       "hashPath": "system.windows.extensions.9.0.0.nupkg.sha512"
-    },
-    "ComandSenderManager/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

@@ -6,7 +6,6 @@
         public string Top { get; set; }
         public string Left { get; set; }
         public int NodeInfoId { get; set; }
-        public int SchemeId { get; set; }
         public string NodeName { get; set; }
         public string MeasurementName { get; set; }
 

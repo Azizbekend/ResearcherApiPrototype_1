@@ -185,112 +185,6 @@
         }
       }
     },
-    "/api/Comand/send/command/string": {
-      "post": {
-        "tags": [
-          "Comand"
-        ],
-        "parameters": [
-          {
-            "name": "ip",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "nodeId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Comand/send/command/bool": {
-      "post": {
-        "tags": [
-          "Comand"
-        ],
-        "parameters": [
-          {
-            "name": "ip",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "nodeId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Comand/send/command/float": {
-      "post": {
-        "tags": [
-          "Comand"
-        ],
-        "parameters": [
-          {
-            "name": "ip",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "nodeId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "value",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "float"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/ControlBlock/all": {
       "get": {
         "tags": [
@@ -4164,10 +4058,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "schemeId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "nodeName": {
             "type": "string",
             "nullable": true
@@ -4446,9 +4336,6 @@
   "tags": [
     {
       "name": "Characteristics"
-    },
-    {
-      "name": "Comand"
     },
     {
       "name": "ControlBlock"
