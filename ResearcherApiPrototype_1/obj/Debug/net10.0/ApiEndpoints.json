@@ -977,6 +977,58 @@
     ]
   },
   {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeIndicatesController",
+    "Method": "GetByEnd",
+    "RelativePath": "api/NodeIndicates/internal/findByend",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "end",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ResearcherApiPrototype_1.Models.NodeIndicates",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeIndicatesController",
+    "Method": "GetGroupByEnd",
+    "RelativePath": "api/NodeIndicates/internal/findGroupByend",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "end",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeIndicates, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
     "Method": "GetAll",
     "RelativePath": "api/NodeInfo/all",
@@ -1149,6 +1201,32 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.ICollection\u00601[[ResearcherApiPrototype_1.Models.NodeInfo, ResearcherApiPrototype_1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.NodeInfoController",
+    "Method": "GetInfoByEnd",
+    "RelativePath": "api/NodeInfo/internalMethod/getBystrEND",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "end",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

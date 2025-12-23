@@ -102,6 +102,12 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok();
         }
 
+        [HttpGet("internalMethod/getBystrEND")]
+        public async Task<ActionResult<ICollection<NodeInfo>>> GetInfoByEnd(string end)
+        {
+            var node = await _nodeRepo.GetNodeByStringEnd(end);
+            return Ok(node);
+        }
 
 
     }

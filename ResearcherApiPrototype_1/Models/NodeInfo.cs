@@ -13,6 +13,9 @@ namespace ResearcherApiPrototype_1.Models
         public string PlcNodeId { get; set; }
         public bool IsCommand { get; set; } = false;
         public bool IsValue { get; set; } = true;
+        public string? MinValue { get; set; }
+        public string? MaxValue { get; set; }
+        public string? LastValue { get; set; }
         [ForeignKey("HardwareInfo")]
         public int HardwareId { get; set; }
         [JsonIgnore]

@@ -11,7 +11,10 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
         Task<NodeIndicates> GetLastIndecatesByNodeIdAsync(int nodeId);
         Task <NodeIndicates> GetIndicatesByPlcNodeIdAsync(string plcNodeId);
         Task<NodeIndecatesGroupResponseDTO> GetIndicatesByList(List<int> nodeids);
-        
+        Task<NodeIndicates> GetByStrEnd(string end);
+        Task<ICollection<NodeIndicates>> GetGroupByStrEnd(string end);
+
+
 
 
     }

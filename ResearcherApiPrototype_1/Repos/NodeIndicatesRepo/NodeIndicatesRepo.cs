@@ -78,7 +78,11 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             }
                 
         }
-
+        public async Task<NodeIndicates> GetByStrEnd(string end)
+        {
+            var indicates = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith(end)).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+            return indicates;
+        }
         public async Task<NodeIndicates> GetLastIndecatesByNodeIdAsync(int nodeId)
         {
             
@@ -90,8 +94,10 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             throw new NotFiniteNumberException() ;
         }
 
-        
-
-
+        public async Task<ICollection<NodeIndicates>> GetGroupByStrEnd(string end)
+        {
+            var nodes = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith(end)).ToListAsync();
+            return nodes;
+        }
     }
 }

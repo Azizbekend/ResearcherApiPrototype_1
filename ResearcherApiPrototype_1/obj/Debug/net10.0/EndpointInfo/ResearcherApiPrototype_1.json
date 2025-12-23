@@ -1771,6 +1771,91 @@
         }
       }
     },
+    "/api/NodeIndicates/internal/findByend": {
+      "get": {
+        "tags": [
+          "NodeIndicates"
+        ],
+        "parameters": [
+          {
+            "name": "end",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeIndicates"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeIndicates"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NodeIndicates"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NodeIndicates/internal/findGroupByend": {
+      "get": {
+        "tags": [
+          "NodeIndicates"
+        ],
+        "parameters": [
+          {
+            "name": "end",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeIndicates"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeIndicates"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeIndicates"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/NodeInfo/infos": {
       "get": {
         "tags": [
@@ -2292,6 +2377,53 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/NodeInfo/internalMethod/getBystrEND": {
+      "get": {
+        "tags": [
+          "NodeInfo"
+        ],
+        "parameters": [
+          {
+            "name": "end",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfo"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfo"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfo"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -3780,6 +3912,14 @@
             "type": "string",
             "nullable": true
           },
+          "minValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxValue": {
+            "type": "string",
+            "nullable": true
+          },
           "hardwareId": {
             "type": "integer",
             "format": "int32"
@@ -3847,6 +3987,18 @@
           "isValue": {
             "type": "boolean"
           },
+          "minValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastValue": {
+            "type": "string",
+            "nullable": true
+          },
           "hardwareId": {
             "type": "integer",
             "format": "int32"
@@ -3871,6 +4023,14 @@
           },
           "isValue": {
             "type": "boolean"
+          },
+          "minValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "maxValue": {
+            "type": "string",
+            "nullable": true
           },
           "plcNodeId": {
             "type": "string",

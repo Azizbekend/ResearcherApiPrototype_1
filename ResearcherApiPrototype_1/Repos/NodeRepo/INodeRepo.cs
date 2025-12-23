@@ -20,6 +20,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
         Task <string> IsCommonIncident(int hardwareId);
         Task<ICollection<NodeInfoIncidentDTO>> CheckIncidents(int hardwareId);
         Task<NodeInfo> UpdateNode(NodeUpdateDTO dto);
+        Task<ICollection<NodeInfo>> GetNodeByStringEnd(string strEnd);
         Task DeleteInfo(int id);
     }
 }

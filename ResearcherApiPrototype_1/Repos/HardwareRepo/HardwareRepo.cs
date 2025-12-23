@@ -88,50 +88,94 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
             var checkedList = new List<HardwareIncidentGroupDTO>();
             foreach(var item in dto.Ids)
             {
-                var returnDTO = new HardwareIncidentGroupDTO();
                 var hardwareNodes = await _appDbContext.Nodes.Where(n => n.HardwareId == item && (n.PlcNodeId.Trim().EndsWith("hAlmAi") || n.PlcNodeId.Trim().EndsWith("hAlmQF") || n.PlcNodeId.Trim().EndsWith("hAlmStator") ||
                n.PlcNodeId.Trim().EndsWith("hAlmVentQF") || n.PlcNodeId.Trim().EndsWith("hAlmVentCmd") || n.PlcNodeId.Trim().EndsWith("hAlmDisconnect") ||
                n.PlcNodeId.EndsWith("hAlmFC") || n.PlcNodeId.EndsWith("hAlmKonc") || n.PlcNodeId.EndsWith("hAlmCmd")
                || n.PlcNodeId.Trim().EndsWith("hAlmMoment") || n.PlcNodeId.Trim().EndsWith("hAlmExt") || n.PlcNodeId.Trim().EndsWith("hStatus"))).ToListAsync();
-                foreach(var hardwareNode in hardwareNodes)
+                if (hardwareNodes.Count == 0)
                 {
-                    var alarm = await _appDbContext.NodesIndicates.FirstOrDefaultAsync(x => x.PlcNodeId == hardwareNode.PlcNodeId);
-                    var buff = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId.Trim()).OrderByDescending(x => x.Id).FirstAsync();
-                    if (hardwareNode.PlcNodeId.Trim().EndsWith("hStatus"))
+                    var returnDTO = new HardwareIncidentGroupDTO();
+                    returnDTO.HardwareId = item;
+                    returnDTO.HardwareStatus = "Not found";
+                    returnDTO.Incidents = "Not Found";
+                    checkedList.Add(returnDTO);
+                }
+                else
+                {
+                    var returnDTO = new HardwareIncidentGroupDTO();
+                    returnDTO.HardwareId = item;
+                    foreach (var hardwareNode in hardwareNodes)
                     {
-                        
-                        returnDTO.HardwareStatus = buff.Indicates;
-                        if (alarm != null && alarm.Indicates == "True")
+
+                        if (hardwareNode.PlcNodeId.EndsWith("hStatus"))
                         {
-                            returnDTO.HardwareStatus = buff.Indicates;
-                            returnDTO.HardwareId = hardwareNode.HardwareId;
-                            returnDTO.Incidents = "True";
-                            checkedList.Add(returnDTO);
+                            var status = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId).OrderByDescending(x => x.Id).FirstAsync();
+
+                            returnDTO.HardwareStatus = status.Indicates == "1" ? "True" : "False" ;
                         }
                         else
                         {
-                            returnDTO.HardwareStatus = buff.Indicates;
-                            returnDTO.HardwareId = hardwareNode.HardwareId;
-                            returnDTO.Incidents = "False";
-                            checkedList.Add(returnDTO);
+                            var check = await _appDbContext.NodesIndicates.FirstOrDefaultAsync(x => x.PlcNodeId == hardwareNode.PlcNodeId);
+                            if (check != null)
+                            {
+                                var indicates = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId).OrderByDescending(x => x.Id).FirstAsync();
+                                if (indicates.Indicates == "True")
+                                { 
+                                    returnDTO.Incidents = indicates.Indicates;
+                                    break;
+                                }
+                                else
+                                    returnDTO.Incidents = indicates.Indicates;
+                            }
+                            else
+
+                                returnDTO.Incidents = "Not Found";
+
                         }
-                    }        
-                    else
-                        if (alarm != null && alarm.Indicates == "True")
-                    {
-                        returnDTO.HardwareStatus = buff.Indicates;
-                        returnDTO.HardwareId = hardwareNode.HardwareId;
-                        returnDTO.Incidents = "True";
-                        checkedList.Add(returnDTO);
+                        
                     }
-                    else
-                    {
-                        returnDTO.HardwareStatus = buff.Indicates;
-                        returnDTO.HardwareId = hardwareNode.HardwareId;
-                        returnDTO.Incidents = "False";
-                        checkedList.Add(returnDTO);
-                    }
+                    checkedList.Add(returnDTO);
                 }
+                
+                //foreach(var hardwareNode in hardwareNodes)
+                //{
+                //    var alarm = await _appDbContext.NodesIndicates.FirstOrDefaultAsync(x => x.PlcNodeId == hardwareNode.PlcNodeId);
+                //    var buff = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId.Trim()).OrderByDescending(x => x.Id).FirstAsync();
+                //    if (hardwareNode.PlcNodeId.Trim().EndsWith("hStatus"))
+                //    {
+                        
+                //        returnDTO.HardwareStatus = buff.Indicates;
+                //        if (alarm != null && alarm.Indicates == "True")
+                //        {
+                //            returnDTO.HardwareStatus = buff.Indicates;
+                //            returnDTO.HardwareId = hardwareNode.HardwareId;
+                //            returnDTO.Incidents = "True";
+                //            checkedList.Add(returnDTO);
+                //        }
+                //        else
+                //        {
+                //            returnDTO.HardwareStatus = buff.Indicates;
+                //            returnDTO.HardwareId = hardwareNode.HardwareId;
+                //            returnDTO.Incidents = "False";
+                //            checkedList.Add(returnDTO);
+                //        }
+                //    }        
+                //    else
+                //        if (alarm != null && alarm.Indicates == "True")
+                //    {
+                //        returnDTO.HardwareStatus = buff.Indicates;
+                //        returnDTO.HardwareId = hardwareNode.HardwareId;
+                //        returnDTO.Incidents = "True";
+                //        checkedList.Add(returnDTO);
+                //    }
+                //    else
+                //    {
+                //        returnDTO.HardwareStatus = buff.Indicates;
+                //        returnDTO.HardwareId = hardwareNode.HardwareId;
+                //        returnDTO.Incidents = "False";
+                //        checkedList.Add(returnDTO);
+                //    }
+                //}
                 
             }
             return checkedList;

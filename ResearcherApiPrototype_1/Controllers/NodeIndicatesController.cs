@@ -49,5 +49,19 @@ namespace ResearcherApiPrototype_1.Controllers
             var group = await _nodeIndicatesRepo.GetIndicatesByList(dto.listId);
             return Ok(group);
         }
+
+        [HttpGet("internal/findByend")]
+        public async Task<ActionResult<NodeIndicates>> GetByEnd(string end)
+        {
+            var indicates = await _nodeIndicatesRepo.GetByStrEnd(end);
+            return Ok(indicates);
+        }
+
+        [HttpGet("internal/findGroupByend")]
+        public async Task<ActionResult<ICollection<NodeIndicates>>> GetGroupByEnd(string end)
+        {
+            var indicates = await _nodeIndicatesRepo.GetGroupByStrEnd(end);
+            return Ok(indicates);
+        }
     }
 }

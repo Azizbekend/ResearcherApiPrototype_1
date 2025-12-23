@@ -84,7 +84,9 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                     PlcNodeId = node.PlcNodeId,
                     Mesurement = node.Mesurement,
                     IsCommand = false,
-                    HardwareId = dto.HardwareId
+                    HardwareId = dto.HardwareId,
+                    MinValue = node.MinValue,
+                    MaxValue = node.MaxValue
                 };
                 _appDbContext.Nodes.Add(newnode);
             }
@@ -102,7 +104,9 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                     Mesurement = node.Mesurement,
                     IsCommand = true,
                     IsValue = node.IsValue,
-                    HardwareId = dto.HardwareId
+                    HardwareId = dto.HardwareId,
+                    MinValue = node.MinValue,
+                    MaxValue = node.MaxValue
                 };
                 _appDbContext.Nodes.Add(newnode);
             }
@@ -118,6 +122,8 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                 node.IsValue = dto.IsValue;
                 node.Mesurement = dto.Mesurement;
                 node.PlcNodeId = dto.PlcNodeId;
+                node.MinValue = dto.MinValue;
+                node.MaxValue = dto.MaxValue;
                 _appDbContext.Nodes.Attach(node);
                 await _appDbContext.SaveChangesAsync();
                 return node;
@@ -197,6 +203,12 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
 
             }
             return list;
+        }
+
+        public async Task<ICollection<NodeInfo>> GetNodeByStringEnd(string strEnd)
+        {
+            var node = await _appDbContext.Nodes.Where(x => x.PlcNodeId.EndsWith(strEnd)).ToListAsync();
+            return node;
         }
     }
 }
