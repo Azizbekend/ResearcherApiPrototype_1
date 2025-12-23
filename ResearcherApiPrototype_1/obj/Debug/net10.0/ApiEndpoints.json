@@ -100,6 +100,84 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ComandController",
+    "Method": "SendComandBool",
+    "RelativePath": "api/Comand/send/command/bool",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ip",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nodeId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "value",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ComandController",
+    "Method": "SendComandFloat",
+    "RelativePath": "api/Comand/send/command/float",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ip",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nodeId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "value",
+        "Type": "System.Single",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ResearcherApiPrototype_1.Controllers.ComandController",
+    "Method": "SendComandString",
+    "RelativePath": "api/Comand/send/command/string",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ip",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "nodeId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "value",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ResearcherApiPrototype_1.Controllers.ControlBlockController",
     "Method": "GetAll",
     "RelativePath": "api/ControlBlock/all",
