@@ -57,7 +57,7 @@ namespace ResearcherApiPrototype_1.Controllers
 
 
         [HttpGet("nodes/incident/all_check")]
-        public async Task<ActionResult<string>> CheckAllIncident(int id)
+        public async Task<ActionResult<ICollection<NodeInfoIncidentDTO>>> CheckAllIncident(int id)
         {
             var ni = await _nodeRepo.CheckIncidents(id);
             return Ok(ni);
