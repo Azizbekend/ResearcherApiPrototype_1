@@ -39,5 +39,10 @@ namespace ResearcherApiPrototype_1.Repos.ControlBlockRepo
                 .FirstOrDefaultAsync(c => c.Name == name);
 
         }
+
+        public async Task<ControlBlockInfo> GetByHardwareId(int cbId)
+        {
+            return await _appDbContext.ControlBlocks.FirstOrDefaultAsync(x => x.Id == cbId);
+        }
     }
 }

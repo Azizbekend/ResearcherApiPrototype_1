@@ -13,6 +13,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
         Task CreateMassCommandNodeAsync(MassNodeCreateDTO dto);
         Task<NodeInfo> CreateCommandNodeAsync(string name, string plcNodeId, string mesurement, bool isValue, int hardwareId);
         Task<ICollection<NodeInfo>> GetAllNodesAsync();
+        Task<NodeInfo> GetNodeById(int id);
         Task<ICollection<NodeInfo>> GetAllInfoNodesByHardwareId(int hardwareId);
         Task<ICollection<NodeInfo>> GetAllCommandNodesByHardwareId(int hardwareId);
         Task<ICollection<NodeInfo>> GetHardwareIncidentsNodes(int hardwareId);
@@ -21,6 +22,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
         Task<ICollection<NodeInfoIncidentDTO>> CheckIncidents(int hardwareId);
         Task<NodeInfo> UpdateNode(NodeUpdateDTO dto);
         Task<ICollection<NodeInfo>> GetNodeByStringEnd(string strEnd);
+        Task<string> GetRemoteStatus(int hardwareId)    ;
         Task DeleteInfo(int id);
     }
 }

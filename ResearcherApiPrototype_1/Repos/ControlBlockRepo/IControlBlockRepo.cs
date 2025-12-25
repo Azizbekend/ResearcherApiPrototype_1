@@ -6,6 +6,7 @@ namespace ResearcherApiPrototype_1.Repos.ControlBlockRepo
     {
         Task<ControlBlockInfo> CreateControlBlock(string name, string IpAdress, int passportId);
         Task<ICollection<ControlBlockInfo>> GetAllControlBlocks();
+        Task<ControlBlockInfo> GetByHardwareId(int  hardwareId) ;
         Task<ICollection<ControlBlockInfo>> GetControlBlockInfoByPassportId(int passportId);
         Task<ControlBlockInfo> GetControlBlockInfoByName(string name);
     }

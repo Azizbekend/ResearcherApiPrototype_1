@@ -185,6 +185,172 @@
         }
       }
     },
+    "/api/Comand/check/remoteControlStatus": {
+      "get": {
+        "tags": [
+          "Comand"
+        ],
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Comand/hardware/remoreControl/Activate": {
+      "get": {
+        "tags": [
+          "Comand"
+        ],
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Comand/hardware/remoreControl/Deactivate": {
+      "get": {
+        "tags": [
+          "Comand"
+        ],
+        "parameters": [
+          {
+            "name": "hardwareId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Comand/send/command/string": {
+      "post": {
+        "tags": [
+          "Comand"
+        ],
+        "parameters": [
+          {
+            "name": "nodeId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Comand/send/command/bool": {
+      "post": {
+        "tags": [
+          "Comand"
+        ],
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "nodeId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Comand/send/command/float": {
+      "post": {
+        "tags": [
+          "Comand"
+        ],
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "nodeId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ControlBlock/all": {
       "get": {
         "tags": [
@@ -2146,17 +2312,26 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfoIncidentDTO"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfoIncidentDTO"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NodeInfoIncidentDTO"
+                  }
                 }
               }
             }
@@ -4006,6 +4181,20 @@
         },
         "additionalProperties": false
       },
+      "NodeInfoIncidentDTO": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nodeName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "NodeUpdateDTO": {
         "type": "object",
         "properties": {
@@ -4055,6 +4244,10 @@
             "nullable": true
           },
           "nodeInfoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "schemeId": {
             "type": "integer",
             "format": "int32"
           },
@@ -4336,6 +4529,9 @@
   "tags": [
     {
       "name": "Characteristics"
+    },
+    {
+      "name": "Comand"
     },
     {
       "name": "ControlBlock"

@@ -1,3 +1,4 @@
+using ComandSenderManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using ResearcherApiPrototype_1;
@@ -26,6 +27,7 @@ builder.Services.AddScoped<IHardwareRepo, HardwareRepo>();
 builder.Services.AddScoped<IControlBlockRepo, ControlBlockRepo>();
 builder.Services.AddScoped<IFileStorageRepo, FileStorageRepo>();
 builder.Services.AddScoped<IDocumentRepo, DocumentRepo>();
+builder.Services.AddScoped<IComandSender, ComandSender>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",

@@ -195,7 +195,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                 {
                     var dto = new NodeInfoIncidentDTO
                     {
-                        NodeId = indicates.Id,
+                        NodeId = node.Id,
                         NodeName = node.Name
                     };
                     list.Add(dto);
@@ -209,6 +209,20 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
         {
             var node = await _appDbContext.Nodes.Where(x => x.PlcNodeId.EndsWith(strEnd)).ToListAsync();
             return node;
+        }
+
+        public async Task<NodeInfo> GetNodeById(int id)
+        {
+            return await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<string> GetRemoteStatus(int hardwareId)
+        {
+            var node = _appDbContext.Nodes.FirstOrDefault(x => x.HardwareId == hardwareId && x.PlcNodeId.Trim().EndsWith("hRemote"));
+            if (node == null)
+                throw new Exception("Could not found RemoteControlNode for this Azizbeck!");
+            else
+                return node.PlcNodeId;
         }
     }
 }
