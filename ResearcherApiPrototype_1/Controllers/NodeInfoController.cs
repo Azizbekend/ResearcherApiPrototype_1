@@ -16,6 +16,7 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             _nodeRepo = nodeRepo;
         }
+// тест
 
         [HttpGet("infos")]
         public async Task<ActionResult<ICollection<NodeInfo>>> GetInfos(int id) 
