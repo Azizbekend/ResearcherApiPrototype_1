@@ -108,8 +108,23 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
            var water1 = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("waterMeter1_counter")).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
            var water2 = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("waterMeter2_counter")).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
            var hourP = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("HMI_AI_FQIR1.hPV")).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+
+    Console.WriteLine($"=== LOG: ElectroConsumption Calculation ===");
+    Console.WriteLine($"el1.Indicates: {(el1?.Indicates ?? "NULL")}");
+    Console.WriteLine($"el2.Indicates: {(el2?.Indicates ?? "NULL")}");
+
+
             dto.HourEfficiency = hourP.Indicates;
             dto.ElectroConsumption = Math.Round((((double.Parse(el1.Indicates) + double.Parse(el2.Indicates))) / 1000), 2);
+
+
+            Console.WriteLine($"el1 parsed: {el1Value}");
+            Console.WriteLine($"el2 parsed: {el2Value}");
+            Console.WriteLine($"Sum: {sum}");
+            Console.WriteLine($"Result (sum/1000): {result}");
+
+
+
             dto.WaterConsumption = ((double.Parse(water1.Indicates) + double.Parse(water2.Indicates)) / 1000).ToString();
             var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("HMI_AI_FQIR1.hPV") && x.TimeStamp == DateTime.Today.AddDays(-1).ToUniversalTime()).ToListAsync();
             if (list.Count > 0)
