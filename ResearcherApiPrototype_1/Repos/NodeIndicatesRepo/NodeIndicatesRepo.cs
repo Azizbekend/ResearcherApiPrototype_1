@@ -116,6 +116,8 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             dto.HourEfficiency = hourP.Indicates;
             dto.ElectroConsumption = Math.Round(((double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000), 2);
 
+            Console.WriteLine($"Парс 1: {double.Parse(el1.Indicates)}");
+            Console.WriteLine($"Парс 2: {double.Parse(el2.Indicates)}");
             Console.WriteLine($"Сумма: {double.Parse(el1.Indicates) + double.Parse(el2.Indicates)}");
             Console.WriteLine($"Деление на 1000: {(double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000}");
             Console.WriteLine($"Ответ: {Math.Round(((double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000), 2)}");
