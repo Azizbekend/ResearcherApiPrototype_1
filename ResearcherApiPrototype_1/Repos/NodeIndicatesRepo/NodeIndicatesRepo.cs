@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using static NpgsqlTypes.NpgsqlTsQuery;
 using ResearcherApiPrototype_1.DTOs.NodesDTOs;
+using System.Globalization;
 
 namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 {
@@ -102,6 +103,8 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         public async Task<ForPasportDTO> GetBaseReadingsSha()
         {
+            var culture = CultureInfo.GetCultureInfo("ru-RU");
+
            var dto = new ForPasportDTO();
            var el1 = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("meter98_pwr_total")).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
            var el2 = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("meter104_pwr_total")).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
@@ -109,27 +112,23 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
            var water2 = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("waterMeter2_counter")).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
            var hourP = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("HMI_AI_FQIR1.hPV")).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
 
-            Console.WriteLine($"=== LOG: ElectroConsumption Calculation ===");
-            Console.WriteLine($"el1.Indicates: {(el1.Indicates)}");
-            Console.WriteLine($"el2.Indicates: {(el2.Indicates)}");
-
             dto.HourEfficiency = hourP.Indicates;
-            dto.ElectroConsumption = Math.Round(((double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000), 2);
+            double.TryParse(el1.Indicates, NumberStyles.Any, culture, out var el1Num);
+            double.TryParse(el2.Indicates, NumberStyles.Any, culture, out var el2Num);
+            double.TryParse(water1.Indicates, NumberStyles.Any, culture, out var wat1Num);
+            double.TryParse(water2.Indicates, NumberStyles.Any, culture, out var wat2Num);
 
-            Console.WriteLine($"Парс 1: {double.Parse(el1.Indicates)}");
-            Console.WriteLine($"Парс 2: {double.Parse(el2.Indicates)}");
-            Console.WriteLine($"Сумма: {double.Parse(el1.Indicates) + double.Parse(el2.Indicates)}");
-            Console.WriteLine($"Деление на 1000: {(double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000}");
-            Console.WriteLine($"Ответ: {Math.Round(((double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000), 2)}");
+            dto.ElectroConsumption = Math.Round((el1Num + el2Num) / 1000, 2);
+            dto.WaterConsumption = Math.Round((wat1Num + wat2Num) / 1000, 2);
 
-            dto.WaterConsumption = ((double.Parse(water1.Indicates) + double.Parse(water2.Indicates)) / 1000).ToString();
             var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("HMI_AI_FQIR1.hPV") && x.TimeStamp == DateTime.Today.AddDays(-1).ToUniversalTime()).ToListAsync();
             if (list.Count > 0)
             {
                 double buff = 0;
                 foreach (var item in list)
                 {
-                    buff += double.Parse(item.Indicates);
+                    double.TryParse(item.Indicates, NumberStyles.Any, culture, out var buff2);
+                    buff += buff2;
                 }
 
                 dto.DayEfficiency = (buff / list.Count).ToString();
