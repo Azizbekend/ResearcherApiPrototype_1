@@ -4,7 +4,7 @@
     {
         public string HourEfficiency { get; set; }
         public string DayEfficiency { get; set; }
-        public string ElectroConsumption { get; set; }
+        public double ElectroConsumption { get; set; }
         public string WaterConsumption { get; set; }
     }
 }
