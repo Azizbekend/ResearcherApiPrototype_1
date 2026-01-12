@@ -114,9 +114,11 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             Console.WriteLine($"el2.Indicates: {(el2.Indicates)}");
 
             dto.HourEfficiency = hourP.Indicates;
-            dto.ElectroConsumption = Math.Round((((double.Parse(el1.Indicates) + double.Parse(el2.Indicates))) / 1000), 2);
+            dto.ElectroConsumption = Math.Round(((double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000), 2);
 
-            Console.WriteLine($"Sum: {dto.ElectroConsumption}");
+            Console.WriteLine($"Сумма: {double.Parse(el1.Indicates) + double.Parse(el2.Indicates)}");
+            Console.WriteLine($"Деление на 1000: {(double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000}");
+            Console.WriteLine($"Ответ: {Math.Round(((double.Parse(el1.Indicates) + double.Parse(el2.Indicates)) / 1000), 2)}");
 
             dto.WaterConsumption = ((double.Parse(water1.Indicates) + double.Parse(water2.Indicates)) / 1000).ToString();
             var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId.EndsWith("HMI_AI_FQIR1.hPV") && x.TimeStamp == DateTime.Today.AddDays(-1).ToUniversalTime()).ToListAsync();
