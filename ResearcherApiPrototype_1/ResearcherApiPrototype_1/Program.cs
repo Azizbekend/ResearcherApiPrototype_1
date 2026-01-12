@@ -18,6 +18,7 @@ using ResearcherApiPrototype_1.Repos.ShemaRepo;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//testing testing
 
 builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("ResearcherBd")));
