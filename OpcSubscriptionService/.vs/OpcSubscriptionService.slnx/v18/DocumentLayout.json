@@ -3,36 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\enhancedgroupopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\enhancedgroupopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\incidentrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\incidentrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\groupopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\groupopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\advancedopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\advancedopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\noderepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\noderepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\models\\nodeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\models\\nodeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\models\\incident.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\models\\incident.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\models\\nodeindicates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\models\\nodeindicates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\noderepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\noderepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\models\\controlblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\models\\controlblock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\models\\staticobjectinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\models\\staticobjectinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\models\\hardware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\models\\hardware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\models\\nodeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\models\\nodeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\enhancedgroupopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\enhancedgroupopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|c:\\users\\user\\source\\repos\\opcsubscriptionservice\\opcsubscriptionservice\\advancedopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1D015F7-36E0-C067-FD8B-A141312F6DF8}|OpcSubscriptionService\\OpcSubscriptionService.csproj|solutionrelative:opcsubscriptionservice\\advancedopcuamonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -49,37 +69,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "ReaderModificationCommandBatch.cs",
-              "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs",
-              "ToolTip": "C:\\Users\\User\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs [Read Only]",
-              "ViewState": "AgIAAMkAAAAAAAAAAAAQwNsAAAADAAAAAQAAAA==",
+              "Title": "StaticObjectInfo.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\StaticObjectInfo.cs",
+              "RelativeDocumentMoniker": "OpcSubscriptionService\\Models\\StaticObjectInfo.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\StaticObjectInfo.cs",
+              "RelativeToolTip": "OpcSubscriptionService\\Models\\StaticObjectInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T10:43:40.297Z",
-              "EditorCaption": " [Read Only]"
+              "WhenOpened": "2025-12-17T08:09:56.827Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
+              "Title": "ControlBlock.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\ControlBlock.cs",
+              "RelativeDocumentMoniker": "OpcSubscriptionService\\Models\\ControlBlock.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\ControlBlock.cs",
+              "RelativeToolTip": "OpcSubscriptionService\\Models\\ControlBlock.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T08:08:26.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Hardware.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\Hardware.cs",
+              "RelativeDocumentMoniker": "OpcSubscriptionService\\Models\\Hardware.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\Hardware.cs",
+              "RelativeToolTip": "OpcSubscriptionService\\Models\\Hardware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T07:42:20.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Incident.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\Incident.cs",
+              "RelativeDocumentMoniker": "OpcSubscriptionService\\Models\\Incident.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\Incident.cs",
+              "RelativeToolTip": "OpcSubscriptionService\\Models\\Incident.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T07:37:01.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IncidentRepo.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\IncidentRepo.cs",
+              "RelativeDocumentMoniker": "OpcSubscriptionService\\IncidentRepo.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\IncidentRepo.cs",
+              "RelativeToolTip": "OpcSubscriptionService\\IncidentRepo.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAswCcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T06:48:16.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\AppDbContext.cs",
               "RelativeDocumentMoniker": "OpcSubscriptionService\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\AppDbContext.cs",
               "RelativeToolTip": "OpcSubscriptionService\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAACPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T07:54:25.89Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-04T07:54:25.89Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "NodeRepo.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\NodeRepo.cs",
               "RelativeDocumentMoniker": "OpcSubscriptionService\\NodeRepo.cs",
@@ -91,13 +158,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "NodeInfo.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\NodeInfo.cs",
               "RelativeDocumentMoniker": "OpcSubscriptionService\\Models\\NodeInfo.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Models\\NodeInfo.cs",
               "RelativeToolTip": "OpcSubscriptionService\\Models\\NodeInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-04T07:37:31.784Z"
             },
@@ -115,7 +182,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Program.cs",
+              "RelativeDocumentMoniker": "OpcSubscriptionService\\Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Program.cs",
+              "RelativeToolTip": "OpcSubscriptionService\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T07:03:28.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "OpcSubscriptionService.csproj",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\OpcSubscriptionService.csproj",
               "RelativeDocumentMoniker": "OpcSubscriptionService\\OpcSubscriptionService.csproj",
@@ -127,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "AdvancedOpcUaMonitor.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\AdvancedOpcUaMonitor.cs",
               "RelativeDocumentMoniker": "OpcSubscriptionService\\AdvancedOpcUaMonitor.cs",
@@ -140,6 +220,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "GroupOpcUaMonitor.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\GroupOpcUaMonitor.cs",
+              "RelativeDocumentMoniker": "OpcSubscriptionService\\GroupOpcUaMonitor.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\GroupOpcUaMonitor.cs",
+              "RelativeToolTip": "OpcSubscriptionService\\GroupOpcUaMonitor.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwK0AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T07:06:20.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReaderModificationCommandBatch.cs",
+              "DocumentMoniker": "C:\\Users\\User\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs",
+              "ToolTip": "C:\\Users\\User\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\34c8b070c2ae54d7e47bd03b955110cbe53c8882060f566bb0e61b5f8b7c8086\\ReaderModificationCommandBatch.cs [Read Only]",
+              "ViewState": "AgIAAMkAAAAAAAAAAAAQwNsAAAADAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T10:43:40.297Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "EnhancedGroupOpcUaMonitor.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\EnhancedGroupOpcUaMonitor.cs",
               "RelativeDocumentMoniker": "OpcSubscriptionService\\EnhancedGroupOpcUaMonitor.cs",
@@ -148,31 +253,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-04T07:06:37.798Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GroupOpcUaMonitor.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\GroupOpcUaMonitor.cs",
-              "RelativeDocumentMoniker": "OpcSubscriptionService\\GroupOpcUaMonitor.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\GroupOpcUaMonitor.cs",
-              "RelativeToolTip": "OpcSubscriptionService\\GroupOpcUaMonitor.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAAkwIkAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T07:06:20.703Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Program.cs",
-              "RelativeDocumentMoniker": "OpcSubscriptionService\\Program.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\OpcSubscriptionService\\OpcSubscriptionService\\Program.cs",
-              "RelativeToolTip": "OpcSubscriptionService\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBAAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T07:03:28.276Z",
-              "EditorCaption": ""
             }
           ]
         }
