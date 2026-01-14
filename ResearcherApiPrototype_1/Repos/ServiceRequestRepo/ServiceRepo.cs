@@ -13,9 +13,16 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             _context = context;
         }
 
-        public Task CancelRequest(CompleteCancelRequestME_DTO dto)
+        public async Task CancelRequest(CompleteCancelRequestME_DTO dto)
         {
-            throw new NotImplementedException();
+            var request = await _context.CommonRequests.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+            if (request != null) 
+            {
+                request.Status = "Canceled";
+                request.ImplementerId = dto.ImplementerId;
+                _context.CommonRequests.Attach(request);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task CancelStageME(CancelStageME_DTO dto)
@@ -83,6 +90,11 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 throw new Exception("Only implementer can comlete current stage!");
         }
 
+        public Task<CommonServiceRequest> CreateIncidentServiceRequest(CreateIncidentServiceRequestDTO dto)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<CommonRequestStage> CreateRequestStage(CreateStageME_DTO dto)
         {
             var newStage = new CommonRequestStage()
@@ -111,6 +123,11 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             _context.CommonRequests.Add(newRequest);
             await _context.SaveChangesAsync();
             return newRequest;
+        }
+
+        public async Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync()
+        {
+            return await _context.CommonRequests.ToListAsync();
         }
 
         public async Task<ICollection<CommonRequestStage>> GetRequestStages(int id)

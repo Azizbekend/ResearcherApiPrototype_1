@@ -9,7 +9,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
     {
         Task<CommonServiceRequest> CreateServiceRequest(CreateRequestME_DTO dto);
         Task <CommonRequestStage> CreateRequestStage(CreateStageME_DTO dto);
+        Task<CommonServiceRequest> CreateIncidentServiceRequest(CreateIncidentServiceRequestDTO dto);
         Task<ICollection<CommonRequestStage>> GetRequestStages(int id);
+        Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync();
         Task CompleteRequest(CompleteCancelRequestME_DTO dto);
         Task CancelRequest(CompleteCancelRequestME_DTO dto);
         Task CompleteStage(CompleteStageDTO dto);
