@@ -22,6 +22,10 @@ namespace ResearcherApiPrototype_1
         public DbSet<MaintenanceHistory> MaintenanceHistory{ get; set; }
         public DbSet<HardwareCharacteristic> Characteristics { get; set; }
         public DbSet<Incident> Incidents { get; set; }
+        public DbSet<CommonServiceRequest> CommonRequests { get; set; }
+        public DbSet<CommonRequestStage> RequestStages { get; set; }
+        public DbSet<IncidentServiceLink> IncidentServiceLinks { get; set; }
+        public DbSet<SupplyRequest> SupplyRequests { get; set; }
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DocumentModel> Documents { get; set; }
         public DbSet<StaticObjectInfo> StaticObjectInfos { get; set; }
