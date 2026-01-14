@@ -10,9 +10,9 @@ namespace ResearcherApiPrototype_1.Models
         public string CurrentStatus { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ClosedAt { get; set; }
-        public string Creator { get; set; }
-        public string Implementer { get; set; }
-        public string PassedTo { get; set; }
+        public int CreatorId { get; set; }
+        public int ImplementerId { get; set; }
+        public int PassedToId { get; set; } //кому передано
         public int? IncidentId { get; set; }
         public int? CommonServiceRequestId { get; set; }
     }

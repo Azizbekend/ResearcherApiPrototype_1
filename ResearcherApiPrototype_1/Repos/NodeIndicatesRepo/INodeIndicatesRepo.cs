@@ -14,6 +14,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
         Task<NodeIndicates> GetByStrEnd(string end);
         Task<ICollection<NodeIndicates>> GetGroupByStrEnd(string end);
         Task<ForPasportDTO> GetBaseReadingsSha();
+        Task<ICollection<NodeIndicates>> GetStatusAllIndecates(string plcNodeId);
 
 
 

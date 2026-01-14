@@ -56,6 +56,13 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(group);
         }
 
+        [HttpGet("hStatus/all/byPlcNodeId")]
+        public async Task<ActionResult<ICollection<NodeIndicates>>> GetStatuses(string hStatusNode)
+        {
+            var response = await _nodeIndicatesRepo.GetStatusAllIndecates(hStatusNode);
+            return Ok(response);
+        }
+
         [HttpGet("internal/findByend")]
         public async Task<ActionResult<NodeIndicates>> GetByEnd(string end)
         {
@@ -69,5 +76,7 @@ namespace ResearcherApiPrototype_1.Controllers
             var indicates = await _nodeIndicatesRepo.GetGroupByStrEnd(end);
             return Ok(indicates);
         }
+
+        
     }
 }

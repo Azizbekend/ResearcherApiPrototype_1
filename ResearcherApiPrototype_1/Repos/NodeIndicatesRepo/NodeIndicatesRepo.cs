@@ -138,5 +138,22 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
             return dto;
 
         }
+
+        public async Task<ICollection<NodeIndicates>> GetStatusAllIndecates(string plcNodeId)
+        {
+            var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == plcNodeId).OrderBy(x => x.Id).ToListAsync();
+            var buff = list[0].Indicates;
+            var responseList = new List<NodeIndicates>();
+            responseList.Add(list[0]);
+            foreach (var item in list)
+            {
+                if(item.Indicates != buff)
+                {
+                    responseList.Add(item);
+                    buff = item.Indicates;
+                }
+            }
+            return responseList;
+        }
     }
 }
