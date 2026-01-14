@@ -110,8 +110,20 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                         if (hardwareNode.PlcNodeId.EndsWith("hStatus"))
                         {
                             var status = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId).OrderByDescending(x => x.Id).FirstAsync();
+                            if(status.Indicates == "True")
+                            {
+                                returnDTO.HardwareStatus = "True";
+                            }
+                            else
+                            {
+                                if (status.Indicates == "False")
+                                {
+                                    returnDTO.HardwareStatus = "False";
+                                }
+                                else
+                                    returnDTO.HardwareStatus = status.Indicates == "1" ? "True" : "False";
+                            }
 
-                            returnDTO.HardwareStatus = status.Indicates == "1" ? "True" : "False" ;
                         }
                         else
                         {

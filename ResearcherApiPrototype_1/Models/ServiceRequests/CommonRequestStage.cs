@@ -8,7 +8,7 @@ namespace ResearcherApiPrototype_1.Models.ServiceRequests
         public int Id { get; set; }
    
         public string Discription { get; set; }
-        public string CurrentStatus { get; set; }
+        public string CurrentStatus { get; set; } = "New";
         public string StageType { get; set; } // обычный, поставка, подрядчик
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime ClosedAt { get; set; }

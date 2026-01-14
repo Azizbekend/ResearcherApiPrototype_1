@@ -15,6 +15,7 @@ namespace ResearcherApiPrototype_1.Models.ServiceRequests
         public int CreatorId { get; set; }
         public int ImplementerId { get; set; }
         public int HardwareId { get; set; }
+        public int ObjectId { get; set; }
 
     }
 }
