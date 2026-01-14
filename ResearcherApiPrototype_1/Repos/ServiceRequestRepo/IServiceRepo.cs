@@ -1,16 +1,13 @@
 ﻿using ResearcherApiPrototype_1.DTOs.BaseCreateDTOs;
+using ResearcherApiPrototype_1.DTOs.CommonServisesDTOs;
 using ResearcherApiPrototype_1.Models;
+using ResearcherApiPrototype_1.Models.ServiceRequests;
 
 namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 {
     public interface IServiceRepo
     {
-        public Task<ServiceRequest> Create(ServiceRequestCreateDTO dto);
-        public Task AttachImplementer(int id, string name);
-        public Task StatusChange(int id, string status);
-        public Task CloseRequest(int id);
-        public Task<ICollection<ServiceRequest>> GetAllRequests();
-        public Task<ICollection<ServiceRequest>> GetAllObjectServiceRequests(int id);
-        public Task<ICollection<ServiceRequest>> GetHardwareRequests(int id);
+        Task<CommonServiceRequest> CreateServiceRequest(CreateRequestME_DTO dto);
+        Task <CommonRequestStage> CreateRequestStage(CreateStageME_DTO dto);
     }
 }
