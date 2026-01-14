@@ -12,9 +12,7 @@ namespace ResearcherApiPrototype_1.Models
         public string CurrentStatus { get; set; } // new, accepted, passed, Done
         public string ServiceRequestType { get; set; } // incident, planned, single
         public bool IsFailure { get; set; }
-        public string Creator { get; set; }
-        public string Implementer { get; set; }
-
+        public int CreatorId { get; set; }
         public DateTime CreatetAt { get; set; } = DateTime.Now.ToUniversalTime();
         public DateTime ClosedAt { get; set; }
         [ForeignKey("HardwareInfo")]
@@ -23,11 +21,11 @@ namespace ResearcherApiPrototype_1.Models
         public HardwareInfo Hardware { get; set; }
     }
 
-    public enum ServiceRequestStatus
-    {
-        New = 0,
-        Accepted,
-        Passed,
-        Done
-    }  
+    //public enum ServiceRequestStatus
+    //{
+    //    New = 0,
+    //    Accepted,
+    //    Passed,
+    //    Done
+    //}  
 }

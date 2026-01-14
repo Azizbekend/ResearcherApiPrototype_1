@@ -1,5 +1,5 @@
 ﻿using ResearcherApiPrototype_1.DTOs.IncidentDTOs;
-using ResearcherApiPrototype_1.Models;
+using ResearcherApiPrototype_1.Models.ServiceRequests;
 
 namespace ResearcherApiPrototype_1.Repos.IncidentRepo
 {

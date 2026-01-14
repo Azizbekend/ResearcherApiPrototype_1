@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ResearcherApiPrototype_1.DTOs.IncidentDTOs;
-using ResearcherApiPrototype_1.Models;
+using ResearcherApiPrototype_1.Models.ServiceRequests;
 using ResearcherApiPrototype_1.Repos.IncidentRepo;
 
 namespace ResearcherApiPrototype_1.Controllers

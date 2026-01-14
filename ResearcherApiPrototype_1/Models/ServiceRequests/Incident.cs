@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ResearcherApiPrototype_1.Models
+namespace ResearcherApiPrototype_1.Models.ServiceRequests
 {
     public class Incident
     {

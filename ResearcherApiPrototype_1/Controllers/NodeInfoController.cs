@@ -62,6 +62,12 @@ namespace ResearcherApiPrototype_1.Controllers
             var ni = await _nodeRepo.CheckIncidents(id);
             return Ok(ni);
         }
+        [HttpGet("single")]
+        public async Task<IActionResult> GetNodeInfoSingle(int id)
+        {
+            var ni = await _nodeRepo.GetNodeById(id);
+            return Ok(ni);
+        }
 
         [HttpPost("createInfo")]
         public async Task<ActionResult<int>> CreateInfoNode(NodeCreateDTO dto)
@@ -94,6 +100,8 @@ namespace ResearcherApiPrototype_1.Controllers
             var ni=await _nodeRepo.UpdateNode(dto);
             return Ok(ni);
         }
+
+
 
         [HttpDelete("info/delete")]
         public async Task<IActionResult> Delete(int id)

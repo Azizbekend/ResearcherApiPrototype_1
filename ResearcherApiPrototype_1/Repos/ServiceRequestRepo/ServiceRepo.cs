@@ -18,7 +18,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var request = new ServiceRequest
             {
                 Id = id,
-                Implementer = name
+
             };
             _context.ServiceRequests.Attach(request);
             await _context.SaveChangesAsync();
@@ -42,9 +42,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 Discription = dto.Discription,
                 CurrentStatus = dto.CurrentStatus,
                 IsFailure = dto.IsFailure,
-                Creator = dto.Creator,
-                Implementer = dto.Implementer,
-                HardwareId = dto.HardwareId
+                 HardwareId = dto.HardwareId
             };
             _context.ServiceRequests.Add(newRequest);   
             await _context.SaveChangesAsync();
