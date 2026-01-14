@@ -111,11 +111,7 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                         {
                             var status = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareNode.PlcNodeId).OrderByDescending(x => x.Id).FirstAsync();
 
-                            if(status.Indicates == "1" || status.Indicates == "True") 
-                                returnDTO.HardwareStatus = "True";
-                            else
-                                returnDTO.HardwareStatus = "False";
-                            
+                            returnDTO.HardwareStatus = status.Indicates == "1" ? "True" : "False" ;
                         }
                         else
                         {
