@@ -10,7 +10,7 @@ namespace ResearcherApiPrototype_1.Models.ServiceRequests
         public string Discription { get; set; }
         public string CurrentStatus { get; set; } = "New";
         public string StageType { get; set; } // обычный, поставка, подрядчик
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now.ToUniversalTime();
         public DateTime ClosedAt { get; set; }
         public string CancelDiscription { get; set; } = "None";
         public int ServiceId { get; set; }

@@ -39,18 +39,22 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task CompleteRequest(CompleteCancelRequestME_DTO dto)
         {
-            var check = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.RequestId && x.CurrentStatus != "Completed");
+            var check = await _context.RequestStages.FirstOrDefaultAsync(x => x.ServiceId == dto.RequestId && x.CurrentStatus != "Completed");
             if (check == null)
             {
-                var request = await _context.CommonRequests.FirstOrDefaultAsync(x => x.Id == dto.RequestId);
+                var request = await _context.CommonRequests.FirstOrDefaultAsync(x => x.Id == dto.RequestId && x.Status != "Completed");
                 if (request != null)
                 {
                     request.Status = "Completed";
-                    request.ClosedAt = DateTime.Now;
+                    request.ClosedAt = DateTime.Now.ToUniversalTime();
                     request.ImplementerId = dto.ImplementerId;
+                    _context.CommonRequests.Attach(request);
+                    await _context.SaveChangesAsync();
                 }
-                _context.CommonRequests.Attach(request);
-                await _context.SaveChangesAsync();
+                else
+                {
+                    throw new Exception("Current request already completed");
+                }
             }
             else
                 throw new Exception("Request has not completed stages! Try again when all stages will in compleded status");
@@ -82,7 +86,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.StageId);
             if (stage != null && stage.ImplementerId == dto.EngineerId)
             {
-                stage.CurrentStatus = "Complete";
+                stage.CurrentStatus = "Completed";
                 _context.RequestStages.Attach(stage);
                 await _context.SaveChangesAsync();
             }
@@ -90,9 +94,19 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 throw new Exception("Only implementer can comlete current stage!");
         }
 
-        public Task<CommonServiceRequest> CreateIncidentServiceRequest(CreateIncidentServiceRequestDTO dto)
+        public async Task<CommonServiceRequest> CreateIncidentServiceRequest(CreateIncidentServiceRequestDTO dto)
         {
-            throw new NotImplementedException();
+            var newIncidentRequest = new CommonServiceRequest()
+            {
+                Title = dto.Title,
+                Type = "Incident",
+                CreatorId = dto.CreatorId,
+                HardwareId = dto.HardwareId,
+                ObjectId = dto.ObjectId
+            };
+            var a = _context.CommonRequests.Add(newIncidentRequest);
+            await _context.SaveChangesAsync();
+            return newIncidentRequest;
         }
 
         public async Task<CommonRequestStage> CreateRequestStage(CreateStageME_DTO dto)
@@ -115,6 +129,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var newRequest = new CommonServiceRequest()
             {
                 Title = dto.Title,
+                Status = "New",
                 Type = dto.Type,
                 CreatorId = dto.CreatorId,
                 HardwareId = dto.HardwareId,
@@ -133,6 +148,17 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         public async Task<ICollection<CommonRequestStage>> GetRequestStages(int id)
         {
             return await _context.RequestStages.Where(x => x.ServiceId == id).ToListAsync();
+        }
+
+        public async Task CreateIncidentLink(int requestId, int incidentId)
+        {
+            var newIncidentServiceLink = new IncidentServiceLink()
+            {
+                IncidentId = incidentId,
+                ServiceRequestId = requestId
+            };
+            _context.IncidentServiceLinks.Add(newIncidentServiceLink);
+            await _context.SaveChangesAsync();
         }
     }
 }
