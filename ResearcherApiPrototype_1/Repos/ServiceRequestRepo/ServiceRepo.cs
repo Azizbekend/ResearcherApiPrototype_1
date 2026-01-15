@@ -20,6 +20,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             {
                 request.Status = "Canceled";
                 request.ImplementerId = dto.ImplementerId;
+                request.ClosedAt = DateTime.Now.ToUniversalTime();
                 _context.CommonRequests.Attach(request);
                 await _context.SaveChangesAsync();
             }
@@ -32,6 +33,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             {
                 stage.CurrentStatus = "Canceled";
                 stage.CancelDiscription = dto.CancelDiscriprion;
+                stage.ClosedAt = DateTime.Now.ToUniversalTime();
                 _context.RequestStages.Attach(stage);
                 await _context.SaveChangesAsync();
             }
@@ -39,7 +41,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task CompleteRequest(CompleteCancelRequestME_DTO dto)
         {
-            var check = await _context.RequestStages.FirstOrDefaultAsync(x => x.ServiceId == dto.RequestId && x.CurrentStatus != "Completed");
+            var check = await _context.RequestStages.FirstOrDefaultAsync(x => x.ServiceId == dto.RequestId && x.CurrentStatus == "New");
             if (check == null)
             {
                 var request = await _context.CommonRequests.FirstOrDefaultAsync(x => x.Id == dto.RequestId && x.Status != "Completed");
@@ -67,13 +69,14 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             if(stage != null)
             {
                 stage.CurrentStatus = "Completed";
+                stage.ClosedAt = DateTime.Now.ToUniversalTime();
                 _context.RequestStages.Attach(stage);
                 var newStage = new CommonRequestStage()
                 {
                     ServiceId = stage.ServiceId,
                     CreatorId = stage.ImplementerId,
                     ImplementerId = stage.CreatorId,
-                    StageType = stage.StageType,
+                    StageType = "New",
                     Discription = dto.Discription
                 };
                 _context.RequestStages.Add(newStage);
@@ -98,6 +101,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         {
             var newIncidentRequest = new CommonServiceRequest()
             {
+                Status = "New",
                 Title = dto.Title,
                 Type = "Incident",
                 CreatorId = dto.CreatorId,
@@ -108,20 +112,44 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             await _context.SaveChangesAsync();
             return newIncidentRequest;
         }
-
+        public async Task<CommonRequestStage> CreateInitialRequestStage(CreateStageME_DTO dto)
+        {
+            
+                var newStage = new CommonRequestStage()
+                {
+                    ServiceId = dto.ServiceId,
+                    CreatorId = dto.CreatorId,
+                    ImplementerId = dto.ImplementerId,
+                    StageType = dto.StageType,
+                    Discription = dto.Discription
+                };
+                _context.RequestStages.Add(newStage);
+                await _context.SaveChangesAsync();
+                return newStage;
+            
+        }
         public async Task<CommonRequestStage> CreateRequestStage(CreateStageME_DTO dto)
         {
-            var newStage = new CommonRequestStage()
+            var buff = await _context.RequestStages.Where(x => x.ServiceId == dto.ServiceId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+            if(buff != null && buff.CurrentStatus == "New")
             {
-                ServiceId = dto.ServiceId,
-                CreatorId = dto.CreatorId,
-                ImplementerId = dto.ImplementerId,
-                StageType = dto.StageType,
-                Discription = dto.Discription
-            };
-            _context.RequestStages.Add(newStage);
-            await _context.SaveChangesAsync();
-            return newStage;
+                throw new Exception("Can not create new stage while Request has not completed stage!");
+            }
+            else
+            {
+                var newStage = new CommonRequestStage()
+                {
+                    ServiceId = dto.ServiceId,
+                    CreatorId = dto.CreatorId,
+                    ImplementerId = dto.ImplementerId,
+                    StageType = dto.StageType,
+                    Discription = dto.Discription
+                };
+                _context.RequestStages.Add(newStage);
+                await _context.SaveChangesAsync();
+                return newStage;
+            }
+
         }
 
         public async Task<CommonServiceRequest> CreateServiceRequest(CreateRequestME_DTO dto)
@@ -145,7 +173,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             return await _context.CommonRequests.ToListAsync();
         }
 
-        public async Task<ICollection<CommonRequestStage>> GetRequestStages(int id)
+        public async Task<ICollection<CommonRequestStage>> GetRequestStagesAsync(int id)
         {
             return await _context.RequestStages.Where(x => x.ServiceId == id).ToListAsync();
         }
@@ -160,5 +188,16 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             _context.IncidentServiceLinks.Add(newIncidentServiceLink);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id)
+        {
+            return await _context.CommonRequests.Where(x => x.ObjectId == id).ToListAsync();
+        }
+
+        public async Task<ICollection<CommonRequestStage>> GetAllUsersStages(int id)
+        {
+            return await _context.RequestStages.Where(x => x.ImplementerId == id).ToListAsync();
+        }
+
     }
 }
