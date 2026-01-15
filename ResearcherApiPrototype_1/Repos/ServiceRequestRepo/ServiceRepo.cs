@@ -199,5 +199,41 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             return await _context.RequestStages.Where(x => x.ImplementerId == id).ToListAsync();
         }
 
+        public async Task<SupplyRequest> CreateSupplyRequest(SupplyRequestInitialCreateDTO dto, int serviceId)
+        {
+            //var commonRequest = new CommonServiceRequest
+            //{
+            //    Title = $"Поставка: {dto.ProductName}",
+            //    Status = "New",
+            //    Type = "Supply",
+            //    CreatorId = dto.CreatorId,
+            //    ImplementerId = dto.CurrentImplementerId,
+            //    HardwareId = dto.HardwareId,
+            //    ObjectId = dto.ObjectId
+            //};
+            //var bdReq = _context.CommonRequests.Add(commonRequest);
+            var supplyReq = new SupplyRequest
+            {
+                CreatorId = dto.CreatorId,
+                ProductName = dto.ProductName,
+                CurrentImplementerId = dto.CurrentImplementerId,
+                RequiredCount = dto.RequiredCount,
+                CommonRequestId = serviceId
+            };
+            _context.SupplyRequests.Add(supplyReq);
+            await _context.SaveChangesAsync();
+            return supplyReq;
+        }
+
+        public async Task CreateSupplyServiceLink(int serviceId, int supplyId)
+        {
+            var newSupplyRequestLink = new SupplyServiceLink
+            {
+                ServiceRequestId = serviceId,
+                SupplyRequestId = supplyId
+            };
+            _context.SupplyRequestLinks.Add(newSupplyRequestLink);
+            await _context.SaveChangesAsync();
+        }
     }
 }

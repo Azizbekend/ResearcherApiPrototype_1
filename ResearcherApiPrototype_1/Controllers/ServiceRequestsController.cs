@@ -94,6 +94,41 @@ namespace ResearcherApiPrototype_1.Controllers
 
         }
 
+        [HttpPost("mainEngineer/SupplyRequest/InitialCreate")]
+        public async Task<IActionResult> InitialCreateSupplyRequest(SupplyRequestInitialCreateDTO dto)
+        {
+            try
+            {
+                var request = new CreateRequestME_DTO
+                {
+                    Title = $"Поставка: {dto.ProductName}",
+                    CreatorId = dto.CreatorId,
+                    HardwareId = dto.HardwareId,
+                    ObjectId = dto.ObjectId,
+                    Type = "Supply"
+
+                };
+                var reqBD = await _serviceRepo.CreateServiceRequest(request);
+                var stage = new CreateStageME_DTO
+                {
+                    CreatorId = dto.CreatorId,
+                    ImplementerId = dto.CurrentImplementerId,
+                    Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
+                    ServiceId = reqBD.Id,
+                    StageType = "Initial"
+
+                };
+                await _serviceRepo.CreateRequestStage(stage);
+                var supply = await _serviceRepo.CreateSupplyRequest(dto, reqBD.Id);
+                //await _serviceRepo.CreateSupplyServiceLink(reqBD.Id, supply.Id);
+                return Ok(supply);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         //[HttpPost("mainEngineer/commonService/create")]
         //public async Task<IActionResult> CreateCommonService(CreateRequestME_DTO dto)
         //{

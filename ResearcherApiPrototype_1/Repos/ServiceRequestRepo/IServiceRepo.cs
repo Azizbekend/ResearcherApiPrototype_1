@@ -12,6 +12,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         Task<CommonRequestStage> CreateInitialRequestStage(CreateStageME_DTO dto);
         Task<CommonServiceRequest> CreateIncidentServiceRequest(CreateIncidentServiceRequestDTO dto);
         Task CreateIncidentLink(int requestId, int incidentId);
+        Task<SupplyRequest> CreateSupplyRequest(SupplyRequestInitialCreateDTO dto, int serviceId);
+        Task CreateSupplyServiceLink(int serviceId, int supplyId);
         Task<ICollection<CommonRequestStage>> GetRequestStagesAsync(int id);
         Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync();
         Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id);
