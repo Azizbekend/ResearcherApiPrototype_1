@@ -9,10 +9,12 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
     {
         Task<CommonServiceRequest> CreateServiceRequest(CreateRequestME_DTO dto);
         Task <CommonRequestStage> CreateRequestStage(CreateStageME_DTO dto);
+        Task<CommonRequestStage> CreateSupplyRequestStage(CreateStageME_DTO dto);
         Task<CommonRequestStage> CreateInitialRequestStage(CreateStageME_DTO dto);
         Task<CommonServiceRequest> CreateIncidentServiceRequest(CreateIncidentServiceRequestDTO dto);
         Task CreateIncidentLink(int requestId, int incidentId);
         Task<SupplyRequest> CreateSupplyRequest(SupplyRequestInitialCreateDTO dto, int serviceId);
+        Task<bool> IsServiceRequestExists(int id);
         Task CreateSupplyServiceLink(int serviceId, int supplyId);
         Task<ICollection<CommonRequestStage>> GetRequestStagesAsync(int id);
         Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync();

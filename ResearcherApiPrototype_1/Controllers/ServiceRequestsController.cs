@@ -58,7 +58,7 @@ namespace ResearcherApiPrototype_1.Controllers
                     ImplementerId = dto.ImplementerId,
                     ServiceId = request.Id,
                     Discription = dto.Discription,
-                    StageType = "Initial"
+                    StageType = "InitialCommon"
                 };
                 await _serviceRepo.CreateInitialRequestStage(stage);
                 return Ok(request);
@@ -81,7 +81,7 @@ namespace ResearcherApiPrototype_1.Controllers
                     ImplementerId = dto.ImplementerId,
                     ServiceId = request.Id,
                     Discription = dto.Discription,
-                    StageType = "Initial"
+                    StageType = "InitialIncident"
                 };
                 var req = await _serviceRepo.CreateInitialRequestStage(stage);
                 await _serviceRepo.CreateIncidentLink(req.Id, dto.IncidentId);

@@ -170,7 +170,20 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             }
 
         }
-
+        public async Task<CommonRequestStage> CreateSupplyRequestStage(CreateStageME_DTO dto)
+        {  
+                var newStage = new CommonRequestStage()
+                {
+                    ServiceId = dto.ServiceId,
+                    CreatorId = dto.CreatorId,
+                    ImplementerId = dto.ImplementerId,
+                    StageType = dto.StageType,
+                    Discription = dto.Discription
+                };
+                _context.RequestStages.Add(newStage);
+                await _context.SaveChangesAsync();
+                return newStage;            
+        }
         public async Task<CommonServiceRequest> CreateServiceRequest(CreateRequestME_DTO dto)
         {
             var newRequest = new CommonServiceRequest()
@@ -220,17 +233,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task<SupplyRequest> CreateSupplyRequest(SupplyRequestInitialCreateDTO dto, int serviceId)
         {
-            //var commonRequest = new CommonServiceRequest
-            //{
-            //    Title = $"Поставка: {dto.ProductName}",
-            //    Status = "New",
-            //    Type = "Supply",
-            //    CreatorId = dto.CreatorId,
-            //    ImplementerId = dto.CurrentImplementerId,
-            //    HardwareId = dto.HardwareId,
-            //    ObjectId = dto.ObjectId
-            //};
-            //var bdReq = _context.CommonRequests.Add(commonRequest);
+
             var supplyReq = new SupplyRequest
             {
                 CreatorId = dto.CreatorId,
@@ -245,15 +248,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             return supplyReq;
         }
 
+        
+
         public async Task CreateSupplyServiceLink(int serviceId, int supplyId)
         {
-            //var newSupplyRequestLink = new SupplyServiceLink
-            //{
-            //    ServiceRequestId = serviceId,
-            //    SupplyRequestId = supplyId
-            //};
-            //_context.SupplyRequestLinks.Add(newSupplyRequestLink);
-            //await _context.SaveChangesAsync();
         }
         public async Task DeleteSupplyRequest(int id)
         {
@@ -276,6 +274,15 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.CurrentImplementerId);
             }
+        }
+
+        public async Task<bool> IsServiceRequestExists(int id)
+        {
+            var request = _context.CommonRequests.FirstOrDefaultAsync(_ => _.Id == id);
+            if (request != null)
+                return true;
+            return false;
+
         }
     }
 }

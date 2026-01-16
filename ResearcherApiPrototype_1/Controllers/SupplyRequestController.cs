@@ -20,14 +20,14 @@ namespace ResearcherApiPrototype_1.Controllers
         public async Task<IActionResult> InitialCreateSupplyRequest(SupplyRequestInitialCreateDTO dto)
         {
             try
-            {
+            { 
                 var request = new CreateRequestME_DTO
                 {
                     Title = $"Поставка: {dto.ProductName}",
                     CreatorId = dto.CreatorId,
                     HardwareId = dto.HardwareId,
                     ObjectId = dto.ObjectId,
-                    Type = "Supply"
+                    Type = "InitialSupply"
 
                 };
                 var reqBD = await _serviceRepo.CreateServiceRequest(request);
@@ -37,7 +37,7 @@ namespace ResearcherApiPrototype_1.Controllers
                     ImplementerId = dto.CurrentImplementerId,
                     Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
                     ServiceId = reqBD.Id,
-                    StageType = "Initial"
+                    StageType = "InitialSupply"
 
                 };
                 await _serviceRepo.CreateRequestStage(stage);
@@ -49,6 +49,28 @@ namespace ResearcherApiPrototype_1.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+        [HttpPost("mainEngineer/supplyRequest/stage/create")]
+        public async Task<IActionResult> CreateSupplyStage(SupplyRequestInStagesDTO dto)
+        {
+            var stage = new CreateStageME_DTO
+            {
+                CreatorId = dto.CreatorId,
+                ImplementerId = dto.CurrentImplementerId,
+                Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
+                ServiceId = dto.ServiceId,
+                StageType = "Supply"
+            };
+            await _serviceRepo.CreateSupplyRequestStage(stage);
+            var newSupplyReq = new SupplyRequestInitialCreateDTO
+            {
+                CreatorId = dto.CreatorId,
+                CurrentImplementerId = dto.CurrentImplementerId,
+                ProductName = dto.ProductName,
+                RequiredCount = dto.RequiredCount,
+            };
+            await _serviceRepo.CreateSupplyRequest(newSupplyReq, dto.ServiceId);
+            return Ok();
         }
 
         [HttpPost("supplier/attachExpenses")]
