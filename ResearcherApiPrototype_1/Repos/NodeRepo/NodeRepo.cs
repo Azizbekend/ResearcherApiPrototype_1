@@ -64,15 +64,35 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                 .ToListAsync();
         }
 
-        public async Task<ICollection<NodeInfo>> GetAllCommandNodesByHardwareId(int hardwareId)
+        public async Task<ICollection<CommandNodeGetDTO>> GetAllCommandNodesByHardwareId(int hardwareId)
         {
-            return await _appDbContext.Nodes
+            var list = new List<CommandNodeGetDTO>();
+            var nodes =  await _appDbContext.Nodes
                 .Include(n => n.HardwareInfo)
                 .ThenInclude(h => h.ControlBlock)
                 .Where(n => n.HardwareId == hardwareId && n.IsCommand == true)
                 .OrderBy(n => n.Name)
                 .ToListAsync();
+            foreach (var node in nodes)
+            {              
+                var indicates = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == node.PlcNodeId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+                var nodeDTO = new CommandNodeGetDTO()
+                {
+                    Name = node.Name,
+                    Mesurement = node.Mesurement,
+                    IsCommand = node.IsCommand,
+                    IsValue = node.IsValue,
+                    MinValue = node.MinValue,
+                    MaxValue = node.MaxValue,
+                    LastValue = indicates.Indicates
+                };     
+                list.Add(nodeDTO);
+            }
+            return list;
         }
+
+
+        
 
         public async Task CreateMassInfoNodeAsync(MassNodeCreateDTO dto)
         {

@@ -18,11 +18,13 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync();
         Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id);
         Task<ICollection<CommonRequestStage>> GetAllUsersStages(int id);
+        Task SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto);
         Task CompleteRequest(CompleteCancelRequestME_DTO dto);
         Task CancelRequest(CompleteCancelRequestME_DTO dto);
         Task CompleteStage(CompleteStageDTO dto);
         Task CompleteStageME(CompleteStageME_DTO dto);
         Task CancelStageME(CancelStageME_DTO dto);
+        Task DeleteSupplyRequest(int id);
 
     }
 }

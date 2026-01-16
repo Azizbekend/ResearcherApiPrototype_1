@@ -24,7 +24,7 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(nodes);
         }
         [HttpGet("commands")]
-        public async Task<ActionResult<ICollection<NodeInfo>>> GetCommands(int id)
+        public async Task<ActionResult<ICollection<CommandNodeGetDTO>>> GetCommands(int id)
         {
             var nodes = await _nodeRepo.GetAllCommandNodesByHardwareId(id);
             return Ok(nodes);

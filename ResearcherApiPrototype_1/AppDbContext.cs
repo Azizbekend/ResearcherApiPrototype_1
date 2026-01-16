@@ -26,7 +26,7 @@ namespace ResearcherApiPrototype_1
         public DbSet<CommonRequestStage> RequestStages { get; set; }
         public DbSet<IncidentServiceLink> IncidentServiceLinks { get; set; }
         public DbSet<SupplyRequest> SupplyRequests { get; set; }
-        public DbSet<SupplyServiceLink> SupplyRequestLinks { get; set; }
+        //public DbSet<SupplyServiceLink> SupplyRequestLinks { get; set; }
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DocumentModel> Documents { get; set; }
         public DbSet<StaticObjectInfo> StaticObjectInfos { get; set; }

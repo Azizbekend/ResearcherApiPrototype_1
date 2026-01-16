@@ -62,7 +62,26 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 throw new Exception("Request has not completed stages! Try again when all stages will in compleded status");
             
         }
-
+        private async Task InnerCompleteStage(int stageId, string discription, int implementerId)
+        {
+            var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == stageId);
+            if (stage != null)
+            {
+                stage.CurrentStatus = "Completed";
+                stage.ClosedAt = DateTime.Now.ToUniversalTime();
+                _context.RequestStages.Attach(stage);
+                var newStage = new CommonRequestStage()
+                {
+                    ServiceId = stage.ServiceId,
+                    CreatorId = stage.ImplementerId,
+                    ImplementerId = implementerId,
+                    StageType = "Supply",
+                    Discription = discription
+                };
+                _context.RequestStages.Add(newStage);
+                await _context.SaveChangesAsync();
+            }
+        }
         public async Task CompleteStage(CompleteStageDTO dto)
         {
             var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.StageId);
@@ -218,7 +237,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 ProductName = dto.ProductName,
                 CurrentImplementerId = dto.CurrentImplementerId,
                 RequiredCount = dto.RequiredCount,
-                CommonRequestId = serviceId
+                CommonRequestId = serviceId,
+                CurrentStatus = "New"
             };
             _context.SupplyRequests.Add(supplyReq);
             await _context.SaveChangesAsync();
@@ -227,13 +247,35 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task CreateSupplyServiceLink(int serviceId, int supplyId)
         {
-            var newSupplyRequestLink = new SupplyServiceLink
-            {
-                ServiceRequestId = serviceId,
-                SupplyRequestId = supplyId
-            };
-            _context.SupplyRequestLinks.Add(newSupplyRequestLink);
+            //var newSupplyRequestLink = new SupplyServiceLink
+            //{
+            //    ServiceRequestId = serviceId,
+            //    SupplyRequestId = supplyId
+            //};
+            //_context.SupplyRequestLinks.Add(newSupplyRequestLink);
+            //await _context.SaveChangesAsync();
+        }
+        public async Task DeleteSupplyRequest(int id)
+        {
+            var req = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == id);
+            _context.SupplyRequests.Remove(req);
             await _context.SaveChangesAsync();
+        }
+        public async Task SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto)
+        {
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            if (supplyRequest != null) 
+            {
+                supplyRequest.SupplierName = dto.SupplierName;
+                supplyRequest.ExpenseNumber = dto.ExpenseNumber;
+                supplyRequest.CurrentImplementerId = dto.CurrentImplementerId;
+                supplyRequest.Expenses = dto.Expenses;
+                supplyRequest.IsPayed = false;
+                supplyRequest.CurrentStatus = "Счет получен";
+                _context.SupplyRequests.Attach(supplyRequest);
+                await _context.SaveChangesAsync();
+                await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.CurrentImplementerId);
+            }
         }
     }
 }
