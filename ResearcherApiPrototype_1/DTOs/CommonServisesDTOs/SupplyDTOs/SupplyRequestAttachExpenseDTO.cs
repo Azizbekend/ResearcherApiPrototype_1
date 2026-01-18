@@ -1,4 +1,4 @@
-﻿namespace ResearcherApiPrototype_1.DTOs.CommonServisesDTOs
+﻿namespace ResearcherApiPrototype_1.DTOs.CommonServisesDTOs.SupplyDTOs
 {
     public class SupplyRequestAttachExpenseDTO
     {
@@ -6,7 +6,6 @@
         public double RealCount { get; set; }
         public string ExpenseNumber { get; set; }
         public double Expenses { get; set; } //расходы
-        public bool IsPayed { get; set; }
         public int StageId { get; set; }
         public int CurrentImplementerId { get; set; }
         public int RequestId { get; set; }

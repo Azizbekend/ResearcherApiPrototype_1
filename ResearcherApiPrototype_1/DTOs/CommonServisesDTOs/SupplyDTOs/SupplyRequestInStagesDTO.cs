@@ -1,4 +1,4 @@
-﻿namespace ResearcherApiPrototype_1.DTOs.CommonServisesDTOs
+﻿namespace ResearcherApiPrototype_1.DTOs.CommonServisesDTOs.SupplyDTOs
 {
     public class SupplyRequestInStagesDTO
     {

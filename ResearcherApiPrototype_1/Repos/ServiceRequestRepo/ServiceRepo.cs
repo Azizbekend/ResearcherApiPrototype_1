@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ResearcherApiPrototype_1.DTOs.CommonServisesDTOs;
+using ResearcherApiPrototype_1.DTOs.CommonServisesDTOs.SupplyDTOs;
 using ResearcherApiPrototype_1.Models.ServiceRequests;
 
 namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
@@ -171,7 +172,14 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         }
         public async Task<CommonRequestStage> CreateSupplyRequestStage(CreateStageME_DTO dto)
-        {  
+        {
+            var buff = await _context.RequestStages.Where(x => x.ServiceId == dto.ServiceId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+            if (buff != null && buff.CurrentStatus == "New")
+            {
+                throw new Exception("Can not create new stage while Request has not completed stage!");
+            }
+            else
+            {
                 var newStage = new CommonRequestStage()
                 {
                     ServiceId = dto.ServiceId,
@@ -182,7 +190,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 };
                 _context.RequestStages.Add(newStage);
                 await _context.SaveChangesAsync();
-                return newStage;            
+                return newStage;
+            }
+          
         }
         public async Task<CommonServiceRequest> CreateServiceRequest(CreateRequestME_DTO dto)
         {
@@ -265,6 +275,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             if (supplyRequest != null) 
             {
                 supplyRequest.SupplierName = dto.SupplierName;
+                supplyRequest.RealCount = dto.RealCount;
                 supplyRequest.ExpenseNumber = dto.ExpenseNumber;
                 supplyRequest.CurrentImplementerId = dto.CurrentImplementerId;
                 supplyRequest.Expenses = dto.Expenses;
@@ -276,6 +287,21 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             }
         }
 
+        public async Task SupplyRequestAttachPay(SupplyRequestAttachPay dto)
+        {
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            if (supplyRequest != null)
+            {
+                supplyRequest.CurrentImplementerId= dto.CurrentImplementerId;
+                supplyRequest.CurrentStatus = $"Счет #{supplyRequest.ExpenseNumber} оплачен.";
+                supplyRequest.IsPayed= true;
+                _context.SupplyRequests.Attach(supplyRequest);
+                await _context.SaveChangesAsync();
+                await InnerCompleteStage(dto.StageId, $"Счет #{supplyRequest.ExpenseNumber} оплачен. Ожидается поставка на склад.", supplyRequest.CurrentImplementerId);
+            }
+
+        }
+
         public async Task<bool> IsServiceRequestExists(int id)
         {
             var request = _context.CommonRequests.FirstOrDefaultAsync(_ => _.Id == id);
@@ -283,6 +309,49 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 return true;
             return false;
 
+        }
+
+        public async Task SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto)
+        {
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            if (supplyRequest != null)
+            {
+                supplyRequest.CurrentStatus = "Прибыло на склад";
+                supplyRequest.CurrentImplementerId = dto.CurrentImplementerId;
+                _context.SupplyRequests.Attach(supplyRequest);
+                await _context.SaveChangesAsync();
+                await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.CurrentImplementerId);
+            }
+        }
+
+        public async Task ConfirmSupplyStage(CompleteSupplyStageDTO dto)
+        {
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            if (supplyRequest != null)
+            {
+                supplyRequest.CurrentImplementerId = dto.ImplementerId;
+                supplyRequest.CurrentStatus = "Поставка завершена.";
+                _context.SupplyRequests.Attach(supplyRequest);
+                var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.SupplyStageId);
+                stage.CurrentStatus = "Completed";
+                stage.ClosedAt = DateTime.Now.ToUniversalTime();
+                _context.RequestStages.Attach(stage);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task CancelSupplyStage(CancelSupplyStageDTO dto)
+        {
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            if(supplyRequest != null)
+            {
+                supplyRequest.CurrentStatus = "Canceled";
+                _context.SupplyRequests.Attach(supplyRequest);
+                var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.SupplyStageId);
+                stage.CurrentStatus = "Canceled";stage.CancelDiscription = dto.CancelDiscription;
+                _context.RequestStages.Attach(stage);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

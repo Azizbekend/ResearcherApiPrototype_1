@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ResearcherApiPrototype_1.DTOs.CommonServisesDTOs;
+using ResearcherApiPrototype_1.DTOs.CommonServisesDTOs.SupplyDTOs;
 using ResearcherApiPrototype_1.Repos.ServiceRequestRepo;
 
 namespace ResearcherApiPrototype_1.Controllers
@@ -78,7 +79,33 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
             return Ok();
+        }
 
+        [HttpPost("buhgalteriya/attachPay")]
+        public async Task<IActionResult> AttachPay(SupplyRequestAttachPay dto)
+        {
+            await _serviceRepo.SupplyRequestAttachPay(dto);
+            return Ok();
+        }
+
+        [HttpPost("supplier/warehouse/confirm")]
+        public async Task<IActionResult> ConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto)
+        {
+            await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
+            return Ok();
+        }
+        [HttpPost("mainEngineer/supplyStage/complete")]
+        public async Task<IActionResult> CompleteSuppleStage(CompleteSupplyStageDTO dto)
+        {
+            await _serviceRepo.ConfirmSupplyStage(dto);
+            return Ok();
+        }
+
+        [HttpPost("mainEngineer/supplyStage/Cancel")]
+        public async Task<IActionResult> CancelSupplyStage(CancelSupplyStageDTO dto)
+        {
+            await _serviceRepo.CancelSupplyStage(dto);
+            return Ok();
         }
 
         [HttpDelete]

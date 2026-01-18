@@ -1,5 +1,6 @@
 ﻿using ResearcherApiPrototype_1.DTOs.BaseCreateDTOs;
 using ResearcherApiPrototype_1.DTOs.CommonServisesDTOs;
+using ResearcherApiPrototype_1.DTOs.CommonServisesDTOs.SupplyDTOs;
 using ResearcherApiPrototype_1.Models;
 using ResearcherApiPrototype_1.Models.ServiceRequests;
 
@@ -21,7 +22,12 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id);
         Task<ICollection<CommonRequestStage>> GetAllUsersStages(int id);
         Task SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto);
+        Task SupplyRequestAttachPay(SupplyRequestAttachPay dto);
+        Task SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto);
         Task CompleteRequest(CompleteCancelRequestME_DTO dto);
+        Task ConfirmSupplyStage(CompleteSupplyStageDTO dto);
+        Task CancelSupplyStage(CancelSupplyStageDTO dto);
+
         Task CancelRequest(CompleteCancelRequestME_DTO dto);
         Task CompleteStage(CompleteStageDTO dto);
         Task CompleteStageME(CompleteStageME_DTO dto);
