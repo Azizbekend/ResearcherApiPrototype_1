@@ -33,7 +33,7 @@ namespace ResearcherApiPrototype_1.Controllers
             var list = await _serviceRepo.GetAllObjectRequests(dto.Id);
             return Ok(list);
         }
-        [HttpPost("services/user/all")]
+        [HttpGet("services/stages/user/all")]
         public async Task<ActionResult<ICollection<CommonRequestStage>>> GetUserStages(int id)
         {
             var stages = await _serviceRepo.GetAllUsersStages(id);
