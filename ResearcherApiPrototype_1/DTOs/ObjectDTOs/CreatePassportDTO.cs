@@ -1,4 +1,4 @@
-﻿namespace ResearcherApiPrototype_1.DTOs.BaseCreateDTOs
+﻿namespace ResearcherApiPrototype_1.DTOs.ObjectDTOs
 {
     public class CreatePassportDTO
     {

@@ -1,0 +1,9 @@
+﻿namespace ResearcherApiPrototype_1.Models
+{
+    public class ObjectDocLink
+    {
+        public int Id { get; set; }
+        public int DocId { get; set; }
+        public int ObjectId { get; set; }
+    }
+}

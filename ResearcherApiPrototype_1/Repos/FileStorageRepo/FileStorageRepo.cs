@@ -52,6 +52,8 @@ namespace ResearcherApiPrototype_1.Repos.FileStorageRepo
             return CreateFileResponse(fileModel);
         }
 
+
+
         public async Task<FileResponseDTO> UploadFileAsync(FileUploadDTO dto)
         {
             using var memoryStream = new MemoryStream();
@@ -68,7 +70,18 @@ namespace ResearcherApiPrototype_1.Repos.FileStorageRepo
             await _context.SaveChangesAsync();
             return CreateFileResponse(fileModel);
         }
-       
+
+        public async Task UploadObjectDocAsync(int objId, int fileId)
+        {     
+            var docLink = new ObjectDocLink()
+            {
+                DocId = objId,
+                ObjectId = fileId                
+            };
+            _context.ObjectDocs.Add(docLink);
+            await _context.SaveChangesAsync();
+
+        }
 
         private FileResponseDTO CreateFileResponse(FileModel fileMdel)
         {

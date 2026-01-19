@@ -46,6 +46,18 @@ namespace ResearcherApiPrototype_1.Controllers
             return File(doc.FileData, doc.ContentType, doc.FileName);
         }
 
+        [HttpPost("object/document/upload")]
+        public async Task<IActionResult> UploadObjDoc(ObjDocumentUploadDTO dto)
+        {
+            var file = new FileUploadDTO()
+            {
+                File = dto.File
+            };
+            var res = await _fileStorageRepo.UploadFileAsync(file);
+            await _fileStorageRepo.UploadObjectDocAsync(dto.ObjectId, res.Id);
+            return Ok(res);
+        }
+
         [HttpGet("images/download")]
         public async Task<IActionResult> DownloadFile(int id)
         {
