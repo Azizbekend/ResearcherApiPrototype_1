@@ -98,6 +98,18 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
             return await _appDbContext.StaticObjectInfos.FirstAsync(x => x.Id == id);
         }
 
+        public async Task<ICollection<StaticObjectInfo>> GetUserObjects(int id)
+        {
+           var links = await _appDbContext.ObjectCompanyLinks.Where(x => x.Id == id).ToListAsync();
+           var objects = new List<StaticObjectInfo>();  
+            foreach (var link in links)
+            {
+                var obj = await _appDbContext.StaticObjectInfos.FirstOrDefaultAsync(x => x.Id == link.ObjectId);
+                objects.Add(obj);
+            }
+            return objects;
+        }
+
         public async Task<ICollection<UserObjectCompanyLink>> GetUsersCompany(int id)
         {
             return await _appDbContext.UserObjectComandLinks.Where(x => x.UserId == id).ToListAsync();

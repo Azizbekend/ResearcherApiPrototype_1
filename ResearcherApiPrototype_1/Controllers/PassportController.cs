@@ -42,6 +42,12 @@ namespace ResearcherApiPrototype_1.Controllers
             var list = await _objectPassportRepo.GetUsersCompany(id);
             return Ok(list);
         }
+        [HttpGet("getAllUserObjects")]
+        public async Task<ActionResult<ICollection<StaticObjectInfo>>> GetUserObjects(int userId)
+        {
+            var res = await _objectPassportRepo.GetUserObjects(userId);
+            return Ok(res);
+        }
         [HttpPost("create")]
         public async Task<ActionResult<int>> Create([FromBody]StaticObjectInfo dto)
         {
@@ -52,8 +58,15 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPost("object/company/attach")]
         public async Task<IActionResult> AttachCompany(AttachCompanyToObjectDTO dto)
         {
-            await _objectPassportRepo.AttachCompany(dto);
-            return Ok();
+            try
+            {
+                await _objectPassportRepo.AttachCompany(dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("object/company/user/attach")]
