@@ -1,8 +1,9 @@
-﻿using ResearcherApiPrototype_1.Models;
-using Microsoft.EntityFrameworkCore;
-using static NpgsqlTypes.NpgsqlTsQuery;
+﻿using Microsoft.EntityFrameworkCore;
+using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
 using ResearcherApiPrototype_1.DTOs.NodesDTOs;
+using ResearcherApiPrototype_1.Models;
 using System.Globalization;
+using static NpgsqlTypes.NpgsqlTsQuery;
 
 namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 {
@@ -139,21 +140,29 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
 
         }
 
-        public async Task<ICollection<NodeIndicates>> GetStatusAllIndecates(string plcNodeId)
+        public async Task<ICollection<NodeIndicates>> GetStatusAllIndecates(GetHardwareLogDTO dto)
         {
-            var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == plcNodeId).OrderBy(x => x.Id).ToListAsync();
-            var buff = list[0].Indicates;
-            var responseList = new List<NodeIndicates>();
-            responseList.Add(list[0]);
-            foreach (var item in list)
+            var hardwareStatusNode = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.HardwareId == dto.HadrwareId && x.PlcNodeId.EndsWith("hStatus"));
+            var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareStatusNode.PlcNodeId && x.TimeStamp > dto.Start && x.TimeStamp < dto.End).OrderBy(x => x.Id).ToListAsync();
+            if (list.Count > 0)
             {
-                if(item.Indicates != buff)
+                var buff = list[0].Indicates;
+                var responseList = new List<NodeIndicates>();
+                responseList.Add(list[0]);
+                foreach (var item in list)
                 {
-                    responseList.Add(item);
-                    buff = item.Indicates;
+                    if (item.Indicates != buff)
+                    {
+                        responseList.Add(item);
+                        buff = item.Indicates;
+                    }
                 }
+                return responseList;
             }
-            return responseList;
+            else
+            {
+                throw new Exception("Not found any indicates with current parameters!");
+            }
         }
     }
 }

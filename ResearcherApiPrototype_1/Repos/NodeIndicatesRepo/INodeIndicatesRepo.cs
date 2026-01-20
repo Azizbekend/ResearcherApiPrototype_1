@@ -1,4 +1,5 @@
-﻿using ResearcherApiPrototype_1.DTOs.NodesDTOs;
+﻿using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
+using ResearcherApiPrototype_1.DTOs.NodesDTOs;
 using ResearcherApiPrototype_1.Models;
 
 namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
@@ -14,7 +15,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
         Task<NodeIndicates> GetByStrEnd(string end);
         Task<ICollection<NodeIndicates>> GetGroupByStrEnd(string end);
         Task<ForPasportDTO> GetBaseReadingsSha();
-        Task<ICollection<NodeIndicates>> GetStatusAllIndecates(string plcNodeId);
+        Task<ICollection<NodeIndicates>> GetStatusAllIndecates(GetHardwareLogDTO dto);
 
 
 

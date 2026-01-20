@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
 using ResearcherApiPrototype_1.DTOs.NodesDTOs;
 using ResearcherApiPrototype_1.Models;
 using ResearcherApiPrototype_1.Repos.NodeIndicatesRepo;
@@ -56,11 +57,18 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(group);
         }
 
-        [HttpGet("hStatus/all/byPlcNodeId")]
-        public async Task<ActionResult<ICollection<NodeIndicates>>> GetStatuses(string hStatusNode)
+        [HttpPost("hStatus/all/byPlcNodeId")]
+        public async Task<ActionResult<ICollection<NodeIndicates>>> GetStatuses(GetHardwareLogDTO dto)
         {
-            var response = await _nodeIndicatesRepo.GetStatusAllIndecates(hStatusNode);
-            return Ok(response);
+            try
+            {
+                var response = await _nodeIndicatesRepo.GetStatusAllIndecates(dto);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [HttpGet("internal/findByend")]
