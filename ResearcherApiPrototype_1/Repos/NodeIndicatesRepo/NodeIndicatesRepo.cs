@@ -143,7 +143,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeIndicatesRepo
         public async Task<ICollection<NodeIndicates>> GetStatusAllIndecates(GetHardwareLogDTO dto)
         {
             var hardwareStatusNode = await _appDbContext.Nodes.FirstOrDefaultAsync(x => x.HardwareId == dto.HadrwareId && x.PlcNodeId.EndsWith("hStatus"));
-            var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareStatusNode.PlcNodeId && x.TimeStamp > dto.Start && x.TimeStamp < dto.End).OrderBy(x => x.Id).ToListAsync();
+            var list = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == hardwareStatusNode.PlcNodeId && x.TimeStamp >= dto.Start && x.TimeStamp <= dto.End).OrderBy(x => x.Id).ToListAsync();
             if (list.Count > 0)
             {
                 var buff = list[0].Indicates;

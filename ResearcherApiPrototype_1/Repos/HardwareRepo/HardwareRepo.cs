@@ -67,6 +67,13 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
                 .Where(h => h.Id == hardwareId)
                 .FirstAsync();
         }
+
+        public async Task<ICollection<HardwareEvent>> GetHardwareEventLogs(int hardwareId, DateTime start, DateTime end)
+        {
+            var list = await _appDbContext.EventsJournal.Where(x => x.HardwareId == hardwareId && x.TimeStamp >= start && x.TimeStamp <= end).OrderBy(x => x.Id).ToListAsync();
+            return list;
+        }
+
         public async Task<ICollection<HardwareInfo>> GetHardwaresByControlBlockIdAsync(int controlBlockId)
         {
             

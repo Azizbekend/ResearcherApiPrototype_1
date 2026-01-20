@@ -57,7 +57,7 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(group);
         }
 
-        [HttpPost("hStatus/all/byPlcNodeId")]
+        [HttpPost("hardware/statusLog")]
         public async Task<ActionResult<ICollection<NodeIndicates>>> GetStatuses(GetHardwareLogDTO dto)
         {
             try

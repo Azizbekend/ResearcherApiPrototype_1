@@ -86,6 +86,12 @@ namespace ResearcherApiPrototype_1.Controllers
             await _hardwareRepo.HardwareDelete(id);
             return Ok();
         }
+        [HttpPost("hardwareEvents")]
+        public async Task<ActionResult<ICollection<GetHardwareEventDTO>>> GetEvents(GetHardwareLogDTO dto)
+        {
+            var list = _hardwareRepo.GetHardwareEventLogs(dto.HadrwareId, dto.Start, dto.End);
+            return Ok(list);
+        }
 
     }
 }
