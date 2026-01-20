@@ -12,6 +12,7 @@ namespace ResearcherApiPrototype_1
         }
         public DbSet<ControlBlockInfo> ControlBlocks { get; set; }
         public DbSet<HardwareInfo> Hardwares { get; set; }
+        public DbSet<HardwareEvent> EventsJournal { get; set; }
         public DbSet<HardwareSchema> Schemas { get; set; }
         public DbSet<HardwareSchemaImage> SchemaImages { get; set; }
         public DbSet<SchemeCard> SchemeCards { get; set; }

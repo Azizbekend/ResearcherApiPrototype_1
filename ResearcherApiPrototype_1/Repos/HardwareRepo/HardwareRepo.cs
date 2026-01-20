@@ -13,6 +13,19 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
         {
             _appDbContext = context;
         }
+
+        public async Task CreateCommandEvent(CreateCommandEventDTO dto)
+        {
+            var hardwareEvent = new HardwareEvent
+            {
+                UserId = dto.UserId,
+                HardwareId = dto.HardwareId,
+                Discription = $"Пользователь изменил значение {dto.NodeName} на {dto.Indicates}"
+            };
+            _appDbContext.EventsJournal.Add(hardwareEvent);
+            await _appDbContext.SaveChangesAsync();
+        }
+
         public async Task<HardwareInfo> CreateHardwareAsync(HardwareCreateDTO dto)
         {
             var hardware = new HardwareInfo
@@ -32,6 +45,11 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
             await _appDbContext.SaveChangesAsync();
 
             return hardware;
+        }
+
+        public Task CreateNodeEvent(CreateHardwareNodeEventDTO dto)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<ICollection<HardwareInfo>> GetAllHardwaresAsync()

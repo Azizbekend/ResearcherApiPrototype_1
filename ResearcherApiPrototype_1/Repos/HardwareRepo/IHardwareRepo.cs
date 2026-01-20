@@ -16,6 +16,9 @@ namespace ResearcherApiPrototype_1.Repos.HardwareRepo
         Task HardwareActivating(int id);
         Task<HardwareInfo> HardwareInfoUpdate(HardwareInfoUpdateDTO dto);
         Task HardwareDelete(int id);
+        Task CreateNodeEvent(CreateHardwareNodeEventDTO dto)    ;
+        Task CreateCommandEvent(CreateCommandEventDTO dto);
+        
 
     }
 }

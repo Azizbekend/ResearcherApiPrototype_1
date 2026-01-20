@@ -1,6 +1,9 @@
 ﻿using ComandSenderManager;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ResearcherApiPrototype_1.DTOs.CommandsDTO;
+using ResearcherApiPrototype_1.DTOs.HardwaresDTOs;
+using ResearcherApiPrototype_1.Models;
 using ResearcherApiPrototype_1.Repos.ControlBlockRepo;
 using ResearcherApiPrototype_1.Repos.HardwareRepo;
 using ResearcherApiPrototype_1.Repos.NodeRepo;
@@ -61,26 +64,39 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(response);
         }
         [HttpPost("send/command/string")]
-        public async Task<IActionResult> SendComandString(int nodeId, string value)
+        public async Task<IActionResult> SendComandString(SendCommandDTO dto)
         {
-            var node = await _nodeRepo.GetNodeById(nodeId);
+            var node = await _nodeRepo.GetNodeById(dto.NodeId);
             var hw = await _hardwareRopo.GetHardwareByIdAsync(node.HardwareId);
             var controlBlock = await _controlBlockRepo.GetByHardwareId(hw.ControlBlockId);
+            var hardwareEvent = new CreateCommandEventDTO
+            {
+                NodeInfoId = dto.NodeId,
+                NodeName = node.Name,
+                UserId = dto.UserId,
+                HardwareId = hw.Id,
+                Indicates = dto.Value
+            };
             if (node.IsValue)
             {
-                var val = await SendComandFloat(controlBlock.PlcIpAdress, node.PlcNodeId, float.Parse(value));
-                await _nodeRepo.AttachLastValue(node.Id, value);
+                var val = await SendComandFloat(controlBlock.PlcIpAdress, node.PlcNodeId, float.Parse(dto.Value));
+                await _nodeRepo.AttachLastValue(node.Id, dto.Value);
+                await _hardwareRopo.CreateCommandEvent(hardwareEvent);
                 return Ok(val);
             }
             else
-                if (value == "true")
+                if (dto.Value == "true")
             {
                 var val = await SendComandBool(controlBlock.PlcIpAdress, node.PlcNodeId, true);
+                hardwareEvent.Indicates = "Вкл";
+                await _hardwareRopo.CreateCommandEvent(hardwareEvent);
                 return Ok(val);
             }
             else
             {
                 var val = await SendComandBool(controlBlock.PlcIpAdress, node.PlcNodeId, false);
+                hardwareEvent.Indicates = "Выкл";
+                await _hardwareRopo.CreateCommandEvent(hardwareEvent);
                 return Ok(val);
             }
 
