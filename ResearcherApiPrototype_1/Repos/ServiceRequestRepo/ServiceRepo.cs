@@ -53,6 +53,11 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                     request.ImplementerId = dto.ImplementerId;
                     _context.CommonRequests.Attach(request);
                     await _context.SaveChangesAsync();
+                    if(request.Type == "Incident")
+                    {
+                        var incLink = await _context.IncidentServiceLinks.FirstOrDefaultAsync(x => x.ServiceRequestId == request.Id);
+                        await InnerCompleteIncident(incLink.IncidentId);
+                    }
                 }
                 else
                 {
@@ -212,12 +217,12 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync()
         {
-            return await _context.CommonRequests.ToListAsync();
+            return await _context.CommonRequests.OrderBy(x => x.Id).ToListAsync();
         }
 
         public async Task<ICollection<CommonRequestStage>> GetRequestStagesAsync(int id)
         {
-            return await _context.RequestStages.Where(x => x.ServiceId == id).ToListAsync();
+            return await _context.RequestStages.Where(x => x.ServiceId == id).OrderBy(x => x.Id).ToListAsync();
         }
 
         public async Task CreateIncidentLink(int requestId, int incidentId)
@@ -233,12 +238,12 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id)
         {
-            return await _context.CommonRequests.Where(x => x.ObjectId == id).ToListAsync();
+            return await _context.CommonRequests.Where(x => x.ObjectId == id).OrderBy(x => x.Id).ToListAsync();
         }
 
         public async Task<ICollection<CommonRequestStage>> GetAllUsersStages(int id)
         {
-            return await _context.RequestStages.Where(x => x.ImplementerId == id).ToListAsync();
+            return await _context.RequestStages.Where(x => x.ImplementerId == id).OrderBy(x => x.Id).ToListAsync();
         }
 
         public async Task<SupplyRequest> CreateSupplyRequest(SupplyRequestInitialCreateDTO dto, int serviceId)
@@ -352,6 +357,13 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.RequestStages.Attach(stage);
                 await _context.SaveChangesAsync();
             }
+        }
+        private async Task InnerCompleteIncident(int incidentId)
+        {
+            var inc = _context.Incidents.FirstOrDefault(x => x.Id == incidentId);
+            inc.Status = "Completed";
+            _context.Incidents.Attach(inc);
+            await _context.SaveChangesAsync();
         }
     }
 }
