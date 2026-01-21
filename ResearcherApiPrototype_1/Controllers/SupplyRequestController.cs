@@ -58,6 +58,7 @@ namespace ResearcherApiPrototype_1.Controllers
             {
                 CreatorId = dto.CreatorId,
                 ImplementerId = dto.CurrentImplementerId,
+                ImplementersCompanyId = dto.CurrentImplementerCompanyId,
                 Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
                 ServiceId = dto.ServiceId,
                 StageType = "Supply"

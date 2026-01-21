@@ -76,17 +76,34 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
             foreach (var node in nodes)
             {              
                 var indicates = await _appDbContext.NodesIndicates.Where(x => x.PlcNodeId == node.PlcNodeId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
-                var nodeDTO = new CommandNodeGetDTO()
+                if(indicates != null)
                 {
-                    Name = node.Name,
-                    Mesurement = node.Mesurement,
-                    IsCommand = node.IsCommand,
-                    IsValue = node.IsValue,
-                    MinValue = node.MinValue,
-                    MaxValue = node.MaxValue,
-                    LastValue = indicates.Indicates
-                };     
-                list.Add(nodeDTO);
+                    var nodeDTO = new CommandNodeGetDTO()
+                    {
+                        Name = node.Name,
+                        Mesurement = node.Mesurement,
+                        IsCommand = node.IsCommand,
+                        IsValue = node.IsValue,
+                        MinValue = node.MinValue,
+                        MaxValue = node.MaxValue,
+                        LastValue = indicates.Indicates
+                    };
+                    list.Add(nodeDTO);
+                }
+                else
+                {
+                    var nodeDTO = new CommandNodeGetDTO()
+                    {
+                        Name = node.Name,
+                        Mesurement = node.Mesurement,
+                        IsCommand = node.IsCommand,
+                        IsValue = node.IsValue,
+                        MinValue = node.MinValue,
+                        MaxValue = node.MaxValue,
+                        LastValue = "Not found"
+                    };
+                    list.Add(nodeDTO);
+                }
             }
             return list;
         }

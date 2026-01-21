@@ -130,6 +130,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 Title = dto.Title,
                 Type = "Incident",
                 CreatorId = dto.CreatorId,
+                CreatorsCompanyId = dto.CreatorsCompanyId,
                 HardwareId = dto.HardwareId,
                 ObjectId = dto.ObjectId
             };
@@ -144,7 +145,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 {
                     ServiceId = dto.ServiceId,
                     CreatorId = dto.CreatorId,
+                    CreatorsCompanyId = dto.CreatorsCompanyId,
                     ImplementerId = dto.ImplementerId,
+                    ImplementersCompanyId = dto.ImplementersCompanyId,
                     StageType = dto.StageType,
                     Discription = dto.Discription
                 };
@@ -166,7 +169,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 {
                     ServiceId = dto.ServiceId,
                     CreatorId = dto.CreatorId,
+                    CreatorsCompanyId= dto.CreatorsCompanyId,
                     ImplementerId = dto.ImplementerId,
+                    ImplementersCompanyId = dto.ImplementersCompanyId,
                     StageType = dto.StageType,
                     Discription = dto.Discription
                 };
@@ -189,7 +194,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 {
                     ServiceId = dto.ServiceId,
                     CreatorId = dto.CreatorId,
+                    CreatorsCompanyId = dto.CreatorsCompanyId,                    
                     ImplementerId = dto.ImplementerId,
+                    ImplementersCompanyId = dto.ImplementersCompanyId,
                     StageType = dto.StageType,
                     Discription = dto.Discription
                 };
@@ -207,6 +214,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 Status = "New",
                 Type = dto.Type,
                 CreatorId = dto.CreatorId,
+                CreatorsCompanyId = dto.CreatorsCompanyId,
                 HardwareId = dto.HardwareId,
                 ObjectId = dto.ObjectId
             };
@@ -252,8 +260,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var supplyReq = new SupplyRequest
             {
                 CreatorId = dto.CreatorId,
+                CreatorsCompanyId = dto.CreatorsCompanyId,
                 ProductName = dto.ProductName,
-                CurrentImplementerId = dto.CurrentImplementerId,
+                ImplementerId = dto.CurrentImplementerId,
+                ImplementersCompaneId = dto.CurrentImplementerCompanyId,
                 RequiredCount = dto.RequiredCount,
                 CommonRequestId = serviceId,
                 CurrentStatus = "New"
@@ -282,13 +292,13 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 supplyRequest.SupplierName = dto.SupplierName;
                 supplyRequest.RealCount = dto.RealCount;
                 supplyRequest.ExpenseNumber = dto.ExpenseNumber;
-                supplyRequest.CurrentImplementerId = dto.CurrentImplementerId;
+                supplyRequest.ImplementerId = dto.NextImplementerId;
                 supplyRequest.Expenses = dto.Expenses;
                 supplyRequest.IsPayed = false;
                 supplyRequest.CurrentStatus = "Счет получен";
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
-                await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.CurrentImplementerId);
+                await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.ImplementerId);
             }
         }
 
@@ -297,12 +307,13 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
             if (supplyRequest != null)
             {
-                supplyRequest.CurrentImplementerId= dto.CurrentImplementerId;
+                supplyRequest.ImplementerId= dto.CurrentImplementerId;
+                supplyRequest.ImplementersCompaneId = dto.NextImplementerCompanyId;
                 supplyRequest.CurrentStatus = $"Счет #{supplyRequest.ExpenseNumber} оплачен.";
                 supplyRequest.IsPayed= true;
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
-                await InnerCompleteStage(dto.StageId, $"Счет #{supplyRequest.ExpenseNumber} оплачен. Ожидается поставка на склад.", supplyRequest.CurrentImplementerId);
+                await InnerCompleteStage(dto.StageId, $"Счет #{supplyRequest.ExpenseNumber} оплачен. Ожидается поставка на склад.", supplyRequest.ImplementerId);
             }
 
         }
@@ -322,10 +333,11 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             if (supplyRequest != null)
             {
                 supplyRequest.CurrentStatus = "Прибыло на склад";
-                supplyRequest.CurrentImplementerId = dto.CurrentImplementerId;
+                supplyRequest.ImplementerId = dto.CurrentImplementerId;
+                supplyRequest.ImplementersCompaneId = dto.CurrentImplementerCompanyId;
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
-                await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.CurrentImplementerId);
+                await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.ImplementerId);
             }
         }
 
@@ -334,7 +346,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
             if (supplyRequest != null)
             {
-                supplyRequest.CurrentImplementerId = dto.ImplementerId;
+                supplyRequest.ImplementerId = dto.ImplementerId;
                 supplyRequest.CurrentStatus = "Поставка завершена.";
                 _context.SupplyRequests.Attach(supplyRequest);
                 var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.SupplyStageId);

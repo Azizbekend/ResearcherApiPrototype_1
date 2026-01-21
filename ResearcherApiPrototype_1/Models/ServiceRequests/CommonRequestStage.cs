@@ -15,7 +15,9 @@ namespace ResearcherApiPrototype_1.Models.ServiceRequests
         public string CancelDiscription { get; set; } = "None";
         public int ServiceId { get; set; }
         public int CreatorId { get; set; }
+        public int CreatorsCompanyId { get; set; }
         public int ImplementerId { get; set; }
+        public int ImplementersCompanyId { get; set; }
 
     }
 }

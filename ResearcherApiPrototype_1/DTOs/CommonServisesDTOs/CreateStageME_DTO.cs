@@ -6,6 +6,8 @@
         public string StageType { get; set; }
         public int ServiceId { get; set; }//Общая глобальная заявка
         public int CreatorId { get; set; }
+        public int CreatorsCompanyId { get; set; }
         public int ImplementerId { get; set; }
+        public int ImplementersCompanyId { get; set; }
     }
 }
