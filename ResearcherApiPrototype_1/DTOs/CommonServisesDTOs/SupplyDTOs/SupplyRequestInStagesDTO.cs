@@ -3,6 +3,7 @@
     public class SupplyRequestInStagesDTO
     {
         public int CreatorId { get; set; }
+        public int CreatiorCompanyId { get; set; }
         public int CurrentImplementerId { get; set; }
         public int CurrentImplementerCompanyId { get; set; }
         public string ProductName { get; set; }

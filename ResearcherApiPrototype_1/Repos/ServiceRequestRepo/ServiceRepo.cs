@@ -21,6 +21,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             {
                 request.Status = "Canceled";
                 request.ImplementerId = dto.ImplementerId;
+                request.ImplementersCompanyId = dto.ImplementerCompanyId;
                 request.ClosedAt = DateTime.Now.ToUniversalTime();
                 _context.CommonRequests.Attach(request);
                 await _context.SaveChangesAsync();
@@ -51,6 +52,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                     request.Status = "Completed";
                     request.ClosedAt = DateTime.Now.ToUniversalTime();
                     request.ImplementerId = dto.ImplementerId;
+                    request.ImplementersCompanyId = dto.ImplementerCompanyId;
                     _context.CommonRequests.Attach(request);
                     await _context.SaveChangesAsync();
                     if(request.Type == "Incident")
@@ -68,7 +70,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 throw new Exception("Request has not completed stages! Try again when all stages will in compleded status");
             
         }
-        private async Task InnerCompleteStage(int stageId, string discription, int implementerId)
+        private async Task InnerCompleteStage(int stageId, string discription, int implementerId, int nextImplementerCompanyId)
         {
             var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == stageId);
             if (stage != null)
@@ -80,7 +82,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 {
                     ServiceId = stage.ServiceId,
                     CreatorId = stage.ImplementerId,
+                    CreatorsCompanyId = stage.CreatorsCompanyId,
                     ImplementerId = implementerId,
+                    ImplementersCompanyId = nextImplementerCompanyId,
                     StageType = "Supply",
                     Discription = discription
                 };
@@ -194,7 +198,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 {
                     ServiceId = dto.ServiceId,
                     CreatorId = dto.CreatorId,
-                    CreatorsCompanyId = dto.CreatorsCompanyId,                    
+                    CreatorsCompanyId = dto.CreatorsCompanyId,    
                     ImplementerId = dto.ImplementerId,
                     ImplementersCompanyId = dto.ImplementersCompanyId,
                     StageType = dto.StageType,
@@ -262,8 +266,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 CreatorId = dto.CreatorId,
                 CreatorsCompanyId = dto.CreatorsCompanyId,
                 ProductName = dto.ProductName,
-                ImplementerId = dto.CurrentImplementerId,
-                ImplementersCompaneId = dto.CurrentImplementerCompanyId,
+                CurrentImplementerId = dto.CurrentImplementerId,
+                ImplementersCompanyId = dto.CurrentImplementerCompanyId,
                 RequiredCount = dto.RequiredCount,
                 CommonRequestId = serviceId,
                 CurrentStatus = "New"
@@ -292,13 +296,14 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 supplyRequest.SupplierName = dto.SupplierName;
                 supplyRequest.RealCount = dto.RealCount;
                 supplyRequest.ExpenseNumber = dto.ExpenseNumber;
-                supplyRequest.ImplementerId = dto.NextImplementerId;
+                supplyRequest.CurrentImplementerId = dto.NextImplementerId;
+                supplyRequest.ImplementersCompanyId = dto.NextImplementerCompanyId;
                 supplyRequest.Expenses = dto.Expenses;
                 supplyRequest.IsPayed = false;
                 supplyRequest.CurrentStatus = "Счет получен";
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
-                await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.ImplementerId);
+                await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
             }
         }
 
@@ -307,13 +312,13 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
             if (supplyRequest != null)
             {
-                supplyRequest.ImplementerId= dto.CurrentImplementerId;
-                supplyRequest.ImplementersCompaneId = dto.NextImplementerCompanyId;
+                supplyRequest.CurrentImplementerId= dto.CurrentImplementerId;
+                supplyRequest.ImplementersCompanyId = dto.NextImplementerCompanyId;
                 supplyRequest.CurrentStatus = $"Счет #{supplyRequest.ExpenseNumber} оплачен.";
                 supplyRequest.IsPayed= true;
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
-                await InnerCompleteStage(dto.StageId, $"Счет #{supplyRequest.ExpenseNumber} оплачен. Ожидается поставка на склад.", supplyRequest.ImplementerId);
+                await InnerCompleteStage(dto.StageId, $"Счет #{supplyRequest.ExpenseNumber} оплачен. Ожидается поставка на склад.", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
             }
 
         }
@@ -333,11 +338,11 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             if (supplyRequest != null)
             {
                 supplyRequest.CurrentStatus = "Прибыло на склад";
-                supplyRequest.ImplementerId = dto.CurrentImplementerId;
-                supplyRequest.ImplementersCompaneId = dto.CurrentImplementerCompanyId;
+                supplyRequest.CurrentImplementerId = dto.CurrentImplementerId;
+                supplyRequest.ImplementersCompanyId = dto.CurrentImplementerCompanyId;
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
-                await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.ImplementerId);
+                await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
             }
         }
 
@@ -346,7 +351,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
             if (supplyRequest != null)
             {
-                supplyRequest.ImplementerId = dto.ImplementerId;
+                supplyRequest.CurrentImplementerId = dto.ImplementerId;
+                supplyRequest.ImplementersCompanyId = dto.ImplementersCompanyId;
                 supplyRequest.CurrentStatus = "Поставка завершена.";
                 _context.SupplyRequests.Attach(supplyRequest);
                 var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.SupplyStageId);

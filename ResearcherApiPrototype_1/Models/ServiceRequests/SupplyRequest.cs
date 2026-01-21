@@ -15,8 +15,8 @@ namespace ResearcherApiPrototype_1.Models.ServiceRequests
         public bool IsPayed { get; set; }
         public int CreatorId { get; set; }
         public int CreatorsCompanyId { get; set; }
-        public int ImplementerId { get; set; }
-        public int ImplementersCompaneId { get; set; }
+        public int CurrentImplementerId { get; set; }
+        public int ImplementersCompanyId { get; set; }
         public string? CurrentStatus { get; set; } // New, Accepted, Passed, Done
         public int CommonRequestId { get; set; }
     }

@@ -55,7 +55,9 @@ namespace ResearcherApiPrototype_1.Controllers
                 var stage = new CreateStageME_DTO
                 {
                     CreatorId = dto.CreatorId,
+                    CreatorsCompanyId = dto.CreatorsCompanyId,
                     ImplementerId = dto.ImplementerId,
+                    ImplementersCompanyId = dto.ImplementersCompaneId,
                     ServiceId = request.Id,
                     Discription = dto.Discription,
                     StageType = "InitialCommon"
@@ -78,7 +80,9 @@ namespace ResearcherApiPrototype_1.Controllers
                 var stage = new CreateStageME_DTO
                 {
                     CreatorId = dto.CreatorId,
+                    CreatorsCompanyId= dto.CreatorsCompanyId,
                     ImplementerId = dto.ImplementerId,
+                    ImplementersCompanyId = dto.ImplementersCompaneId,
                     ServiceId = request.Id,
                     Discription = dto.Discription,
                     StageType = "InitialIncident"

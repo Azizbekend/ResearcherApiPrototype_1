@@ -26,6 +26,7 @@ namespace ResearcherApiPrototype_1.Controllers
                 {
                     Title = $"Поставка: {dto.ProductName}",
                     CreatorId = dto.CreatorId,
+                    CreatorsCompanyId = dto.CreatorsCompanyId,
                     HardwareId = dto.HardwareId,
                     ObjectId = dto.ObjectId,
                     Type = "InitialSupply"
@@ -36,6 +37,7 @@ namespace ResearcherApiPrototype_1.Controllers
                 {
                     CreatorId = dto.CreatorId,
                     ImplementerId = dto.CurrentImplementerId,
+                    ImplementersCompanyId = dto.CurrentImplementerCompanyId,
                     Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
                     ServiceId = reqBD.Id,
                     StageType = "InitialSupply"
@@ -67,7 +69,7 @@ namespace ResearcherApiPrototype_1.Controllers
             var newSupplyReq = new SupplyRequestInitialCreateDTO
             {
                 CreatorId = dto.CreatorId,
-                CurrentImplementerId = dto.CurrentImplementerId,
+                CreatorsCompanyId = dto.CreatiorCompanyId,
                 ProductName = dto.ProductName,
                 RequiredCount = dto.RequiredCount,
             };

@@ -4,5 +4,6 @@
     {
         public int RequestId { get; set; }
         public int ImplementerId { get; set; }
+        public int ImplementerCompanyId { get; set; }
     }
 }
