@@ -61,7 +61,7 @@ namespace ResearcherApiPrototype_1.Controllers
             var res = await _objectPassportRepo.GetUserCompanyLink(dto.UserId, dto.UserCompanyLinkId);
             return Ok(res);
         }
-        [HttpGet("/object/company/user/getUsers/objCompId")]
+        [HttpGet("object/company/user/getUsers/objCompId")]
         public async Task<ActionResult<ICollection<UserObjectCompanyLink>>> GetUsers(int objCompLinkId)
         {
             var res = await _objectPassportRepo.GetAzizbeckLink(objCompLinkId);
