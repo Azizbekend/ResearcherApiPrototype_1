@@ -60,7 +60,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                 .Include(n => n.HardwareInfo)
                 .ThenInclude(h => h.ControlBlock)
                 .Where(n => n.HardwareId == hardwareId && n.IsCommand == false )
-                .OrderBy(n => n.Name)
+                .OrderBy(n => n.Id)
                 .ToListAsync();
         }
 
@@ -71,7 +71,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                 .Include(n => n.HardwareInfo)
                 .ThenInclude(h => h.ControlBlock)
                 .Where(n => n.HardwareId == hardwareId && n.IsCommand == true)
-                .OrderBy(n => n.Name)
+                .OrderBy(n => n.Id)
                 .ToListAsync();
             foreach (var node in nodes)
             {              
