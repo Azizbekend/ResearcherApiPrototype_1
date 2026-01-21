@@ -13,7 +13,9 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
         Task<ICollection<UserObjectCompanyLink>> GetUsersCompany(int id);
         Task<ICollection<StaticObjectInfo>> GetUserObjects(int id);
         Task<AttachCompanyToObjectDTO> AttachCompany(AttachCompanyToObjectDTO dto);
+        Task<ObjectCompanyLink> GetCopmanyObjectLint(int companyId, int objId);
         Task<AttachUserToObjectLinkDTO> AttachUser(AttachUserToObjectLinkDTO dto);
+        Task<UserObjectCompanyLink> GetUserCompanyLink(int userId, int objCompLinkId);
         Task CreateAccesses(CreateObjectAccessesDTO dto); 
         Task<UpdateObjAccessesDTO> UpdateUsersAccesses(UpdateObjAccessesDTO dto);
     }

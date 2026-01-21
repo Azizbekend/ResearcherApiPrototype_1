@@ -88,6 +88,11 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
             return await _appDbContext.StaticObjectInfos.OrderBy(x => x.Name). ToListAsync();
         }
 
+        public async Task<ObjectCompanyLink> GetCopmanyObjectLint(int companyId, int objId)
+        {
+            return await _appDbContext.ObjectCompanyLinks.FirstOrDefaultAsync(x => x.CompanyId == companyId && x.ObjectId == objId);
+        }
+
         public async Task<ICollection<ObjectCompanyLink>> GetObjectCompanies(int id)
         {
             return await _appDbContext.ObjectCompanyLinks.Where(x => x.ObjectId == id).ToListAsync();
@@ -96,6 +101,11 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
         public async Task<StaticObjectInfo> GetSingleById(int id)
         {
             return await _appDbContext.StaticObjectInfos.FirstAsync(x => x.Id == id);
+        }
+
+        public async Task<UserObjectCompanyLink> GetUserCompanyLink(int userId, int objCompLinkId)
+        {
+            return await _appDbContext.UserObjectComandLinks.FirstOrDefaultAsync(x => x.UserId == userId && x.ObjectCompanyLinkId == objCompLinkId);
         }
 
         public async Task<ICollection<StaticObjectInfo>> GetUserObjects(int id)

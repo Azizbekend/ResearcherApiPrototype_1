@@ -48,6 +48,19 @@ namespace ResearcherApiPrototype_1.Controllers
             var res = await _objectPassportRepo.GetUserObjects(userId);
             return Ok(res);
         }
+        [HttpPost("object/company/getCompanyObjectLink")]
+        public async Task<IActionResult> GetCompanyLink(GetCompanyLinkDTO dto)
+        {
+            var res = await _objectPassportRepo.GetCopmanyObjectLint(dto.CompanyId, dto.ObjectId);
+            return Ok(res);
+        }
+
+        [HttpPost("object/company/user/getUserCompanyLink")]
+        public async Task<IActionResult> GetUserLink(GetUserLinkDTO dto)
+        {
+            var res = await _objectPassportRepo.GetUserCompanyLink(dto.UserId, dto.UserCompanyLinkId);
+            return Ok(res);
+        }
         [HttpPost("create")]
         public async Task<ActionResult<int>> Create([FromBody]StaticObjectInfo dto)
         {

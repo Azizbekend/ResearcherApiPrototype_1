@@ -4,5 +4,6 @@
     {
         public string Discription { get; set; }
         public DateTime TimeStamp { get; set; }
+        public  int UserId { get; set; }
     }
 }
