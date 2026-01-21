@@ -123,11 +123,12 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
 
         public async Task<ICollection<StaticObjectInfo>> GetUserObjects(int id)
         {
-           var links = await _appDbContext.ObjectCompanyLinks.Where(x => x.Id == id).ToListAsync();
+           var links = await _appDbContext.UserObjectComandLinks.Where(x => x.UserId == id).ToListAsync();
            var objects = new List<StaticObjectInfo>();  
             foreach (var link in links)
             {
-                var obj = await _appDbContext.StaticObjectInfos.FirstOrDefaultAsync(x => x.Id == link.ObjectId);
+                var buff = await _appDbContext.ObjectCompanyLinks.FirstOrDefaultAsync(x => x.Id == link.ObjectCompanyLinkId);
+                var obj = await _appDbContext.StaticObjectInfos.FirstOrDefaultAsync(x => x.Id == buff.ObjectId);
                 objects.Add(obj);
             }
             return objects;
