@@ -19,5 +19,6 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
         Task<ICollection<UserObjectCompanyLink>> GetAzizbeckLink(int objCompLink);
         Task CreateAccesses(CreateObjectAccessesDTO dto); 
         Task<UpdateObjAccessesDTO> UpdateUsersAccesses(UpdateObjAccessesDTO dto);
+        Task DeleteAccesses(int userId, int userCompLinkId);
     }
 }

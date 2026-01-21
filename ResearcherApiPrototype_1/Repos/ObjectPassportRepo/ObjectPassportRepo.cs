@@ -83,6 +83,13 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
             throw new NotImplementedException();
         }
 
+        public async Task DeleteAccesses(int userId, int userCompLinkId)
+        {
+            var buff = await _appDbContext.UserObjectComandLinks.FirstOrDefaultAsync(x => x.UserId == userId && x.Id == userCompLinkId);
+            _appDbContext.UserObjectComandLinks.Remove(buff);
+            await _appDbContext.SaveChangesAsync();
+        }
+
         public async Task<ICollection<StaticObjectInfo>> GetAll()
         {
             return await _appDbContext.StaticObjectInfos.OrderBy(x => x.Name). ToListAsync();
