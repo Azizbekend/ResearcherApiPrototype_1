@@ -106,7 +106,7 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok();
         }
 
-        [HttpDelete("object/company/user/deleteUserFromObject")]
+        [HttpPost("object/company/user/deleteUserFromObject")]
         public async Task<IActionResult> DeleteUserFrobObj(UserCompanyLinkDeleteDTO dto)
         {
             await _objectPassportRepo.DeleteAccesses(dto.UserId, dto.UserCompanyLinkId);
