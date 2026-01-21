@@ -82,6 +82,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                     {
                         Name = node.Name,
                         Mesurement = node.Mesurement,
+                        PlcNodeId = node.PlcNodeId,
                         IsCommand = node.IsCommand,
                         IsValue = node.IsValue,
                         MinValue = node.MinValue,
@@ -96,6 +97,7 @@ namespace ResearcherApiPrototype_1.Repos.NodeRepo
                     {
                         Name = node.Name,
                         Mesurement = node.Mesurement,
+                        PlcNodeId = node.PlcNodeId,
                         IsCommand = node.IsCommand,
                         IsValue = node.IsValue,
                         MinValue = node.MinValue,
