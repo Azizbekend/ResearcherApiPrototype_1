@@ -88,6 +88,12 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
             return await _appDbContext.StaticObjectInfos.OrderBy(x => x.Name). ToListAsync();
         }
 
+        public async Task<ICollection<UserObjectCompanyLink>> GetAzizbeckLink(int objCompLink)
+        {            
+            var users = await _appDbContext.UserObjectComandLinks.Where(x => x.ObjectCompanyLinkId == objCompLink).ToListAsync();
+            return users;
+        }
+
         public async Task<ObjectCompanyLink> GetCopmanyObjectLint(int companyId, int objId)
         {
             return await _appDbContext.ObjectCompanyLinks.FirstOrDefaultAsync(x => x.CompanyId == companyId && x.ObjectId == objId);
