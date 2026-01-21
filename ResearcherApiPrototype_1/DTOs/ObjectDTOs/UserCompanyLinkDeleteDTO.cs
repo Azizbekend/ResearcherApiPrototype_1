@@ -3,6 +3,6 @@
     public class UserCompanyLinkDeleteDTO
     {
         public int UserId { get; set; }
-        public int UserCompanyLinkId { get; set; }
+        public int ObjectCompanyLinkId { get; set; }
     }
 }
