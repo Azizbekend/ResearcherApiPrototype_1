@@ -27,7 +27,7 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpGet("single")]
         public async Task<IActionResult> GetObject(int id)
         {
-            var obj = _objectPassportRepo.GetSingleById(id);
+            var obj = await _objectPassportRepo.GetSingleById(id);
             return Ok(obj);
         }
         [HttpGet("object/companies")]
