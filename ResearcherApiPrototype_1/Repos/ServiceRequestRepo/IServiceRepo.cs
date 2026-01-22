@@ -30,7 +30,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         Task CancelRequest(CompleteCancelRequestME_DTO dto);
         Task CompleteStage(CompleteStageDTO dto);
-        Task CompleteStageME(CompleteStageME_DTO dto);
+        Task<CommonRequestStage> CompleteStageME(CompleteStageME_DTO dto);
         Task CancelStageME(CancelStageME_DTO dto);
         Task DeleteSupplyRequest(int id);
 

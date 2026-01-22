@@ -116,7 +116,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             }
         }
 
-        public async Task CompleteStageME(CompleteStageME_DTO dto)
+        public async Task<CommonRequestStage> CompleteStageME(CompleteStageME_DTO dto)
         {
             var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == dto.StageId);
             if (stage != null && stage.ImplementerId == dto.EngineerId)
@@ -136,6 +136,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 };
                 _context.RequestStages.Add(newStage);
                 await _context.SaveChangesAsync();
+                return newStage;
             }
             else
                 throw new Exception("Ошибка! Только исполнитель может завершить текущий этап!");

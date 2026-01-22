@@ -169,8 +169,8 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                await _serviceRepo.CompleteStageME(dto);
-                return Ok();
+                var res = await _serviceRepo.CompleteStageME(dto);
+                return Ok(res);
             }
             catch (Exception ex)
             {
