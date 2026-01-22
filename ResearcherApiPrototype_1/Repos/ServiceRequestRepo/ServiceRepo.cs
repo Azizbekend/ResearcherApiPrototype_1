@@ -236,7 +236,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task<ICollection<CommonRequestStage>> GetRequestStagesAsync(int id)
         {
-            return await _context.RequestStages.Where(x => x.ServiceId == id).OrderByDescending(x => x.Id).ToListAsync();
+            return await _context.RequestStages.Where(x => x.ServiceId == id).OrderBy(x => x.Id).ToListAsync();
         }
 
         public async Task CreateIncidentLink(int requestId, int incidentId)
