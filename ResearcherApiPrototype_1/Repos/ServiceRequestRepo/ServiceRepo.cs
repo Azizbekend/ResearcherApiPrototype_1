@@ -22,6 +22,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 request.Status = "Canceled";
                 request.ImplementerId = dto.ImplementerId;
                 request.ImplementersCompanyId = dto.ImplementerCompanyId;
+                //request.CancelDiscription = dto.
                 request.ClosedAt = DateTime.Now.ToUniversalTime();
                 _context.CommonRequests.Attach(request);
                 await _context.SaveChangesAsync();
@@ -122,6 +123,17 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             {
                 stage.CurrentStatus = "Completed";
                 _context.RequestStages.Attach(stage);
+                var newStage = new CommonRequestStage()
+                {
+                    ServiceId = stage.ServiceId,
+                    CreatorId = stage.ImplementerId,
+                    CreatorsCompanyId = stage.ImplementersCompanyId,
+                    ImplementerId = stage.CreatorId,
+                    ImplementersCompanyId = stage.CreatorsCompanyId,
+                    StageType = "Completed",
+                    Discription = dto.Discription
+                };
+                _context.RequestStages.Add(newStage);
                 await _context.SaveChangesAsync();
             }
             else

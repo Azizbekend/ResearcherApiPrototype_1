@@ -4,5 +4,6 @@
     {
         public int StageId { get; set; }
         public int EngineerId { get; set; }
+        public string Discription { get; set; }
     }
 }
