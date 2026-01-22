@@ -229,12 +229,12 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync()
         {
-            return await _context.CommonRequests.OrderBy(x => x.Id).ToListAsync();
+            return await _context.CommonRequests.OrderByDescending(x => x.Id).ToListAsync();
         }
 
         public async Task<ICollection<CommonRequestStage>> GetRequestStagesAsync(int id)
         {
-            return await _context.RequestStages.Where(x => x.ServiceId == id).OrderBy(x => x.Id).ToListAsync();
+            return await _context.RequestStages.Where(x => x.ServiceId == id).OrderByDescending(x => x.Id).ToListAsync();
         }
 
         public async Task CreateIncidentLink(int requestId, int incidentId)
@@ -250,12 +250,12 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id)
         {
-            return await _context.CommonRequests.Where(x => x.ObjectId == id).OrderBy(x => x.Id).ToListAsync();
+            return await _context.CommonRequests.Where(x => x.ObjectId == id).OrderByDescending(x => x.Id).ToListAsync();
         }
 
         public async Task<ICollection<CommonRequestStage>> GetAllUsersStages(int id)
         {
-            return await _context.RequestStages.Where(x => x.ImplementerId == id).OrderBy(x => x.Id).ToListAsync();
+            return await _context.RequestStages.Where(x => x.ImplementerId == id).OrderByDescending(x => x.Id).ToListAsync();
         }
 
         public async Task<SupplyRequest> CreateSupplyRequest(SupplyRequestInitialCreateDTO dto, int serviceId)
