@@ -104,7 +104,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 {
                     ServiceId = stage.ServiceId,
                     CreatorId = stage.ImplementerId,
+                    CreatorsCompanyId = stage.ImplementersCompanyId,
                     ImplementerId = stage.CreatorId,
+                    ImplementersCompanyId = stage.CreatorsCompanyId,
                     StageType = "New",
                     Discription = dto.Discription
                 };
@@ -266,8 +268,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 CreatorId = dto.CreatorId,
                 CreatorsCompanyId = dto.CreatorsCompanyId,
                 ProductName = dto.ProductName,
-                CurrentImplementerId = dto.CurrentImplementerId,
-                ImplementersCompanyId = dto.CurrentImplementerCompanyId,
+                CurrentImplementerId = dto.NextImplementerId,
+                ImplementersCompanyId = dto.NextImplementerCompanyId,
                 RequiredCount = dto.RequiredCount,
                 CommonRequestId = serviceId,
                 CurrentStatus = "New"
@@ -312,7 +314,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
             if (supplyRequest != null)
             {
-                supplyRequest.CurrentImplementerId= dto.CurrentImplementerId;
+                supplyRequest.CurrentImplementerId= dto.NextImplementerId;
                 supplyRequest.ImplementersCompanyId = dto.NextImplementerCompanyId;
                 supplyRequest.CurrentStatus = $"Счет #{supplyRequest.ExpenseNumber} оплачен.";
                 supplyRequest.IsPayed= true;
@@ -338,8 +340,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             if (supplyRequest != null)
             {
                 supplyRequest.CurrentStatus = "Прибыло на склад";
-                supplyRequest.CurrentImplementerId = dto.CurrentImplementerId;
-                supplyRequest.ImplementersCompanyId = dto.CurrentImplementerCompanyId;
+                supplyRequest.CurrentImplementerId = dto.NextImplementerId;
+                supplyRequest.ImplementersCompanyId = dto.NextImplementerCompanyId;
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);

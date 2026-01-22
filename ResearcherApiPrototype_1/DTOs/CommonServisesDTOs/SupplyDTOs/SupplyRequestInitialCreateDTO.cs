@@ -4,8 +4,8 @@
     {
         public int CreatorId { get; set; }
         public int CreatorsCompanyId { get; set; }
-        public int CurrentImplementerId { get; set; }
-        public int CurrentImplementerCompanyId { get; set; }
+        public int NextImplementerId { get; set; }
+        public int NextImplementerCompanyId { get; set; }
         public string ProductName { get; set; }
         public double RequiredCount { get; set; }
         public int HardwareId { get; set; }

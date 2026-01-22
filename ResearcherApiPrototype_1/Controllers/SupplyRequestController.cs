@@ -36,8 +36,9 @@ namespace ResearcherApiPrototype_1.Controllers
                 var stage = new CreateStageME_DTO
                 {
                     CreatorId = dto.CreatorId,
-                    ImplementerId = dto.CurrentImplementerId,
-                    ImplementersCompanyId = dto.CurrentImplementerCompanyId,
+                    CreatorsCompanyId = dto.CreatorsCompanyId,
+                    ImplementerId = dto.NextImplementerId,
+                    ImplementersCompanyId = dto.NextImplementerCompanyId,
                     Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
                     ServiceId = reqBD.Id,
                     StageType = "InitialSupply"
@@ -59,8 +60,8 @@ namespace ResearcherApiPrototype_1.Controllers
             var stage = new CreateStageME_DTO
             {
                 CreatorId = dto.CreatorId,
-                ImplementerId = dto.CurrentImplementerId,
-                ImplementersCompanyId = dto.CurrentImplementerCompanyId,
+                ImplementerId = dto.NextImplementerId,
+                ImplementersCompanyId = dto.NextImplementerCompanyId,
                 Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
                 ServiceId = dto.ServiceId,
                 StageType = "Supply"
