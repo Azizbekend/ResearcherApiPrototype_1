@@ -130,7 +130,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                     CreatorsCompanyId = stage.ImplementersCompanyId,
                     ImplementerId = stage.CreatorId,
                     ImplementersCompanyId = stage.CreatorsCompanyId,
-                    StageType = "Completed",
+                    StageType = "Общий",
+                    CurrentStatus = "Completed",
                     Discription = dto.Discription
                 };
                 _context.RequestStages.Add(newStage);
