@@ -63,11 +63,11 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 }
                 else
                 {
-                    throw new Exception("Current request already completed");
+                    throw new Exception("Данная заявка уже выполнена!");
                 }
             }
             else
-                throw new Exception("Request has not completed stages! Try again when all stages will in compleded status");
+                throw new Exception("Ошибка! В заявке есть незавершенные этапы! Попробуйте позже...");
             
         }
         private async Task InnerCompleteStage(int stageId, string discription, int implementerId, int nextImplementerCompanyId)
@@ -125,7 +125,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 await _context.SaveChangesAsync();
             }
             else
-                throw new Exception("Only implementer can comlete current stage!");
+                throw new Exception("Ошибка! Только исполнитель может завершить текущий этап!");
         }
 
         public async Task<CommonServiceRequest> CreateIncidentServiceRequest(CreateIncidentServiceRequestDTO dto)
@@ -167,7 +167,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var buff = await _context.RequestStages.Where(x => x.ServiceId == dto.ServiceId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
             if(buff != null && buff.CurrentStatus == "New")
             {
-                throw new Exception("Can not create new stage while Request has not completed stage!");
+                throw new Exception("Ошибка! Невозможно создать новый этап пока есть незавершенные этапы!");
             }
             else
             {
@@ -192,7 +192,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var buff = await _context.RequestStages.Where(x => x.ServiceId == dto.ServiceId).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
             if (buff != null && buff.CurrentStatus == "New")
             {
-                throw new Exception("Can not create new stage while Request has not completed stage!");
+                throw new Exception("Ошибка! Невозможно создать новый этап пока есть незавершенные этапы!");
             }
             else
             {
