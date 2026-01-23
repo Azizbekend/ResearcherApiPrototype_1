@@ -39,6 +39,12 @@ namespace ResearcherApiPrototype_1.Controllers
             var list = await _serviceRepo.GetAllObjectRequests(dto.Id);
             return Ok(list);
         }
+        [HttpGet("services/incidentServices/all")]
+        public async Task<IActionResult> GetIncidentRequests(int id)
+        {
+            var res = _serviceRepo.GetAllIncidentRequestsByIncId(id);
+            return Ok(res);
+        }
         [HttpGet("services/stages/user/all")]
         public async Task<ActionResult<ICollection<CommonRequestStage>>> GetUserStages(int id)
         {

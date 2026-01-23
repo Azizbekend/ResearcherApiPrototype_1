@@ -430,5 +430,27 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 
             }
         }
+
+        public async Task<ICollection<CommonServiceRequest>> GetAllIncidentRequestsByIncId(int id)
+        {
+            var incLinks = await _context.IncidentServiceLinks.Where(x => x.Id == id).OrderBy(x => x.Id).ToListAsync();
+            var incRequests = new List<CommonServiceRequest>();
+            foreach (var inc in incLinks)
+            {
+                var buff = await _context.CommonRequests.FirstOrDefaultAsync(x => x.Id == inc.ServiceRequestId);
+                if (buff != null)
+                { 
+                    incRequests.Add(buff); 
+                }
+            }
+            if (incRequests.Count > 0)
+            {
+                return incRequests;
+            }
+            else
+            {
+                throw new Exception("На найдено заявок связанных с данной аварией");
+            }
+        }
     }
 }

@@ -78,6 +78,22 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok();
         }
 
+        [HttpPost("mainEngineer/supplyRequest/stage/resend")]
+        public async Task<IActionResult> CreateSupplyStage(SupplyRequestResendStagesDTO dto)
+        {
+            var stage = new CreateStageME_DTO
+            {               
+                CreatorId = dto.CreatorId,
+                ImplementerId = dto.NextImplementerId,
+                ImplementersCompanyId = dto.NextImplementerCompanyId,
+                Discription = dto.ResendDiscription,
+                ServiceId = dto.ServiceId,
+                StageType = "Supply"
+            };
+            await _serviceRepo.CreateSupplyRequestStage(stage);
+            return Ok();
+        }
+
         [HttpPost("supplier/attachExpenses")]
         public async Task<IActionResult> AttachEpnensesStage(SupplyRequestAttachExpenseDTO dto)
         {
