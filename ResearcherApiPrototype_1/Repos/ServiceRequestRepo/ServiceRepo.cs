@@ -399,5 +399,36 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             _context.Incidents.Attach(inc);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<CommonRequestStage> GetLastServiceStage(int id)
+        {
+            var stage = await _context.RequestStages.Where(x => x.ServiceId == id).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+            if(stage != null)
+                return stage;
+            else
+            {
+                throw new Exception("Нет этапов связанных с данной заявкой");
+            }
+        }
+
+        public async Task SupplyRequestWarehouseConfirm(SupplyRequestConfirmWarehouseDTO dto)
+        {
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            if (supplyRequest != null)
+            {
+                supplyRequest.SupplierName = dto.SupplierName;
+                supplyRequest.RealCount = dto.RealCount;
+                supplyRequest.ExpenseNumber = "None";
+                supplyRequest.CurrentImplementerId = dto.NextImplementerId;
+                supplyRequest.ImplementersCompanyId = dto.NextImplementerCompanyId;
+                supplyRequest.Expenses = 0;
+                supplyRequest.IsPayed = false;
+                supplyRequest.CurrentStatus = "Прибыло на склад";
+                _context.SupplyRequests.Attach(supplyRequest);
+                await _context.SaveChangesAsync();
+                await InnerCompleteStage(dto.StageId, $"Материал:{supplyRequest.ProductName} в наличии на складе предприятия. Осуществляется передача по заявке", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+                
+            }
+        }
     }
 }

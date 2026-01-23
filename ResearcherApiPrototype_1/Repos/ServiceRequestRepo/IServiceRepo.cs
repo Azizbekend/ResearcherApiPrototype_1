@@ -21,6 +21,8 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync();
         Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id);
         Task<ICollection<CommonRequestStage>> GetAllUsersStages(int id);
+        Task <CommonRequestStage> GetLastServiceStage(int id) ;
+        Task SupplyRequestWarehouseConfirm(SupplyRequestConfirmWarehouseDTO dto);
         Task SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto);
         Task SupplyRequestAttachPay(SupplyRequestAttachPay dto);
         Task SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto);

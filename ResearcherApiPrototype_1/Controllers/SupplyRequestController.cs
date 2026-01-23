@@ -84,6 +84,12 @@ namespace ResearcherApiPrototype_1.Controllers
             await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
             return Ok();
         }
+        [HttpPost("supplier/warehouse/confirm/noPay")]
+        public async Task <IActionResult> ConfirmWarehouse(SupplyRequestConfirmWarehouseDTO dto)
+        {
+            await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
+            return Ok();
+        }
 
         [HttpPost("buhgalteriya/attachPay")]
         public async Task<IActionResult> AttachPay(SupplyRequestAttachPay dto)
