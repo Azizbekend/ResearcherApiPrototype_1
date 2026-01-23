@@ -42,7 +42,7 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpGet("services/incidentServices/all")]
         public async Task<IActionResult> GetIncidentRequests(int id)
         {
-            var res = _serviceRepo.GetAllIncidentRequestsByIncId(id);
+            var res = await _serviceRepo.GetAllIncidentRequestsByIncId(id);
             return Ok(res);
         }
         [HttpGet("services/stages/user/all")]
