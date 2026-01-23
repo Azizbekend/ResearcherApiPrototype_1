@@ -13,6 +13,22 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
             _context = context;
         }
 
+        public async Task<Incident> CopmpleteIncident(int id)
+        {
+            var inc = await _context.Incidents.FirstOrDefaultAsync(x => x.Id == id); 
+            if (inc == null)
+            {
+                throw new Exception("Nor found!");
+            }
+            else
+            {
+                inc.Status = "Completed";
+                _context.Incidents.Attach(inc);
+                await _context.SaveChangesAsync();
+                return inc;
+            }
+        }
+
         public async Task<ICollection<Incident>> GetAllIncidents()
         {
             return await _context.Incidents.ToListAsync();

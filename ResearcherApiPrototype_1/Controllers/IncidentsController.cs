@@ -53,5 +53,12 @@ namespace ResearcherApiPrototype_1.Controllers
             else
                 return Ok(incidents);
         }
+
+        [HttpPut("incidetn/complete")]
+        public async Task<IActionResult> CompleteIncident(int id)
+        {
+            var res = await _repo.CopmpleteIncident(id);
+            return Ok(res);
+        }
     }
 }

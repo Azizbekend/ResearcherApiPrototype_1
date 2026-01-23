@@ -260,6 +260,9 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 IncidentId = incidentId,
                 ServiceRequestId = requestId
             };
+            var inc = await _context.Incidents.FirstOrDefaultAsync(x => x.Id == incidentId);
+            inc.Status = "В Работе";
+            _context.Incidents.Attach(inc);
             _context.IncidentServiceLinks.Add(newIncidentServiceLink);
             await _context.SaveChangesAsync();
         }
