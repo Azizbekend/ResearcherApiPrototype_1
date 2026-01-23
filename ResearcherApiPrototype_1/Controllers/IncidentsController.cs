@@ -57,8 +57,16 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPut("incidetn/complete")]
         public async Task<IActionResult> CompleteIncident(int id)
         {
-            var res = await _repo.CopmpleteIncident(id);
-            return Ok(res);
+            try
+            {
+                var res = await _repo.CopmpleteIncident(id);
+
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

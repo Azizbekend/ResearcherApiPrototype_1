@@ -16,6 +16,12 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
         public async Task<Incident> CopmpleteIncident(int id)
         {
             var inc = await _context.Incidents.FirstOrDefaultAsync(x => x.Id == id); 
+            var incLink = await _context.IncidentServiceLinks.FirstOrDefaultAsync(x => x.Id == id);
+            var notCompleteRequests = await _context.CommonRequests.Where(x => x.Id == incLink.ServiceRequestId && x.Status != "Completed").ToListAsync();
+            if (notCompleteRequests.Count > 0)
+            {
+                throw new Exception("К Аварии прикреплены незавершенные заявки!");
+            }
             if (inc == null)
             {
                 throw new Exception("Nor found!");
