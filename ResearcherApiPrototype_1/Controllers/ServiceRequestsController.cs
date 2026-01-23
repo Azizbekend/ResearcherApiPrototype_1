@@ -21,7 +21,7 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             _serviceRepo = serviceRepo;
         }
-        [HttpGet("Services/all")]
+        [HttpGet("services/all")]
         public async Task<ActionResult<ICollection<CommonServiceRequest>>> GetAllRequests()
         {
             var list = await _serviceRepo.GetAllServiceRequestsAsync();
@@ -39,13 +39,13 @@ namespace ResearcherApiPrototype_1.Controllers
             var list = await _serviceRepo.GetAllObjectRequests(dto.Id);
             return Ok(list);
         }
-        [HttpGet("commonServices/stages/user/all")]
+        [HttpGet("services/stages/user/all")]
         public async Task<ActionResult<ICollection<CommonRequestStage>>> GetUserStages(int id)
         {
             var stages = await _serviceRepo.GetAllUsersStages(id);
             return Ok(stages);
         }
-        [HttpPost("stage/commonServices/all")]
+        [HttpPost("stage/services/all")]
         public async Task<ActionResult<ICollection<CommonServiceRequest>>> GetRequestStages(BaseDTO dto)
         {
             var list = await _serviceRepo.GetRequestStagesAsync(dto.Id);
