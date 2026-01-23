@@ -60,6 +60,7 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
+                
                 var stage = new CreateStageME_DTO
                 {
                     CreatorId = dto.CreatorId,
@@ -78,6 +79,7 @@ namespace ResearcherApiPrototype_1.Controllers
                     RequiredCount = dto.RequiredCount,
                 };
                 await _serviceRepo.CreateSupplyRequest(newSupplyReq, dto.ServiceId);
+                await _serviceRepo.CreateSupplyServiceLink(res.Id, stage.ServiceId);
                 return Ok(res);
             }
             catch(Exception ex)
@@ -98,7 +100,8 @@ namespace ResearcherApiPrototype_1.Controllers
                 ServiceId = dto.ServiceId,
                 StageType = "Supply"
             };
-            await _serviceRepo.CreateSupplyRequestStage(stage);
+            var res = await _serviceRepo.CreateSupplyRequestStage(stage);
+            await _serviceRepo.CreateSupplyServiceLink(res.Id, stage.ServiceId);
             return Ok();
         }
 
@@ -106,12 +109,14 @@ namespace ResearcherApiPrototype_1.Controllers
         public async Task<IActionResult> AttachEpnensesStage(SupplyRequestAttachExpenseDTO dto)
         {
             await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
+            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
             return Ok();
         }
         [HttpPost("supplier/warehouse/confirm/noPay")]
         public async Task <IActionResult> ConfirmWarehouse(SupplyRequestConfirmWarehouseDTO dto)
         {
             await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
+            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
             return Ok();
         }
 
@@ -119,6 +124,7 @@ namespace ResearcherApiPrototype_1.Controllers
         public async Task<IActionResult> AttachPay(SupplyRequestAttachPay dto)
         {
             await _serviceRepo.SupplyRequestAttachPay(dto);
+            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
             return Ok();
         }
 
@@ -126,12 +132,13 @@ namespace ResearcherApiPrototype_1.Controllers
         public async Task<IActionResult> ConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto)
         {
             await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
+            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
             return Ok();
         }
         [HttpPost("mainEngineer/supplyStage/complete")]
         public async Task<IActionResult> CompleteSuppleStage(CompleteSupplyStageDTO dto)
         {
-            await _serviceRepo.ConfirmSupplyStage(dto);
+            await _serviceRepo.ConfirmSupplyStage(dto);        
             return Ok();
         }
 
