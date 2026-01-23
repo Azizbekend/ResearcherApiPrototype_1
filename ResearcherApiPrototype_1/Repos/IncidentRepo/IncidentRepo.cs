@@ -61,7 +61,7 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
             var list = new List<CommonIncidentTableGetDTO>();
             var staticObject = await _context.StaticObjectInfos.FirstOrDefaultAsync(x => x.Id == objectId);
 
-            var incidents = await _context.Incidents.Where(x => x.ObjectId == objectId).ToListAsync();
+            var incidents = await _context.Incidents.Where(x => x.ObjectId == objectId).OrderByDescending(x => x.Id). ToListAsync();
             foreach(var inc in incidents)
             {
                 var hardware = await _context.Hardwares.FirstOrDefaultAsync(x=> x.Id == inc.HardwareId);
