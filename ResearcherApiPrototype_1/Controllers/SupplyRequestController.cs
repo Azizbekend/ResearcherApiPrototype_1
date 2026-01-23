@@ -29,7 +29,7 @@ namespace ResearcherApiPrototype_1.Controllers
                     CreatorsCompanyId = dto.CreatorsCompanyId,
                     HardwareId = dto.HardwareId,
                     ObjectId = dto.ObjectId,
-                    Type = "Поставочная заявка"
+                    Type = "Поставочная"
 
                 };
                 var reqBD = await _serviceRepo.CreateServiceRequest(request);
