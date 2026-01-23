@@ -4,7 +4,6 @@
     {
         public int ImplementerId { get; set; }
         public int ImplementersCompanyId { get; set; }
-        public int SupplyRequestId { get; set; }
         public int SupplyStageId { get; set; }
 
     }

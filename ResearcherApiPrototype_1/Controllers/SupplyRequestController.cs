@@ -44,8 +44,9 @@ namespace ResearcherApiPrototype_1.Controllers
                     StageType = "InitialSupply"
 
                 };
-                await _serviceRepo.CreateRequestStage(stage);
+                var stagenew = await _serviceRepo.CreateRequestStage(stage);
                 var supply = await _serviceRepo.CreateSupplyRequest(dto, reqBD.Id);
+                await _serviceRepo.CreateSupplyServiceLink(stagenew.Id, supply.Id);
                 //await _serviceRepo.CreateSupplyServiceLink(reqBD.Id, supply.Id);
                 return Ok(supply);
             }

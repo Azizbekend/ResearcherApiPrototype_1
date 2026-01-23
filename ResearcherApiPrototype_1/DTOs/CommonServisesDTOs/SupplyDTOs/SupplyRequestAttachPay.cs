@@ -2,7 +2,6 @@
 {
     public class SupplyRequestAttachPay
     {
-        public int SupplyRequestId { get; set; }
         public int StageId { get; set; }
         public int NextImplementerId { get; set; }
         public int NextImplementerCompanyId { get; set; }

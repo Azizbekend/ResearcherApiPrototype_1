@@ -2,6 +2,7 @@
 {
     public class CreateStageME_DTO
     {
+        
         public string Discription { get; set; }
         public string StageType { get; set; }
         public int ServiceId { get; set; }//Общая глобальная заявка

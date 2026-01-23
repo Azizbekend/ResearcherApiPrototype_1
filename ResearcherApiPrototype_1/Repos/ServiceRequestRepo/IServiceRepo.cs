@@ -18,7 +18,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         Task<bool> IsServiceRequestExists(int id);
         Task CreateSupplyServiceLink(int serviceId, int supplyId);
         Task<ICollection<CommonRequestStage>> GetRequestStagesAsync(int id);
-
+        Task InnerSupplyReqestStageLinkCreate(int stageIs, int supplyReqId);
         Task<ICollection<CommonServiceRequest>> GetAllServiceRequestsAsync();
         Task<ICollection<CommonServiceRequest>> GetAllObjectRequests(int id);
         Task<ICollection<CommonServiceRequest>> GetAllIncidentRequestsByIncId(int id);

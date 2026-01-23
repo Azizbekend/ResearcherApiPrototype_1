@@ -29,7 +29,7 @@ namespace ResearcherApiPrototype_1
         public DbSet<ObjectCompanyLink> ObjectCompanyLinks { get; set; }
         public DbSet<UserObjectCompanyLink> UserObjectComandLinks { get; set; }
         public DbSet<SupplyRequest> SupplyRequests { get; set; }
-        //public DbSet<SupplyServiceLink> SupplyRequestLinks { get; set; }
+        public DbSet<SuppliRequestStageLink> SupplyRequestLinks { get; set; }
         public DbSet<FileModel> Files { get; set; }
         public DbSet<DocumentModel> Documents { get; set; }
         public DbSet<ObjectDocLink> ObjectDocs { get; set; }
