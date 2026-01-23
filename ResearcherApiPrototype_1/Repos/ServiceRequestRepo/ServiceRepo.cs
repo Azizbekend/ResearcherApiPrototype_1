@@ -310,7 +310,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         public async Task SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
-            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
             if (supplyRequest != null) 
             {
                 supplyRequest.SupplierName = dto.SupplierName;
@@ -330,7 +330,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         public async Task SupplyRequestAttachPay(SupplyRequestAttachPay dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
-            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
             if (supplyRequest != null)
             {
                 supplyRequest.CurrentImplementerId= dto.NextImplementerId;
@@ -356,7 +356,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         public async Task SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
-            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
             if (supplyRequest != null)
             {
                 supplyRequest.CurrentStatus = "Прибыло на склад";
@@ -371,7 +371,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         public async Task ConfirmSupplyStage(CompleteSupplyStageDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.SupplyStageId);
-            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
             if (supplyRequest != null)
             {
                 supplyRequest.CurrentImplementerId = dto.ImplementerId;
@@ -389,7 +389,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         public async Task CancelSupplyStage(CancelSupplyStageDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.SupplyStageId);
-            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
             if (supplyRequest != null)
             {
                 supplyRequest.CurrentStatus = "Canceled";
@@ -422,7 +422,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         public async Task SupplyRequestWarehouseConfirm(SupplyRequestConfirmWarehouseDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
-            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == dto.SupplyRequestId);
+            var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
             if (supplyRequest != null)
             {
                 supplyRequest.SupplierName = dto.SupplierName;
