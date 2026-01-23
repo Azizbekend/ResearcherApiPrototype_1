@@ -57,25 +57,32 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPost("mainEngineer/supplyRequest/stage/create")]
         public async Task<IActionResult> CreateSupplyStage(SupplyRequestInStagesDTO dto)
         {
-            var stage = new CreateStageME_DTO
+            try
             {
-                CreatorId = dto.CreatorId,
-                ImplementerId = dto.NextImplementerId,
-                ImplementersCompanyId = dto.NextImplementerCompanyId,
-                Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
-                ServiceId = dto.ServiceId,
-                StageType = "Supply"
-            };
-            await _serviceRepo.CreateSupplyRequestStage(stage);
-            var newSupplyReq = new SupplyRequestInitialCreateDTO
+                var stage = new CreateStageME_DTO
+                {
+                    CreatorId = dto.CreatorId,
+                    ImplementerId = dto.NextImplementerId,
+                    ImplementersCompanyId = dto.NextImplementerCompanyId,
+                    Discription = $"Необходима поставка материалов: {dto.ProductName} в количестве {dto.RequiredCount}",
+                    ServiceId = dto.ServiceId,
+                    StageType = "Supply"
+                };
+                var res = await _serviceRepo.CreateSupplyRequestStage(stage);
+                var newSupplyReq = new SupplyRequestInitialCreateDTO
+                {
+                    CreatorId = dto.CreatorId,
+                    CreatorsCompanyId = dto.CreatiorCompanyId,
+                    ProductName = dto.ProductName,
+                    RequiredCount = dto.RequiredCount,
+                };
+                await _serviceRepo.CreateSupplyRequest(newSupplyReq, dto.ServiceId);
+                return Ok(res);
+            }
+            catch(Exception ex)
             {
-                CreatorId = dto.CreatorId,
-                CreatorsCompanyId = dto.CreatiorCompanyId,
-                ProductName = dto.ProductName,
-                RequiredCount = dto.RequiredCount,
-            };
-            await _serviceRepo.CreateSupplyRequest(newSupplyReq, dto.ServiceId);
-            return Ok();
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("mainEngineer/supplyRequest/stage/resend")]
