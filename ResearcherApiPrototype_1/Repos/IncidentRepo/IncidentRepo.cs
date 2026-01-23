@@ -53,7 +53,7 @@ namespace ResearcherApiPrototype_1.Repos.IncidentRepo
 
         public async Task<ICollection<Incident>> GetIncidentsByObjectId(int objectId)
         {
-            return await _context.Incidents.Where(x=> x.ObjectId == objectId).ToListAsync();
+            return await _context.Incidents.Where(x=> x.ObjectId == objectId).OrderByDescending(x=> x.Id).ToListAsync();
         }
 
         public async Task<ICollection<CommonIncidentTableGetDTO>> GetIncidentsByObjectIdForTable(int objectId)
