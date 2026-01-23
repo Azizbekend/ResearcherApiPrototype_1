@@ -436,7 +436,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         public async Task<ICollection<CommonServiceRequest>> GetAllIncidentRequestsByIncId(int id)
         {
-            var incLinks = await _context.IncidentServiceLinks.Where(x => x.Id == id).OrderBy(x => x.Id).ToListAsync();
+            var incLinks = await _context.IncidentServiceLinks.Where(x => x.IncidentId == id).OrderBy(x => x.Id).ToListAsync();
             var incRequests = new List<CommonServiceRequest>();
             foreach (var inc in incLinks)
             {
