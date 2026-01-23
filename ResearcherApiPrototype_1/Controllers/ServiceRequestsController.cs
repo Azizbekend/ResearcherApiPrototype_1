@@ -100,7 +100,7 @@ namespace ResearcherApiPrototype_1.Controllers
                     StageType = "InitialIncident"
                 };
                 var req = await _serviceRepo.CreateInitialRequestStage(stage);
-                await _serviceRepo.CreateIncidentLink(req.Id, dto.IncidentId);
+                await _serviceRepo.CreateIncidentLink(request.Id, dto.IncidentId);
                 return Ok(request);
             }
             catch (Exception ex)
