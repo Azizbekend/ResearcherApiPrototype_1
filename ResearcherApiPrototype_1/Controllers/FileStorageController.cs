@@ -61,9 +61,9 @@ namespace ResearcherApiPrototype_1.Controllers
             {
                 File = dto.File
             };
-            await _fileStorageRepo.UploadFileAsync(file);
-            var res = await _fileStorageRepo.UploadObjectDocAsync(dto.ObjectId, res.Id, dto.DocumentName, dto.DocumentType);
-            return Ok(res);
+            var res = await _fileStorageRepo.UploadFileAsync(file);
+            var resOut = await _fileStorageRepo.UploadObjectDocAsync(dto.ObjectId, res.Id, dto.DocumentName, dto.DocumentType);
+            return Ok(resOut);
         }
         [HttpDelete("object/document/id")]
         public async Task<IActionResult> DeleteObjDoc(int id)
