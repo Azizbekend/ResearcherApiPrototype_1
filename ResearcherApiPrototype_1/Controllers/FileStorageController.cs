@@ -16,10 +16,11 @@ namespace ResearcherApiPrototype_1.Controllers
         private readonly IDocumentRepo _documentsRepo;
         private readonly IObjectPassportRepo _objectPassportRepo;
 
-        public FileStorageController(IFileStorageRepo fileStorageRepo, IDocumentRepo repo)
+        public FileStorageController(IFileStorageRepo fileStorageRepo, IDocumentRepo documentsRepo, IObjectPassportRepo objectPassportRepo)
         {
             _fileStorageRepo = fileStorageRepo;
-            _documentsRepo = repo;
+            _documentsRepo = documentsRepo;
+            _objectPassportRepo = objectPassportRepo;
         }
 
         [HttpPost("images/upload")]
