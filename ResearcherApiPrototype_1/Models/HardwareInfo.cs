@@ -20,7 +20,7 @@ namespace ResearcherApiPrototype_1.Models
         public DateTime ActivatedAt { get; set; }
         [ForeignKey("FileModel")]
         public int? FileId { get; set; }
-        public FileMode? FileModel { get; set; }
+        public FileModel? FileModel { get; set; }
         [ForeignKey("ControlBlockInfo")]
         public int ControlBlockId { get; set; }
         [JsonIgnore]

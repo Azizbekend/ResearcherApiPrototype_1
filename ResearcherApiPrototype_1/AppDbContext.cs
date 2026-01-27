@@ -54,8 +54,23 @@ namespace ResearcherApiPrototype_1
             {
                 ent.HasIndex(f => f.FileName);
             });
-            
-            
+            modelBuilder.Entity<HardwareSchema>()
+                .HasOne(p => p.File)
+                .WithMany()
+                .HasForeignKey(p => p.FileId)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<HardwareInfo>()
+                .HasOne(p => p.FileModel)
+                .WithMany()
+                .HasForeignKey(p => p.FileId)
+                .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<HardwareSchemaImage>()
+                .HasOne(p => p.File)
+                .WithMany()
+                .HasForeignKey(p => p.FileId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+
         }
             //    modelBuilder.Entity<HardwareCharacteristic>(entity =>
             //    {
