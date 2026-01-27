@@ -75,8 +75,8 @@ namespace ResearcherApiPrototype_1.Repos.FileStorageRepo
         {     
             var docLink = new ObjectDocLink()
             {
-                DocId = objId,
-                ObjectId = fileId,
+                DocId = fileId,
+                ObjectId = objId,
                 Name= name,
                 Category = cat
             };
