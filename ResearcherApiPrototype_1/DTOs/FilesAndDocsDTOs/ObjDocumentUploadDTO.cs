@@ -2,8 +2,9 @@
 {
     public class ObjDocumentUploadDTO
     {
-        public int DocId { get; set; }
         public int ObjectId { get; set; }
+        public string DocumentName { get; set; }
+        public string DocumentType { get; set; }
         public IFormFile File { get; set; }
     }
 }

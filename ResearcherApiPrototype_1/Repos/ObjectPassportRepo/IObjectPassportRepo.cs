@@ -12,6 +12,7 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
         Task<ICollection<ObjectCompanyLink>> GetObjectCompanies(int id);
         Task<ICollection<UserObjectCompanyLink>> GetUsersCompany(int id);
         Task<ICollection<StaticObjectInfo>> GetUserObjects(int id);
+        Task<ICollection<ObjectDocLink>> GetObjectDocLinks(int objId);
         Task<AttachCompanyToObjectDTO> AttachCompany(AttachCompanyToObjectDTO dto);
         Task<ObjectCompanyLink> GetCopmanyObjectLint(int companyId, int objId);
         Task<AttachUserToObjectLinkDTO> AttachUser(AttachUserToObjectLinkDTO dto);
@@ -20,5 +21,6 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
         Task CreateAccesses(CreateObjectAccessesDTO dto); 
         Task<UpdateObjAccessesDTO> UpdateUsersAccesses(UpdateObjAccessesDTO dto);
         Task DeleteAccesses(int userId, int objCompLinkId);
+        Task DeleteObjectDoc(int id);
     }
 }

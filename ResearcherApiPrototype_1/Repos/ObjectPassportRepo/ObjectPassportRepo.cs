@@ -90,6 +90,15 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
             await _appDbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteObjectDoc(int id)
+        {
+            var objDocLink = await _appDbContext.ObjectDocs.FirstOrDefaultAsync(x => x.Id == id);
+            var file = await _appDbContext.Files.FirstOrDefaultAsync(x => x.Id == objDocLink.DocId);
+            _appDbContext.ObjectDocs.Remove(objDocLink);
+            _appDbContext.Files.Remove(file);
+            await _appDbContext.SaveChangesAsync();
+        }
+
         public async Task<ICollection<StaticObjectInfo>> GetAll()
         {
             return await _appDbContext.StaticObjectInfos.OrderBy(x => x.Name). ToListAsync();
@@ -109,6 +118,11 @@ namespace ResearcherApiPrototype_1.Repos.ObjectPassportRepo
         public async Task<ICollection<ObjectCompanyLink>> GetObjectCompanies(int id)
         {
             return await _appDbContext.ObjectCompanyLinks.Where(x => x.ObjectId == id).ToListAsync();
+        }
+
+        public async Task<ICollection<ObjectDocLink>> GetObjectDocLinks(int objId)
+        {
+            return await _appDbContext.ObjectDocs.Where(x => x.ObjectId == objId).ToListAsync();
         }
 
         public async Task<StaticObjectInfo> GetSingleById(int id)
