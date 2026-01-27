@@ -55,14 +55,14 @@ namespace ResearcherApiPrototype_1.Controllers
             return Ok(res);
         }
         [HttpPost("object/document/upload")]
-        public async Task<ActionResult<ICollection<ObjectDocLink>>> UploadObjDoc([FromForm] ObjDocumentUploadDTO dto)
+        public async Task<IActionResult> UploadObjDoc([FromForm] ObjDocumentUploadDTO dto)
         {
             var file = new FileUploadDTO()
             {
                 File = dto.File
             };
-            var res = await _fileStorageRepo.UploadFileAsync(file);
-            await _fileStorageRepo.UploadObjectDocAsync(dto.ObjectId, res.Id, dto.DocumentName, dto.DocumentType);
+            await _fileStorageRepo.UploadFileAsync(file);
+            var res = await _fileStorageRepo.UploadObjectDocAsync(dto.ObjectId, res.Id, dto.DocumentName, dto.DocumentType);
             return Ok(res);
         }
         [HttpDelete("object/document/id")]

@@ -71,7 +71,7 @@ namespace ResearcherApiPrototype_1.Repos.FileStorageRepo
             return CreateFileResponse(fileModel);
         }
 
-        public async Task UploadObjectDocAsync(int objId, int fileId, string name, string cat)
+        public async Task<ObjectDocLink> UploadObjectDocAsync(int objId, int fileId, string name, string cat)
         {     
             var docLink = new ObjectDocLink()
             {
@@ -82,6 +82,7 @@ namespace ResearcherApiPrototype_1.Repos.FileStorageRepo
             };
             _context.ObjectDocs.Add(docLink);
             await _context.SaveChangesAsync();
+            return docLink;
 
         }
 
