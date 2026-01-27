@@ -27,6 +27,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.CommonRequests.Attach(request);
                 await _context.SaveChangesAsync();
             }
+            else
+            {
+                throw new Exception("Current request not found!");
+            }
         }
 
         public async Task CancelStageME(CancelStageME_DTO dto)
@@ -39,6 +43,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 stage.ClosedAt = DateTime.Now.ToUniversalTime();
                 _context.RequestStages.Attach(stage);
                 await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Current stage not found!");
             }
         }
 
@@ -92,6 +100,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.RequestStages.Add(newStage);
                 await _context.SaveChangesAsync();
             }
+            else
+            {
+                throw new Exception("Current stage not found!");
+            }
         }
         public async Task CompleteStage(CompleteStageDTO dto)
         {
@@ -113,6 +125,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 };
                 _context.RequestStages.Add(newStage);
                 await _context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("Current stage not found!");
             }
         }
 
@@ -311,7 +327,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
-            if (supplyRequest != null) 
+            if (supplyRequest != null && supplyRequest.CurrentStatus == "New" ) 
             {
                 supplyRequest.SupplierName = dto.SupplierName;
                 supplyRequest.RealCount = dto.RealCount;
@@ -325,13 +341,17 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
             }
+            else
+            {
+                throw new Exception("Этап/Поставка не найдена или попытка прикрепить счет к неподходящему этапу");
+            }
         }
 
         public async Task SupplyRequestAttachPay(SupplyRequestAttachPay dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
-            if (supplyRequest != null)
+            if (supplyRequest != null && supplyRequest.CurrentStatus == "Счет получен")
             {
                 supplyRequest.CurrentImplementerId= dto.NextImplementerId;
                 supplyRequest.ImplementersCompanyId = dto.NextImplementerCompanyId;
@@ -340,6 +360,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Счет #{supplyRequest.ExpenseNumber} оплачен. Ожидается поставка на склад.", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+            }
+            else
+            {
+                throw new Exception("Этап/Поставка не найдена или попытка прикрепить счет к неподходящему этапу");
             }
 
         }
@@ -365,6 +389,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+            }
+            else
+            {
+                throw new Exception("Этап/Поставка не найдена или попытка прикрепить счет к неподходящему этапу");
             }
         }
 

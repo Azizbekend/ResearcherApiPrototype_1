@@ -24,38 +24,80 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpGet("services/all")]
         public async Task<ActionResult<ICollection<CommonServiceRequest>>> GetAllRequests()
         {
-            var list = await _serviceRepo.GetAllServiceRequestsAsync();
-            return Ok(list);
+            try
+            {
+                var list = await _serviceRepo.GetAllServiceRequestsAsync();
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpGet("commonServices/stage/last")]
         public async Task <IActionResult> GetLastStage(int requestId)
         {
-            var res = _serviceRepo.GetLastServiceStage(requestId);
-            return Ok(res);
+            try
+            {
+                var res = _serviceRepo.GetLastServiceStage(requestId);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost("object/services/all")]
         public async Task<ActionResult<ICollection<CommonServiceRequest>>> GetObjectsRequests(BaseDTO dto)
         {
-            var list = await _serviceRepo.GetAllObjectRequests(dto.Id);
-            return Ok(list);
+            try
+            {
+                var list = await _serviceRepo.GetAllObjectRequests(dto.Id);
+                return Ok(list);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpGet("services/incidentServices/all")]
         public async Task<IActionResult> GetIncidentRequests(int id)
         {
-            var res = await _serviceRepo.GetAllIncidentRequestsByIncId(id);
-            return Ok(res);
+            try
+            {
+                var res = await _serviceRepo.GetAllIncidentRequestsByIncId(id);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpGet("services/stages/user/all")]
         public async Task<ActionResult<ICollection<CommonRequestStage>>> GetUserStages(int id)
         {
-            var stages = await _serviceRepo.GetAllUsersStages(id);
-            return Ok(stages);
+            try
+            {
+                var stages = await _serviceRepo.GetAllUsersStages(id);
+                return Ok(stages);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost("stage/services/all")]
         public async Task<ActionResult<ICollection<CommonServiceRequest>>> GetRequestStages(BaseDTO dto)
         {
-            var list = await _serviceRepo.GetRequestStagesAsync(dto.Id);
-            return Ok(list);
+            try
+            {
+                var list = await _serviceRepo.GetRequestStagesAsync(dto.Id);
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("mainEngineer/commonService/InitialCreate")]
@@ -151,8 +193,15 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPost("mainEngineer/commonService/Cancel")]
         public async Task<IActionResult> CancelRequestME(CompleteCancelRequestME_DTO dto)
         {
-            await _serviceRepo.CancelRequest(dto);
-            return Ok();
+            try
+            {
+                await _serviceRepo.CancelRequest(dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         [HttpPost("mainEngineer/serviceStage/create")]
@@ -172,8 +221,15 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPost("common/serviceStage/complete")]
         public async Task<IActionResult> CompleteStageCommon(CompleteStageDTO dto)
         {
-            await _serviceRepo.CompleteStage(dto);
-            return Ok();
+            try
+            {
+                await _serviceRepo.CompleteStage(dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("mainIngineer/serviceStage/complete")]
@@ -193,8 +249,15 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPost("mainEngineer/serviceStage/Cancel")]
         public async Task<IActionResult> CancelStageME(CancelStageME_DTO dto)
         {
-            await _serviceRepo.CancelStageME(dto);
-            return Ok();
+            try
+            {
+                await _serviceRepo.CancelStageME(dto);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 

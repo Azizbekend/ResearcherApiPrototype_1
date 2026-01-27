@@ -46,7 +46,7 @@ namespace ResearcherApiPrototype_1.Controllers
                 };
                 var stagenew = await _serviceRepo.CreateRequestStage(stage);
                 var supply = await _serviceRepo.CreateSupplyRequest(dto, reqBD.Id);
-                await _serviceRepo.CreateSupplyServiceLink(stagenew.Id, supply.Id);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(stagenew.Id, supply.Id);
                 //await _serviceRepo.CreateSupplyServiceLink(reqBD.Id, supply.Id);
                 return Ok(supply);
             }
@@ -79,7 +79,7 @@ namespace ResearcherApiPrototype_1.Controllers
                     RequiredCount = dto.RequiredCount,
                 };
                 await _serviceRepo.CreateSupplyRequest(newSupplyReq, dto.ServiceId);
-                await _serviceRepo.CreateSupplyServiceLink(res.Id, stage.ServiceId);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(res.Id, stage.ServiceId);
                 return Ok(res);
             }
             catch(Exception ex)
@@ -91,69 +91,126 @@ namespace ResearcherApiPrototype_1.Controllers
         [HttpPost("mainEngineer/supplyRequest/stage/resend")]
         public async Task<IActionResult> CreateSupplyStage(SupplyRequestResendStagesDTO dto)
         {
-            var stage = new CreateStageME_DTO
-            {               
-                CreatorId = dto.CreatorId,
-                ImplementerId = dto.NextImplementerId,
-                ImplementersCompanyId = dto.NextImplementerCompanyId,
-                Discription = dto.ResendDiscription,
-                ServiceId = dto.ServiceId,
-                StageType = "Supply"
-            };
-            var res = await _serviceRepo.CreateSupplyRequestStage(stage);
-            await _serviceRepo.CreateSupplyServiceLink(res.Id, stage.ServiceId);
-            return Ok();
+            try
+            {
+                var stage = new CreateStageME_DTO
+                {
+                    CreatorId = dto.CreatorId,
+                    ImplementerId = dto.NextImplementerId,
+                    ImplementersCompanyId = dto.NextImplementerCompanyId,
+                    Discription = dto.ResendDiscription,
+                    ServiceId = dto.ServiceId,
+                    StageType = "Supply"
+                };
+                var res = await _serviceRepo.CreateSupplyRequestStage(stage);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(res.Id, stage.ServiceId);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("supplier/attachExpenses")]
         public async Task<IActionResult> AttachEpnensesStage(SupplyRequestAttachExpenseDTO dto)
         {
-            await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
-            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
-            return Ok();
+            try
+            {
+                await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost("supplier/warehouse/confirm/noPay")]
         public async Task <IActionResult> ConfirmWarehouse(SupplyRequestConfirmWarehouseDTO dto)
         {
-            await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
-            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
-            return Ok();
+            try
+            {
+                await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("buhgalteriya/attachPay")]
         public async Task<IActionResult> AttachPay(SupplyRequestAttachPay dto)
         {
-            await _serviceRepo.SupplyRequestAttachPay(dto);
-            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
-            return Ok();
+            try
+            {
+                await _serviceRepo.SupplyRequestAttachPay(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("supplier/warehouse/confirm")]
         public async Task<IActionResult> ConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto)
         {
-            await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
-            await _serviceRepo.CreateSupplyServiceLink(dto.StageId, dto.RequestId);
-            return Ok();
+            try
+            {
+                await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost("mainEngineer/supplyStage/complete")]
         public async Task<IActionResult> CompleteSuppleStage(CompleteSupplyStageDTO dto)
         {
-            await _serviceRepo.ConfirmSupplyStage(dto);        
-            return Ok();
+            try
+            {
+                await _serviceRepo.ConfirmSupplyStage(dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("mainEngineer/supplyStage/Cancel")]
         public async Task<IActionResult> CancelSupplyStage(CancelSupplyStageDTO dto)
         {
-            await _serviceRepo.CancelSupplyStage(dto);
-            return Ok();
+            try
+            {
+                await _serviceRepo.CancelSupplyStage(dto);
+                return Ok();
+            }
+            catch   (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            await _serviceRepo.DeleteSupplyRequest(id);
-            return Ok();
+            try
+            {
+                await _serviceRepo.DeleteSupplyRequest(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
