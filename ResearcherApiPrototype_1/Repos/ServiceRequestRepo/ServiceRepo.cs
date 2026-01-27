@@ -79,7 +79,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 throw new Exception("Ошибка! В заявке есть незавершенные этапы! Попробуйте позже...");
             
         }
-        private async Task InnerCompleteStage(int stageId, string discription, int implementerId, int nextImplementerCompanyId)
+        private async Task<CommonRequestStage> InnerCompleteStage(int stageId, string discription, int implementerId, int nextImplementerCompanyId)
         {
             var stage = await _context.RequestStages.FirstOrDefaultAsync(x => x.Id == stageId);
             if (stage != null)
@@ -99,6 +99,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 };
                 _context.RequestStages.Add(newStage);
                 await _context.SaveChangesAsync();
+                return newStage;
             }
             else
             {
@@ -466,7 +467,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 supplyRequest.CurrentStatus = "Прибыло на склад";
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
-                await InnerCompleteStage(dto.StageId, $"Материал:{supplyRequest.ProductName} в наличии на складе предприятия. Осуществляется передача по заявке", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+                var a = await InnerCompleteStage(dto.StageId, $"Материал:{supplyRequest.ProductName} в наличии на складе предприятия. Осуществляется передача по заявке", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
                 return supplyRequest.Id;
                 
             }
