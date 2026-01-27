@@ -117,8 +117,8 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                var srId = await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srId);
+                await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
+
                 return Ok();
             }
             catch(Exception ex)
@@ -131,8 +131,7 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                var srId = await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srId);
+                await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
                 return Ok();
             }
             catch(Exception ex)
@@ -146,8 +145,7 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                var srId = await _serviceRepo.SupplyRequestAttachPay(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srId);
+                await _serviceRepo.SupplyRequestAttachPay(dto);
                 return Ok();
             }
             catch (Exception ex)
@@ -162,8 +160,7 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                var srid = await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srid);
+                await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
                 return Ok();
             }
             catch (Exception ex)
