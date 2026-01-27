@@ -78,8 +78,8 @@ namespace ResearcherApiPrototype_1.Controllers
                     ProductName = dto.ProductName,
                     RequiredCount = dto.RequiredCount,
                 };
-                await _serviceRepo.CreateSupplyRequest(newSupplyReq, dto.ServiceId);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(res.Id, stage.ServiceId);
+                var req = await _serviceRepo.CreateSupplyRequest(newSupplyReq, dto.ServiceId);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(res.Id, req.Id);
                 return Ok(res);
             }
             catch(Exception ex)
@@ -117,8 +117,8 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                var srId = await _serviceRepo.SupplyRequestAttachExpUpdate(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srId);
                 return Ok();
             }
             catch(Exception ex)
@@ -131,8 +131,8 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                var srId = await _serviceRepo.SupplyRequestWarehouseConfirm(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srId);
                 return Ok();
             }
             catch(Exception ex)
@@ -146,8 +146,8 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                await _serviceRepo.SupplyRequestAttachPay(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                var srId = await _serviceRepo.SupplyRequestAttachPay(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srId);
                 return Ok();
             }
             catch (Exception ex)
@@ -162,8 +162,8 @@ namespace ResearcherApiPrototype_1.Controllers
         {
             try
             {
-                await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
-                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, dto.RequestId);
+                var srid = await _serviceRepo.SupplyRequestConfirmWarehouseSupply(dto);
+                await _serviceRepo.InnerSupplyReqestStageLinkCreate(dto.StageId, srid);
                 return Ok();
             }
             catch (Exception ex)

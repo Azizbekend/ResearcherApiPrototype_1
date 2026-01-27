@@ -24,10 +24,10 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
         Task<ICollection<CommonServiceRequest>> GetAllIncidentRequestsByIncId(int id);
         Task<ICollection<CommonRequestStage>> GetAllUsersStages(int id);
         Task <CommonRequestStage> GetLastServiceStage(int id) ;
-        Task SupplyRequestWarehouseConfirm(SupplyRequestConfirmWarehouseDTO dto);
-        Task SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto);
-        Task SupplyRequestAttachPay(SupplyRequestAttachPay dto);
-        Task SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto);
+        Task <int> SupplyRequestWarehouseConfirm(SupplyRequestConfirmWarehouseDTO dto);
+        Task<int> SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto);
+        Task <int> SupplyRequestAttachPay(SupplyRequestAttachPay dto);
+        Task <int> SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto);
         Task CompleteRequest(CompleteCancelRequestME_DTO dto);
         Task ConfirmSupplyStage(CompleteSupplyStageDTO dto);
         Task CancelSupplyStage(CancelSupplyStageDTO dto);

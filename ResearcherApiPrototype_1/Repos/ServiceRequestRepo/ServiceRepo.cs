@@ -323,7 +323,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             _context.SupplyRequests.Remove(req);
             await _context.SaveChangesAsync();
         }
-        public async Task SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto)
+        public async Task<int> SupplyRequestAttachExpUpdate(SupplyRequestAttachExpenseDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
@@ -340,6 +340,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Выставлен счет #{supplyRequest.ExpenseNumber} на сумму: {supplyRequest.Expenses}. Поставщик: ${supplyRequest.SupplierName}", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+                return supplyRequest.Id;
             }
             else
             {
@@ -347,7 +348,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             }
         }
 
-        public async Task SupplyRequestAttachPay(SupplyRequestAttachPay dto)
+        public async Task<int> SupplyRequestAttachPay(SupplyRequestAttachPay dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
@@ -360,6 +361,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Счет #{supplyRequest.ExpenseNumber} оплачен. Ожидается поставка на склад.", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+                return supplyRequest.Id;
             }
             else
             {
@@ -377,7 +379,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
 
         }
 
-        public async Task SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto)
+        public async Task<int> SupplyRequestConfirmWarehouseSupply(SupplyWarehouseConfirmDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
@@ -389,6 +391,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Материал: {supplyRequest.ProductName} в количестве {supplyRequest.RealCount} прибыл на склад. Осущестлвяется поставка на объект", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+                return supplyRequest.Id;
             }
             else
             {
@@ -447,7 +450,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             }
         }
 
-        public async Task SupplyRequestWarehouseConfirm(SupplyRequestConfirmWarehouseDTO dto)
+        public async Task<int> SupplyRequestWarehouseConfirm(SupplyRequestConfirmWarehouseDTO dto)
         {
             var spsLink = await _context.SupplyRequestLinks.FirstOrDefaultAsync(x => x.SuppluStageId == dto.StageId);
             var supplyRequest = await _context.SupplyRequests.FirstOrDefaultAsync(x => x.Id == spsLink.SuppluRequestId);
@@ -464,7 +467,12 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                 _context.SupplyRequests.Attach(supplyRequest);
                 await _context.SaveChangesAsync();
                 await InnerCompleteStage(dto.StageId, $"Материал:{supplyRequest.ProductName} в наличии на складе предприятия. Осуществляется передача по заявке", supplyRequest.CurrentImplementerId, supplyRequest.ImplementersCompanyId);
+                return supplyRequest.Id;
                 
+            }
+            else
+            {
+                throw new Exception("Этап/Поставка не найдена или попытка прикрепить счет к неподходящему этапу");
             }
         }
 
