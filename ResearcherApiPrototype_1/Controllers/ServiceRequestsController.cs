@@ -200,7 +200,7 @@ namespace ResearcherApiPrototype_1.Controllers
             }
             catch (Exception ex)
             {
-
+                return NotFound();
             }
         }
 
