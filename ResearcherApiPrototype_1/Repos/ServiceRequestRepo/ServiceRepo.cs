@@ -437,6 +437,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             var inc = _context.Incidents.FirstOrDefault(x => x.Id == incidentId);
             inc.Status = "Completed";
             inc.IsClosed = true;
+            inc.ClosedAt = DateTime.Now.ToUniversalTime();
             _context.Incidents.Attach(inc);
             await _context.SaveChangesAsync();
         }
