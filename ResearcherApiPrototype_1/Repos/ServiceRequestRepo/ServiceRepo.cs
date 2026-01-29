@@ -139,6 +139,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
             if (stage != null && stage.ImplementerId == dto.EngineerId)
             {
                 stage.CurrentStatus = "Completed";
+                stage.ClosedAt = DateTime.Now.ToUniversalTime();
                 _context.RequestStages.Attach(stage);
                 var newStage = new CommonRequestStage()
                 {
@@ -149,6 +150,7 @@ namespace ResearcherApiPrototype_1.Repos.ServiceRequestRepo
                     ImplementersCompanyId = stage.CreatorsCompanyId,
                     StageType = "Общий",
                     CurrentStatus = "Completed",
+                    ClosedAt = DateTime.Now.ToUniversalTime(),
                     Discription = dto.Discription
                 };
                 _context.RequestStages.Add(newStage);
